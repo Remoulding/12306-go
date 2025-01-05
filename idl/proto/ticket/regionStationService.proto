@@ -1,0 +1,42 @@
+syntax = "proto3";
+package ticket;
+option go_package = "ticket/";
+import "google/protobuf/empty.proto";
+
+// 定义服务
+service RegionStationService {
+  // 查询车站&城市站点集合信息
+  rpc ListRegionStation(RegionStationQueryReq) returns (ListRegionStationResponse);
+  // 查询所有站点集合信息
+  rpc ListAllStation(google.protobuf.Empty) returns (ListAllStationResponse);
+}
+
+
+// 请求参数定义
+message RegionStationQueryReq {
+  // 添加请求参数字段，例如：
+  string region = 1;
+  string station_name = 2;
+}
+
+// 返回的站点信息
+message RegionStationQueryResp {
+  string region = 1;
+  string station_name = 2;
+}
+
+// 返回所有站点信息
+message StationQueryResp {
+  string station_name = 1;
+  string station_code = 2;
+}
+
+// 返回车站&城市站点集合的响应
+message ListRegionStationResponse {
+  repeated RegionStationQueryResp region_station_list = 1;
+}
+
+// 返回所有站点集合的响应
+message ListAllStationResponse {
+  repeated StationQueryResp station_list = 1;
+}
