@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.35.2
 // 	protoc        v5.29.2
-// source: user/passgenerService.proto
+// source: user/passengerService.proto
 
-package user
+package passenger
 
 import (
 	base "github.com/Remoulding/12306-go/idl-gen/base"
@@ -32,7 +32,7 @@ type ListPassengerByUsernameReq struct {
 
 func (x *ListPassengerByUsernameReq) Reset() {
 	*x = ListPassengerByUsernameReq{}
-	mi := &file_user_passgenerService_proto_msgTypes[0]
+	mi := &file_user_passengerService_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +44,7 @@ func (x *ListPassengerByUsernameReq) String() string {
 func (*ListPassengerByUsernameReq) ProtoMessage() {}
 
 func (x *ListPassengerByUsernameReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[0]
+	mi := &file_user_passengerService_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *ListPassengerByUsernameReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPassengerByUsernameReq.ProtoReflect.Descriptor instead.
 func (*ListPassengerByUsernameReq) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{0}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ListPassengerByUsernameReq) GetUsername() string {
@@ -78,7 +78,7 @@ type ListPassengerByUsernameResp struct {
 
 func (x *ListPassengerByUsernameResp) Reset() {
 	*x = ListPassengerByUsernameResp{}
-	mi := &file_user_passgenerService_proto_msgTypes[1]
+	mi := &file_user_passengerService_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -90,7 +90,7 @@ func (x *ListPassengerByUsernameResp) String() string {
 func (*ListPassengerByUsernameResp) ProtoMessage() {}
 
 func (x *ListPassengerByUsernameResp) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[1]
+	mi := &file_user_passengerService_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -103,7 +103,7 @@ func (x *ListPassengerByUsernameResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPassengerByUsernameResp.ProtoReflect.Descriptor instead.
 func (*ListPassengerByUsernameResp) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{1}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListPassengerByUsernameResp) GetPassengerList() []*Passenger {
@@ -125,7 +125,7 @@ type ListPassengerByIdsReq struct {
 
 func (x *ListPassengerByIdsReq) Reset() {
 	*x = ListPassengerByIdsReq{}
-	mi := &file_user_passgenerService_proto_msgTypes[2]
+	mi := &file_user_passengerService_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -137,7 +137,7 @@ func (x *ListPassengerByIdsReq) String() string {
 func (*ListPassengerByIdsReq) ProtoMessage() {}
 
 func (x *ListPassengerByIdsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[2]
+	mi := &file_user_passengerService_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -150,7 +150,7 @@ func (x *ListPassengerByIdsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPassengerByIdsReq.ProtoReflect.Descriptor instead.
 func (*ListPassengerByIdsReq) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{2}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListPassengerByIdsReq) GetUsername() string {
@@ -178,7 +178,7 @@ type ListPassengerByIdsResp struct {
 
 func (x *ListPassengerByIdsResp) Reset() {
 	*x = ListPassengerByIdsResp{}
-	mi := &file_user_passgenerService_proto_msgTypes[3]
+	mi := &file_user_passengerService_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -190,7 +190,7 @@ func (x *ListPassengerByIdsResp) String() string {
 func (*ListPassengerByIdsResp) ProtoMessage() {}
 
 func (x *ListPassengerByIdsResp) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[3]
+	mi := &file_user_passengerService_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -203,7 +203,7 @@ func (x *ListPassengerByIdsResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPassengerByIdsResp.ProtoReflect.Descriptor instead.
 func (*ListPassengerByIdsResp) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{3}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListPassengerByIdsResp) GetPassengerList() []*PassengerActualResp {
@@ -224,7 +224,7 @@ type SavePassengerReq struct {
 
 func (x *SavePassengerReq) Reset() {
 	*x = SavePassengerReq{}
-	mi := &file_user_passgenerService_proto_msgTypes[4]
+	mi := &file_user_passengerService_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -236,7 +236,7 @@ func (x *SavePassengerReq) String() string {
 func (*SavePassengerReq) ProtoMessage() {}
 
 func (x *SavePassengerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[4]
+	mi := &file_user_passengerService_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -249,7 +249,7 @@ func (x *SavePassengerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePassengerReq.ProtoReflect.Descriptor instead.
 func (*SavePassengerReq) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{4}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SavePassengerReq) GetPassenger() *PassengerReq {
@@ -270,7 +270,7 @@ type SavePassengerResp struct {
 
 func (x *SavePassengerResp) Reset() {
 	*x = SavePassengerResp{}
-	mi := &file_user_passgenerService_proto_msgTypes[5]
+	mi := &file_user_passengerService_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -282,7 +282,7 @@ func (x *SavePassengerResp) String() string {
 func (*SavePassengerResp) ProtoMessage() {}
 
 func (x *SavePassengerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[5]
+	mi := &file_user_passengerService_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -295,7 +295,7 @@ func (x *SavePassengerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePassengerResp.ProtoReflect.Descriptor instead.
 func (*SavePassengerResp) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{5}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SavePassengerResp) GetStatus() *base.Status {
@@ -316,7 +316,7 @@ type UpdatePassengerReq struct {
 
 func (x *UpdatePassengerReq) Reset() {
 	*x = UpdatePassengerReq{}
-	mi := &file_user_passgenerService_proto_msgTypes[6]
+	mi := &file_user_passengerService_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -328,7 +328,7 @@ func (x *UpdatePassengerReq) String() string {
 func (*UpdatePassengerReq) ProtoMessage() {}
 
 func (x *UpdatePassengerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[6]
+	mi := &file_user_passengerService_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -341,7 +341,7 @@ func (x *UpdatePassengerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePassengerReq.ProtoReflect.Descriptor instead.
 func (*UpdatePassengerReq) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{6}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UpdatePassengerReq) GetPassenger() *PassengerReq {
@@ -362,7 +362,7 @@ type UpdatePassengerResp struct {
 
 func (x *UpdatePassengerResp) Reset() {
 	*x = UpdatePassengerResp{}
-	mi := &file_user_passgenerService_proto_msgTypes[7]
+	mi := &file_user_passengerService_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -374,7 +374,7 @@ func (x *UpdatePassengerResp) String() string {
 func (*UpdatePassengerResp) ProtoMessage() {}
 
 func (x *UpdatePassengerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[7]
+	mi := &file_user_passengerService_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,7 +387,7 @@ func (x *UpdatePassengerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePassengerResp.ProtoReflect.Descriptor instead.
 func (*UpdatePassengerResp) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{7}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UpdatePassengerResp) GetStatus() *base.Status {
@@ -408,7 +408,7 @@ type RemovePassengerReq struct {
 
 func (x *RemovePassengerReq) Reset() {
 	*x = RemovePassengerReq{}
-	mi := &file_user_passgenerService_proto_msgTypes[8]
+	mi := &file_user_passengerService_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -420,7 +420,7 @@ func (x *RemovePassengerReq) String() string {
 func (*RemovePassengerReq) ProtoMessage() {}
 
 func (x *RemovePassengerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[8]
+	mi := &file_user_passengerService_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -433,7 +433,7 @@ func (x *RemovePassengerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemovePassengerReq.ProtoReflect.Descriptor instead.
 func (*RemovePassengerReq) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{8}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *RemovePassengerReq) GetPassengerIds() []int64 {
@@ -454,7 +454,7 @@ type RemovePassengerResp struct {
 
 func (x *RemovePassengerResp) Reset() {
 	*x = RemovePassengerResp{}
-	mi := &file_user_passgenerService_proto_msgTypes[9]
+	mi := &file_user_passengerService_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -466,7 +466,7 @@ func (x *RemovePassengerResp) String() string {
 func (*RemovePassengerResp) ProtoMessage() {}
 
 func (x *RemovePassengerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[9]
+	mi := &file_user_passengerService_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -479,7 +479,7 @@ func (x *RemovePassengerResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemovePassengerResp.ProtoReflect.Descriptor instead.
 func (*RemovePassengerResp) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{9}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RemovePassengerResp) GetStatus() *base.Status {
@@ -511,7 +511,7 @@ type PassengerReq struct {
 
 func (x *PassengerReq) Reset() {
 	*x = PassengerReq{}
-	mi := &file_user_passgenerService_proto_msgTypes[10]
+	mi := &file_user_passengerService_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -523,7 +523,7 @@ func (x *PassengerReq) String() string {
 func (*PassengerReq) ProtoMessage() {}
 
 func (x *PassengerReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[10]
+	mi := &file_user_passengerService_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -536,7 +536,7 @@ func (x *PassengerReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PassengerReq.ProtoReflect.Descriptor instead.
 func (*PassengerReq) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{10}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PassengerReq) GetId() string {
@@ -602,7 +602,7 @@ type Passenger struct {
 
 func (x *Passenger) Reset() {
 	*x = Passenger{}
-	mi := &file_user_passgenerService_proto_msgTypes[11]
+	mi := &file_user_passengerService_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -614,7 +614,7 @@ func (x *Passenger) String() string {
 func (*Passenger) ProtoMessage() {}
 
 func (x *Passenger) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[11]
+	mi := &file_user_passengerService_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -627,7 +627,7 @@ func (x *Passenger) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Passenger.ProtoReflect.Descriptor instead.
 func (*Passenger) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{11}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Passenger) GetId() string {
@@ -726,7 +726,7 @@ type PassengerActualResp struct {
 
 func (x *PassengerActualResp) Reset() {
 	*x = PassengerActualResp{}
-	mi := &file_user_passgenerService_proto_msgTypes[12]
+	mi := &file_user_passengerService_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -738,7 +738,7 @@ func (x *PassengerActualResp) String() string {
 func (*PassengerActualResp) ProtoMessage() {}
 
 func (x *PassengerActualResp) ProtoReflect() protoreflect.Message {
-	mi := &file_user_passgenerService_proto_msgTypes[12]
+	mi := &file_user_passengerService_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -751,7 +751,7 @@ func (x *PassengerActualResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PassengerActualResp.ProtoReflect.Descriptor instead.
 func (*PassengerActualResp) Descriptor() ([]byte, []int) {
-	return file_user_passgenerService_proto_rawDescGZIP(), []int{12}
+	return file_user_passengerService_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *PassengerActualResp) GetId() string {
@@ -817,10 +817,10 @@ func (x *PassengerActualResp) GetVerifyStatus() int32 {
 	return 0
 }
 
-var File_user_passgenerService_proto protoreflect.FileDescriptor
+var File_user_passengerService_proto protoreflect.FileDescriptor
 
-var file_user_passgenerService_proto_rawDesc = []byte{
-	0x0a, 0x1b, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x70, 0x61, 0x73, 0x73, 0x67, 0x65, 0x6e, 0x65, 0x72,
+var file_user_passengerService_proto_rawDesc = []byte{
+	0x0a, 0x1b, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x70, 0x61, 0x73, 0x73, 0x65, 0x6e, 0x67, 0x65, 0x72,
 	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x75,
 	0x73, 0x65, 0x72, 0x1a, 0x11, 0x62, 0x61, 0x73, 0x65, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x38, 0x0a, 0x1a, 0x4c, 0x69, 0x73, 0x74, 0x50, 0x61,
@@ -941,25 +941,25 @@ var file_user_passgenerService_proto_rawDesc = []byte{
 	0x73, 0x73, 0x65, 0x6e, 0x67, 0x65, 0x72, 0x12, 0x18, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x52,
 	0x65, 0x6d, 0x6f, 0x76, 0x65, 0x50, 0x61, 0x73, 0x73, 0x65, 0x6e, 0x67, 0x65, 0x72, 0x52, 0x65,
 	0x71, 0x1a, 0x19, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x50,
-	0x61, 0x73, 0x73, 0x65, 0x6e, 0x67, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x42, 0x0d, 0x5a, 0x0b,
-	0x2e, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x3b, 0x75, 0x73, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x61, 0x73, 0x73, 0x65, 0x6e, 0x67, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x42, 0x1a, 0x5a, 0x18,
+	0x75, 0x73, 0x65, 0x72, 0x2f, 0x70, 0x61, 0x73, 0x73, 0x65, 0x6e, 0x67, 0x65, 0x72, 0x3b, 0x70,
+	0x61, 0x73, 0x73, 0x65, 0x6e, 0x67, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_user_passgenerService_proto_rawDescOnce sync.Once
-	file_user_passgenerService_proto_rawDescData = file_user_passgenerService_proto_rawDesc
+	file_user_passengerService_proto_rawDescOnce sync.Once
+	file_user_passengerService_proto_rawDescData = file_user_passengerService_proto_rawDesc
 )
 
-func file_user_passgenerService_proto_rawDescGZIP() []byte {
-	file_user_passgenerService_proto_rawDescOnce.Do(func() {
-		file_user_passgenerService_proto_rawDescData = protoimpl.X.CompressGZIP(file_user_passgenerService_proto_rawDescData)
+func file_user_passengerService_proto_rawDescGZIP() []byte {
+	file_user_passengerService_proto_rawDescOnce.Do(func() {
+		file_user_passengerService_proto_rawDescData = protoimpl.X.CompressGZIP(file_user_passengerService_proto_rawDescData)
 	})
-	return file_user_passgenerService_proto_rawDescData
+	return file_user_passengerService_proto_rawDescData
 }
 
-var file_user_passgenerService_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
-var file_user_passgenerService_proto_goTypes = []any{
+var file_user_passengerService_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_user_passengerService_proto_goTypes = []any{
 	(*ListPassengerByUsernameReq)(nil),  // 0: user.ListPassengerByUsernameReq
 	(*ListPassengerByUsernameResp)(nil), // 1: user.ListPassengerByUsernameResp
 	(*ListPassengerByIdsReq)(nil),       // 2: user.ListPassengerByIdsReq
@@ -975,7 +975,7 @@ var file_user_passgenerService_proto_goTypes = []any{
 	(*PassengerActualResp)(nil),         // 12: user.PassengerActualResp
 	(*base.Status)(nil),                 // 13: base.Status
 }
-var file_user_passgenerService_proto_depIdxs = []int32{
+var file_user_passengerService_proto_depIdxs = []int32{
 	11, // 0: user.ListPassengerByUsernameResp.passenger_list:type_name -> user.Passenger
 	12, // 1: user.ListPassengerByIdsResp.passenger_list:type_name -> user.PassengerActualResp
 	10, // 2: user.SavePassengerReq.passenger:type_name -> user.PassengerReq
@@ -1000,27 +1000,27 @@ var file_user_passgenerService_proto_depIdxs = []int32{
 	0,  // [0:7] is the sub-list for field type_name
 }
 
-func init() { file_user_passgenerService_proto_init() }
-func file_user_passgenerService_proto_init() {
-	if File_user_passgenerService_proto != nil {
+func init() { file_user_passengerService_proto_init() }
+func file_user_passengerService_proto_init() {
+	if File_user_passengerService_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_user_passgenerService_proto_rawDesc,
+			RawDescriptor: file_user_passengerService_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_user_passgenerService_proto_goTypes,
-		DependencyIndexes: file_user_passgenerService_proto_depIdxs,
-		MessageInfos:      file_user_passgenerService_proto_msgTypes,
+		GoTypes:           file_user_passengerService_proto_goTypes,
+		DependencyIndexes: file_user_passengerService_proto_depIdxs,
+		MessageInfos:      file_user_passengerService_proto_msgTypes,
 	}.Build()
-	File_user_passgenerService_proto = out.File
-	file_user_passgenerService_proto_rawDesc = nil
-	file_user_passgenerService_proto_goTypes = nil
-	file_user_passgenerService_proto_depIdxs = nil
+	File_user_passengerService_proto = out.File
+	file_user_passengerService_proto_rawDesc = nil
+	file_user_passengerService_proto_goTypes = nil
+	file_user_passengerService_proto_depIdxs = nil
 }

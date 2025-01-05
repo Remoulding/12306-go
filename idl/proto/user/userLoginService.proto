@@ -1,6 +1,6 @@
 syntax = "proto3";
 package user;
-option go_package = "./user;user";
+option go_package = "user/user_login;user_login";
 import "base/status.proto";
 
 

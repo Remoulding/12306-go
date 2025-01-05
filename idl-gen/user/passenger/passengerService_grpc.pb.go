@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v5.29.2
-// source: user/passgenerService.proto
+// source: user/passengerService.proto
 
-package passenger_service
+package passenger
 
 import (
 	context "context"
@@ -283,5 +283,5 @@ var PassengerService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user/passgenerService.proto",
+	Metadata: "user/passengerService.proto",
 }

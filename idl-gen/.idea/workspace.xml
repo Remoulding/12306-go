@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1975e25-d86b-40ba-ad34-554fde6eaaee" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/../idl/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/base/status.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/ticket/regionStationService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/ticket/regionStationService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/user/passgenerService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/user/passgenerService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/user/userLoginService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/user/userLoginService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/user/userService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/gen/user/userService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/base/status.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/proto/base/status.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/ticket/regionStationService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/proto/ticket/regionStationService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/user/passgenerService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/proto/user/passgenerService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket/regionStationService.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/ticket/regionStationService.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket/regionStationService_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/ticket/regionStationService_grpc.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/passenger_service/passgenerService.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/passenger_service/passgenerService_grpc.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/passgenerService.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/passgenerService_grpc.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/userLoginService.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/userLoginService_grpc.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/userService.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/userService_grpc.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_login/userLoginService.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_login/userLoginService.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_service/userService.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_service/userService.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../idl/proto/user/passgenerService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/proto/user/passengerService.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../idl/proto/user/userLoginService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/proto/user/userLoginService.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../idl/proto/user/userService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/proto/user/userService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ticket-service/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-service/biz/service/UserLoginService.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/biz/service/UserLoginService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user-service/biz/service/UserService.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/biz/service/UserService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/go.sum" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" url="file://C:/Program Files/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Remoulding"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Remoulding/12306-go.git",
+    "accountId": "4bf33ea9-6d66-4141-84dd-3e90197bbd00"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2rCy0j1h4mD8F5jQYOAsyOrRcSL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,9 +57,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
     "last_opened_file_path": "C:/Users/86139",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.keymap"

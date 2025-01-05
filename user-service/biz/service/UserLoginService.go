@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/Remoulding/12306-go/idl-gen/user/user_login"
 	. "github.com/Remoulding/12306-go/user-service/biz/dto/req"
 	. "github.com/Remoulding/12306-go/user-service/biz/dto/resp"
 	"github.com/Remoulding/12306-go/user-service/biz/model"
@@ -17,27 +18,17 @@ import (
 	"time"
 )
 
-type UserLoginService interface {
-	Login(requestParam *UserLoginReqDTO) (*UserLoginRespDTO, error)
-	CheckLogin(accessToken string) (*UserLoginRespDTO, error)
-	Logout(accessToken string) error
-	HasUsername(username string) bool
-	Register(requestParam *UserRegisterReqDTO) (*UserRegisterRespDTO, error)
-	Deletion(requestParam *UserDeletionReqDTO) error
-}
-
 type UserLoginServiceImpl struct {
-	ctx               context.Context
+	user_login.UnimplementedUserLoginServiceServer
 	db                *gorm.DB
 	redisClient       *redis.Client
 	jwtSecretKey      string
 	userRegisterCache *redis.Client
-	userService       UserService
+	userService       UserServiceImpl
 }
 
-func NewUserLoginServiceImpl(ctx context.Context, db *gorm.DB, redisClient *redis.Client, jwtSecretKey string, userRegisterCache *redis.Client, userService UserService) *UserLoginServiceImpl {
+func NewUserLoginServiceImpl(db *gorm.DB, redisClient *redis.Client, jwtSecretKey string, userRegisterCache *redis.Client, userServiceImpl UserServiceImpl) *user_login.UserLoginServiceServer {
 	return &UserLoginServiceImpl{
-		ctx:               ctx,
 		db:                db,
 		redisClient:       redisClient,
 		jwtSecretKey:      jwtSecretKey,

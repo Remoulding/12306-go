@@ -1,6 +1,6 @@
 syntax = "proto3";
 package user;
-option go_package = "./user;user";
+option go_package = "user/user_service;user_service";
 import "base/status.proto";
 
 // 用户信息服务接口
@@ -60,10 +60,12 @@ message QueryUserResp {
 
 // 用户更新请求
 message UserUpdateReq {
-  string user_id = 1;   // 用户 ID
-  string real_name = 2; // 真实姓名
-  string email = 3;     // 邮箱
-  string phone = 4;     // 手机号
+  string id = 1;        // 用户ID
+  string username = 2;  // 用户名
+  string mail = 3;      // 邮箱
+  int32 userType = 4;   // 旅客类型
+  string postCode = 5;  // 邮编
+  string address = 6;   // 地址
 }
 
 // 更新响应
