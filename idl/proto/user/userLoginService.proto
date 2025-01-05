@@ -1,0 +1,126 @@
+syntax = "proto3";
+package user;
+option go_package = "user/";
+import "base/status.proto";
+
+
+// 定义服务
+service UserLoginService {
+  // 用户登录
+  rpc Login(UserLoginReq) returns (UserLoginResp);
+
+  // 检查登录状态
+  rpc CheckLogin(CheckLoginReq) returns (UserLoginResp);
+
+  // 用户登出
+  rpc Logout(LogoutReq) returns (LogoutResp);
+
+  // 检查用户名是否存在
+  rpc HasUsername(HasUsernameReq) returns (HasUsernameResp);
+
+  // 用户注册
+  rpc Register(UserRegisterReq) returns (UserRegisterResp);
+
+  // 用户注销
+  rpc Deletion(UserDeletionReq) returns (DeletionResp);
+}
+
+// 登录请求
+message UserLoginReq {
+  string username_or_mail_or_phone = 1;
+  string password = 2;
+}
+
+// 登录响应
+message UserLoginResp {
+  base.Status status = 1;
+  string user_id = 2;
+  string username = 3;
+  string real_name = 4;
+  string access_token = 5;
+}
+
+// 检查登录状态请求
+message CheckLoginReq {
+  string access_token = 1;
+}
+
+// 登出请求
+message LogoutReq {
+  string access_token = 1;
+}
+
+// 登出响应
+message LogoutResp {
+  base.Status status = 1;
+}
+
+// 检查用户名是否存在请求
+message HasUsernameReq {
+  string username = 1;
+}
+
+// 检查用户名是否存在响应
+message HasUsernameResp {
+  base.Status status = 1;
+  bool exists = 2;
+}
+
+// 用户注册请求参数
+message UserRegisterReq {
+  // 用户名
+  string username = 1;
+
+  // 密码
+  string password = 2;
+
+  // 真实姓名
+  string real_name = 3;
+
+  // 证件类型
+  int32 id_type = 4;
+
+  // 证件号
+  string id_card = 5;
+
+  // 手机号
+  string phone = 6;
+
+  // 邮箱
+  string mail = 7;
+
+  // 旅客类型
+  int32 user_type = 8;
+
+  // 审核状态
+  int32 verify_state = 9;
+
+  // 邮编
+  string post_code = 10;
+
+  // 地址
+  string address = 11;
+
+  // 国家/地区
+  string region = 12;
+
+  // 固定电话
+  string telephone = 13;
+}
+// 用户注册响应
+message UserRegisterResp {
+  base.Status status = 1;
+  string username = 2;
+  string real_name = 3;
+  string phone = 4;
+}
+
+// 用户注销请求
+message UserDeletionReq {
+  string username = 1;
+}
+
+// 用户注销响应
+message DeletionResp {
+  base.Status status = 1;
+}
