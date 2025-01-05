@@ -1,6 +1,6 @@
 syntax = "proto3";
 package user;
-option go_package = "user/";
+option go_package = "./user;user";
 import "base/status.proto";
 
 // 用户信息服务接口

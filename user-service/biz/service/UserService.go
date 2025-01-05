@@ -10,6 +10,7 @@ import (
 
 // UserService 用户信息服务接口
 type UserService interface {
+
 	// QueryUserByUserId 根据用户 ID 查询用户信息
 	QueryUserByUserId(userId string) (*UserQueryRespDTO, error)
 

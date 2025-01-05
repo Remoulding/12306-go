@@ -1,6 +1,6 @@
 syntax = "proto3";
 package ticket;
-option go_package = "ticket/";
+option go_package = "./ticket;ticket";
 import "google/protobuf/empty.proto";
 
 // 定义服务
