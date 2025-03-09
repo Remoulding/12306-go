@@ -57,7 +57,104 @@ func (s *TicketSecondClassPurchaseService) SelectSeats(passengerList []*ticket_s
 func (s *TicketSecondClassPurchaseService) selectSeats(req *ticket_service.PurchaseTicketRequest, carriageNumber []string,
 	remainingTickets []int) ([]*TrainPurchaseTicketDTO, error) {
 	resp := make([]*TrainPurchaseTicketDTO, 0, len(req.GetPassengers()))
+	passengerSize := len(req.GetPassengers())
+	demotionStockNumMap := make(map[string]int)
+	actualSeatsMap := make(map[string][][]int)
+	carriagesNumberSeatsMap := make(map[string][][]int)
+	for i := range remainingTickets {
+		carriageNumb := carriageNumber[i]
+		listAvailableSeat, err := s.SeatService.ListAvailableSeat(s.ctx, req.GetTrainId(), carriageNumb, s.seatType, req.GetDeparture(), req.GetArrival())
+		if err != nil {
+			return nil, err
+		}
+		listAvailableSeatSet := make(map[string]struct{})
+		for _, seat := range listAvailableSeat {
+			listAvailableSeatSet[seat] = struct{}{}
+		}
 
+		actualSeats := make([][]int, 18)
+		// 处理实际座位数据
+		for j := 1; j <= 18; j++ {
+			actualSeats[j-1] = make([]int, 5)
+			for k := 1; k <= 5; k++ {
+				seatStr := strconv.Itoa(j) + Convert(s.seatType, k)
+				if j < 10 {
+					seatStr = "0" + seatStr
+				}
+				if _, ok := listAvailableSeatSet[seatStr]; ok {
+					actualSeats[j-1][k-1] = 0
+				} else {
+					actualSeats[j-1][k-1] = 1
+				}
+			}
+		}
+
+		selectSeats := SelectAdjacentSeats(passengerSize, actualSeats)
+		// 有连坐
+		if len(selectSeats) != 0 {
+			carriagesNumberSeatsMap[carriageNumb] = selectSeats
+			break
+		}
+		// 无连坐，计算余票
+		demotionStockNum := 0
+		for _, seats := range actualSeats {
+			for _, seat := range seats {
+				if seat == 0 {
+					demotionStockNum++
+				}
+			}
+		}
+		actualSeatsMap[carriageNumb] = actualSeats
+		demotionStockNumMap[carriageNumb] = demotionStockNum
+		if i < len(remainingTickets)-1 {
+			continue
+		}
+		// 同车厢
+		for carrNum, carrSeatNum := range demotionStockNumMap {
+			if carrSeatNum >= passengerSize {
+				selectSeats = SelectNonAdjacentSeats(passengerSize, actualSeatsMap[carrNum])
+				if len(selectSeats) == passengerSize {
+					carriagesNumberSeatsMap[carrNum] = selectSeats
+					break
+				}
+			}
+		}
+
+		// 不同车厢
+		selectSeatCnt := 0
+		for carrNum, carrSeatNum := range demotionStockNumMap {
+			if selectSeatCnt < passengerSize {
+				addSeatCnt := min(carrSeatNum, passengerSize-selectSeatCnt)
+				selectSeatCnt += addSeatCnt
+				carriagesNumberSeatsMap[carrNum] = SelectNonAdjacentSeats(addSeatCnt, actualSeatsMap[carrNum])
+			} else {
+				break
+			}
+		}
+
+		if selectSeatCnt < passengerSize {
+			return nil, errors.New("余票不足")
+		}
+	}
+	for carrNum, carrSeats := range carriagesNumberSeatsMap {
+		selectSeats := make([]string, 0, passengerSize)
+		for _, seat := range carrSeats {
+			seatStr := strconv.Itoa(seat[0]) + Convert(s.seatType, seat[1])
+			if seat[0] < 10 {
+				seatStr = "0" + seatStr
+			}
+			selectSeats = append(selectSeats, seatStr)
+		}
+		for i, selectSeat := range selectSeats {
+			passengerInfo := req.GetPassengers()[i]
+			resp = append(resp, &TrainPurchaseTicketDTO{
+				PassengerId:    passengerInfo.GetPassengerId(),
+				CarriageNumber: carrNum,
+				SeatNumber:     selectSeat,
+				SeatType:       int(passengerInfo.GetSeatType()),
+			})
+		}
+	}
 	return resp, nil
 }
 

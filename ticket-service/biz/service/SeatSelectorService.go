@@ -90,6 +90,7 @@ func ExampleUsage() {
 		fmt.Println("找到相邻座位：")
 		for _, s := range selected {
 			fmt.Printf("第%d排 第%d列\n", s[0], s[1])
+
 		}
 	} else {
 		fmt.Println("没有足够相邻座位")
