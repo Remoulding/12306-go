@@ -2,67 +2,53 @@ package service
 
 import (
 	"context"
-	"errors"
 	"fmt"
-	"github.com/Remoulding/12306-go/idl-gen/user/user_login"
-	. "github.com/Remoulding/12306-go/user-service/biz/dto/req"
-	. "github.com/Remoulding/12306-go/user-service/biz/dto/resp"
+	"github.com/Remoulding/12306-go/user-service/configs"
+	json "github.com/bytedance/sonic"
+	"time"
+
+	"github.com/Remoulding/12306-go/idl-gen/user_service"
+	"github.com/Remoulding/12306-go/user-service/biz/dao"
 	"github.com/Remoulding/12306-go/user-service/biz/model"
-	"github.com/Remoulding/12306-go/user-service/utils"
+	"github.com/Remoulding/12306-go/user-service/tools"
 	"github.com/go-redis/redis/v8"
 	"github.com/golang-jwt/jwt/v4"
-	"github.com/sirupsen/logrus"
 	"gorm.io/gorm"
-	"log"
-	"strconv"
-	"time"
 )
 
+var log = configs.Log
+
 type UserLoginServiceImpl struct {
-	user_login.UnimplementedUserLoginServiceServer
-	db                *gorm.DB
-	redisClient       *redis.Client
-	jwtSecretKey      string
-	userRegisterCache *redis.Client
-	userService       UserServiceImpl
+	db          *gorm.DB
+	redisClient *redis.Client
 }
 
-func NewUserLoginServiceImpl(db *gorm.DB, redisClient *redis.Client, jwtSecretKey string, userRegisterCache *redis.Client, userServiceImpl UserServiceImpl) *user_login.UserLoginServiceServer {
+func NewUserLoginServiceImpl() *UserLoginServiceImpl {
 	return &UserLoginServiceImpl{
-		db:                db,
-		redisClient:       redisClient,
-		jwtSecretKey:      jwtSecretKey,
-		userRegisterCache: userRegisterCache,
-		userService:       userService,
+		db:          configs.DB,
+		redisClient: configs.UserLoginCache,
 	}
 }
 
-func (s *UserLoginServiceImpl) Login(requestParam *UserLoginReqDTO) (*UserLoginRespDTO, error) {
-	usernameOrMailOrPhone := requestParam.UsernameOrMailOrPhone
-	var username string
-
+func (s *UserLoginServiceImpl) Login(ctx context.Context, req *user_service.UserLoginReq) (*user_service.UserLoginResp, error) {
+	resp := &user_service.UserLoginResp{}
+	usernameOrMailOrPhone := req.UsernameOrMailOrPhone
+	condition := map[string]interface{}{}
 	// 判断是否为邮箱
-	if utils.IsEmail(usernameOrMailOrPhone) {
-		userMail := &model.UserMailDO{}
-		result := s.db.Where("mail = ?", usernameOrMailOrPhone).First(userMail)
-		if result.Error != nil {
-			return nil, errors.New("用户名/手机号/邮箱不存在")
-		}
-		username = userMail.Username
+	if tools.IsEmail(usernameOrMailOrPhone) {
+		condition["mail"] = usernameOrMailOrPhone
+	} else if tools.IsPhone(usernameOrMailOrPhone) {
+		condition["phone"] = usernameOrMailOrPhone
 	} else {
-		userPhone := &model.UserPhoneDO{}
-		result := s.db.Where("phone = ?", usernameOrMailOrPhone).First(userPhone)
-		if result.Error != nil {
-			return nil, errors.New("手机号不存在")
-		}
-		username = userPhone.Username
+		condition["username"] = usernameOrMailOrPhone
 	}
 
 	// 查询用户信息
-	user := &model.UserDO{}
-	result := s.db.Where("username = ? AND password = ?", username, requestParam.Password).First(user)
-	if result.Error != nil {
-		return nil, errors.New("账号不存在或密码错误")
+	user, err := dao.QueryUser(ctx, condition)
+	if err != nil {
+		log.WithContext(ctx).Errorf("UserLoginServiceImpl.Login failed, err: %v", err)
+		resp.Message = "用户名或密码错误"
+		return resp, nil
 	}
 
 	// 生成 JWT
@@ -72,167 +58,110 @@ func (s *UserLoginServiceImpl) Login(requestParam *UserLoginReqDTO) (*UserLoginR
 		"realName": user.RealName,
 		"exp":      time.Now().Add(time.Hour * 1).Unix(),
 	})
-	tokenString, err := token.SignedString([]byte(s.jwtSecretKey))
-	if err != nil {
-		return nil, err
-	}
-
-	resp := &UserLoginRespDTO{
+	tokenString, _ := token.SignedString([]byte(configs.JwtSecretKey))
+	data := &user_service.UserLoginData{
 		UserId:      fmt.Sprintf("%d", user.ID),
 		Username:    user.Username,
 		RealName:    user.RealName,
 		AccessToken: tokenString,
 	}
-
 	// 将登录信息存储到 Redis
-	err = s.redisClient.Set(s.ctx, tokenString, resp, time.Minute*30).Err()
+	redisData, _ := json.MarshalString(data)
+	err = s.redisClient.Set(ctx, tokenString, redisData, configs.CacheTTL).Err()
 	if err != nil {
-		return nil, err
+		resp.Message = "登录失败"
+		return resp, nil
 	}
-
+	resp.Success = true
+	resp.Data = data
 	return resp, nil
 }
 
-func (s *UserLoginServiceImpl) CheckLogin(accessToken string) (*UserLoginRespDTO, error) {
-	resp := &UserLoginRespDTO{}
-	err := s.redisClient.Get(s.ctx, accessToken).Scan(resp)
+func (s *UserLoginServiceImpl) CheckLogin(ctx context.Context, req *user_service.CheckLoginReq) (*user_service.UserLoginResp, error) {
+	resp := &user_service.UserLoginResp{}
+	// 获取 Redis 中的值
+	redisData, err := s.redisClient.Get(ctx, req.AccessToken).Result()
 	if err != nil {
-		return nil, err
+		resp.Message = "校验失败"
+		return resp, nil
 	}
+	// 解析 JSON 数据到结构体
+	data := &user_service.UserLoginData{}
+	err = json.Unmarshal([]byte(redisData), data)
+	if err != nil {
+		log.WithContext(ctx).Errorf("UserLoginServiceImpl.CheckLogin failed, err: %v", err)
+		resp.Message = "校验失败"
+		return resp, nil
+	}
+	resp.Success = true
+	resp.Data = data
+	return resp, nil
+}
+func (s *UserLoginServiceImpl) Logout(ctx context.Context, req *user_service.LogoutReq) (*user_service.LogoutResp, error) {
+	resp := &user_service.LogoutResp{}
+	err := s.redisClient.Del(ctx, req.AccessToken).Err()
+	if err != nil {
+		log.WithContext(ctx).Errorf("UserLoginServiceImpl.Logout failed, err: %v", err)
+		resp.Message = "服务异常"
+		return resp, nil
+	}
+	resp.Success = true
 	return resp, nil
 }
 
-func (s *UserLoginServiceImpl) Logout(accessToken string) error {
-	err := s.redisClient.Del(s.ctx, accessToken).Err()
-	if err != nil {
-		return err
-	}
-	return nil
+func (s *UserLoginServiceImpl) HasUsername(ctx context.Context, req *user_service.HasUsernameReq) (*user_service.HasUsernameResp, error) {
+	resp := &user_service.HasUsernameResp{}
+	// 查询DB用户名是否存在
+	conditions := map[string]interface{}{"username": req.Username, "del_flag": 0}
+	user, _ := dao.QueryUser(ctx, conditions)
+	resp.Success = true
+	resp.Exists = user != nil
+	return resp, nil
 }
 
-func (s *UserLoginServiceImpl) HasUsername(username string) bool {
-	// TODO
-	// 检查用户名是否存在于布隆过滤器中
-	//if !s.userRegisterCache.Contains(username) {
-	//	return false
-	//}
-
-	if exists, err := s.userRegisterCache.Do(s.ctx, "BF.EXISTS", "user_register", username).Bool(); err != nil && !exists {
-		return false
-	}
-
-	// 检查 Redis 是否存在此用户名
-	shardKey := "user_register_reuse_sharding" + strconv.Itoa(utils.HashShardingIdx(username))
-	isMember, err := s.redisClient.SIsMember(s.ctx, shardKey, username).Result()
-	if err != nil {
-		logrus.Error("Error checking username in Redis", err)
-		return false
-	}
-
-	return isMember
-}
-
-func (s *UserLoginServiceImpl) Register(requestParam *UserRegisterReqDTO) (*UserRegisterRespDTO, error) {
-	// 用户名是否已注册
-	if s.HasUsername(requestParam.Username) {
-		return nil, errors.New("用户名已存在")
-	}
-
-	// 注册业务逻辑
+func (s *UserLoginServiceImpl) Register(ctx context.Context, req *user_service.UserRegisterReq) (*user_service.UserRegisterResp, error) {
+	resp := &user_service.UserRegisterResp{}
 	user := &model.UserDO{
-		Username: requestParam.Username,
-		Password: requestParam.Password,
-		RealName: requestParam.RealName,
+		Username:     req.GetUsername(),
+		Password:     req.GetPassword(),
+		RealName:     req.GetRealName(),
+		Region:       req.GetRegion(),
+		IDType:       int(req.GetIdType()),
+		IDCard:       req.GetIdCard(),
+		Phone:        req.GetPhone(),
+		Telephone:    req.GetTelephone(),
+		Mail:         req.GetMail(),
+		UserType:     int(req.GetUserType()),
+		VerifyStatus: int(req.GetVerifyState()),
+		PostCode:     req.GetPostCode(),
+		Address:      req.GetAddress(),
 	}
 
-	// 开始数据库事务
-	tx := s.db.Begin()
-
-	// 插入用户
-	if err := tx.Create(user).Error; err != nil {
-		tx.Rollback()
-		return nil, err
-	}
-
-	// 插入手机号、邮箱等信息
-	if requestParam.Phone != "" {
-		userPhone := &model.UserPhoneDO{
-			Phone:    requestParam.Phone,
-			Username: requestParam.Username,
-		}
-		if err := tx.Create(userPhone).Error; err != nil {
-			tx.Rollback()
-			return nil, err
-		}
-	}
-
-	if requestParam.Mail != "" {
-		userMail := &model.UserMailDO{
-			Mail:     requestParam.Mail,
-			Username: requestParam.Username,
-		}
-		if err := tx.Create(userMail).Error; err != nil {
-			tx.Rollback()
-			return nil, err
-		}
-	}
-
-	// 提交事务
-	tx.Commit()
-
-	// 添加到布隆过滤器
-	err := s.userRegisterCache.Do(s.ctx, "BF.ADD", "user_register", requestParam.Username).Err()
+	// 调用dao层注册
+	err := dao.InsertUser(ctx, user)
 	if err != nil {
-		log.Default().Println("Error adding username to Bloom Filter", err)
+		log.WithContext(ctx).Errorf("UserLoginServiceImpl.Register failed, err: %v", err)
+		resp.Message = "注册失败"
+		return resp, nil
+	}
+	resp.Success = true
+	resp.Data = &user_service.UserRegisterData{
+		Username: user.Username,
+		RealName: user.RealName,
+		Phone:    user.Phone,
 	}
 
-	// 从 Redis 中删除
-	shardKey := "user_register_reuse_sharding" + strconv.Itoa(utils.HashShardingIdx(requestParam.Username))
-	s.redisClient.SRem(s.ctx, shardKey, requestParam.Username)
-
-	return &UserRegisterRespDTO{
-		Username: requestParam.Username,
-		RealName: requestParam.RealName,
-	}, nil
+	return resp, nil
 }
 
-func (s *UserLoginServiceImpl) Deletion(requestParam *UserDeletionReqDTO) error {
-	// 获取当前登录用户
-	username := requestParam.Username
-	user := &model.UserDO{}
-	result := s.db.Where("username = ?", username).First(user)
-	if result.Error != nil {
-		return errors.New("用户不存在")
-	}
-
-	// 删除操作：删除用户信息、手机号、邮箱等
-	tx := s.db.Begin()
-	if err := tx.Delete(user).Error; err != nil {
-		tx.Rollback()
-		return err
-	}
-
-	// 删除关联的手机号、邮箱等信息
-	userPhone := &model.UserPhoneDO{}
-	if err := tx.Where("username = ?", username).Delete(userPhone).Error; err != nil {
-		tx.Rollback()
-		return err
-	}
-
-	userMail := &model.UserMailDO{}
-	if err := tx.Where("username = ?", username).Delete(userMail).Error; err != nil {
-		tx.Rollback()
-		return err
-	}
-
-	// 提交事务
-	tx.Commit()
-
-	// 删除 Redis 缓存
-	err := s.redisClient.Del(s.ctx, username).Err()
+func (s *UserLoginServiceImpl) Deletion(ctx context.Context, req *user_service.UserDeletionReq) (*user_service.DeletionResp, error) {
+	resp := &user_service.DeletionResp{}
+	err := dao.DeleteUser(ctx, req.Username)
 	if err != nil {
-		return err
+		log.WithContext(ctx).Errorf("UserLoginServiceImpl.Deletion failed, err: %v", err)
+		resp.Message = "删除失败"
+		return resp, nil
 	}
-
-	return nil
+	resp.Success = true
+	return resp, nil
 }

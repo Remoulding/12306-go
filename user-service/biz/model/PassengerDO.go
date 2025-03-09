@@ -20,17 +20,3 @@ type PassengerDO struct {
 func (PassengerDO) TableName() string {
 	return "t_passenger"
 }
-
-// NewPassengerDO 是一个工厂方法，用于创建新的 PassengerDO 实例
-func NewPassengerDO(username, realName, idCard, phone string, idType, discountType, verifyStatus int, createDate time.Time) *PassengerDO {
-	return &PassengerDO{
-		Username:     username,
-		RealName:     realName,
-		IDCard:       idCard,
-		Phone:        phone,
-		IDType:       idType,
-		DiscountType: discountType,
-		VerifyStatus: verifyStatus,
-		CreateDate:   createDate,
-	}
-}

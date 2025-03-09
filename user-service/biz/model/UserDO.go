@@ -3,7 +3,7 @@ package model
 // UserDO 用户信息实体
 type UserDO struct {
 	BaseDO              // 嵌入 BaseDO 模拟继承
-	ID           int64  `gorm:"primaryKey;column:id"` // id
+	ID           uint64 `gorm:"primaryKey;column:id"` // id
 	Username     string `gorm:"column:username"`      // 用户名
 	Password     string `gorm:"column:password"`      // 密码
 	RealName     string `gorm:"column:real_name"`     // 真实姓名
