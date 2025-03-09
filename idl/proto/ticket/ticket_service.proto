@@ -1,0 +1,221 @@
+syntax = "proto3";
+package ticket;
+option go_package = "./ticket_service;ticket_service";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+// 定义服务
+service TicketService {
+  // 查询车站&城市站点集合信息
+  rpc ListRegionStation(ListRegionStationRequest) returns (ListRegionStationResponse){
+    option (google.api.http) = {
+      post: "/api/ticket-service/region-station/query"
+      body: "*"
+    };
+  };
+
+  // 查询所有站点集合信息
+  rpc ListAllStation(google.protobuf.Empty) returns (ListAllStationResponse){
+    option (google.api.http) = {
+      post: "/api/ticket-service/station/all"
+      body: "*"
+    };
+  };
+
+  // 列车站点控制层
+  rpc ListTrainStationQuery(TrainStationQueryRequest) returns (TrainStationQueryResponse){
+    option (google.api.http) = {
+      post: "/api/ticket-service/train-station/query"
+    };
+  };
+
+  // 车票控制层
+  rpc PageListTicketQuery(TicketPageQueryRequest) returns (TicketPageQueryResponse){
+    option (google.api.http) = {
+      post: "/api/ticket-service/ticket/query"
+    };
+  };
+
+  rpc PurchaseTickets(PurchaseTicketRequest) returns (PurchaseTicketResponse){
+    option (google.api.http) = {
+      post: "/api/ticket-service/ticket/purchase"
+      body: "*"
+    };
+  };
+
+  rpc CancelTicketOrder(CancelTicketOrderRequest) returns (CancelTicketOrderResponse){
+    option (google.api.http) = {
+      post: "/api/ticket-service/ticket/cancel"
+      body: "*"
+    };
+
+  };
+
+  rpc GetPayInfo(PayInfoRequest) returns (PayInfoResponse){
+    option (google.api.http) = {
+      post: "/api/ticket-service/ticket/pay/query"
+    };
+  };
+}
+
+message ListRegionStationRequest {
+  int32 queryType = 1;
+  string name = 2;
+}
+
+// 返回车站&城市站点集合的响应
+message ListRegionStationResponse {
+  bool success = 1;
+  string message = 2;
+  repeated RegionStation data = 3;
+}
+
+message RegionStation {
+  string name = 1;
+  string code = 2;
+  string spell = 3;
+}
+
+// 返回所有站点集合的响应
+message ListAllStationResponse {
+  bool success = 1;
+  string message = 2;
+  repeated Station data = 3;
+}
+
+// 返回所有站点信息
+message Station {
+  string name = 1;
+  string code = 2;
+  string spell = 3;
+  string regionName = 4;
+}
+
+message TrainStationQueryRequest {
+  string trainId = 1;
+}
+
+message TrainStationQueryResponse {
+  bool success = 1;
+  string message = 2;
+  repeated TrainStation data = 3;
+}
+
+message TrainStation {
+  string sequence = 1;
+  string departure = 2;
+  string arrivalTime = 3;
+  string departureTime = 4;
+  int32 stopoverTime = 5;
+}
+
+
+message TicketPageQueryRequest {
+  string fromStation = 1;
+  string toStation = 2;
+  string departureDate = 3;
+  string departure = 4;
+  string arrival = 5;
+}
+
+message TicketPageQueryResponse {
+  bool success = 1;
+  string message = 2;
+  TicketPageQueryData data = 3;
+}
+
+message TicketPageQueryData {
+  repeated TicketInfo trainList = 1;
+  repeated int32 trainBrandList = 2;
+  repeated string departureStationList = 3;
+  repeated string arrivalStationList = 4;
+  repeated int32 seatClassTypeList = 5;
+}
+
+message TicketInfo {
+  string trainId = 1;
+  string trainNumber = 2;
+  string departureTime = 3;
+  string arrivalTime = 4;
+  string duration = 5;
+  int32 daysArrived = 6;
+  string departure = 7;
+  string arrival = 8;
+  bool departureFlag = 9;
+  bool arrivalFlag = 10;
+  int32 trainType = 11;
+  string saleTime = 12;
+  int32 saleStatus = 13;
+  repeated string trainTags = 14;
+  string trainBrand = 15;
+  repeated SeatClassInfo seatClassList = 16;
+}
+
+message SeatClassInfo {
+  int32 type = 1;
+  int32 quantity = 2;
+  double price = 3;
+  bool candidate = 4;
+}
+
+message CancelTicketOrderRequest {
+  string orderSn = 1;
+}
+
+message CancelTicketOrderResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message PurchaseTicketRequest {
+  string trainId = 1;
+  repeated PurchaseTicketPassengerInfo passengers = 2;
+  repeated string chooseSeats = 3;
+  string departure = 4;
+  string arrival = 5;
+}
+
+message PurchaseTicketPassengerInfo {
+  string passengerId = 1;
+  int32 seatType = 2;
+}
+
+message PurchaseTicketResponse {
+  bool success = 1;
+  string message = 2;
+  TicketPurchaseData data = 3;
+}
+
+message TicketPurchaseData {
+  string orderSn = 1;
+  repeated TicketOrderDetail ticketOrderDetails = 2;
+}
+
+message TicketOrderDetail {
+  int32 seatType = 1;
+  string carriageNumber = 2;
+  string seatNumber = 3;
+  string realName = 4;
+  int32 idType = 5;
+  string idCard = 6;
+  int32 ticketType = 7; // 车票类型 0：成人 1：儿童 2：学生
+  int32 amount = 8;
+}
+
+
+message PayInfoRequest {
+  string orderSn = 1;
+}
+
+message PayInfoResponse {
+  bool success = 1;
+  string message = 2;
+  PayInfoData data = 3;
+}
+
+message PayInfoData {
+  string orderSn = 1;
+  int32 totalAmount = 2;
+  int32 status = 3;
+  string gmtPayment = 4;
+}

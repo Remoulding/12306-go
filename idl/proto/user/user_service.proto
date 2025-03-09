@@ -1,0 +1,361 @@
+syntax = "proto3";
+package user;
+option go_package = "./user_service;user_service";
+import "google/api/annotations.proto";
+
+// 用户信息服务接口
+service UserService {
+  // 根据用户名查询用户信息
+  rpc QueryUserByUsername(QueryUserByUsernameReq) returns (QueryUserResp){
+    option (google.api.http) = {
+      post: "/api/user-service/query"
+    };
+  };
+
+  // 检查用户名是否存在
+  rpc HasUsername(HasUsernameReq) returns (HasUsernameResp){
+    option (google.api.http) = {
+      post: "/api/user-service/has-username"
+    };
+  };
+
+  // 用户注册
+  rpc Register(UserRegisterReq) returns (UserRegisterResp){
+    option (google.api.http) = {
+      post: "/api/user-service/register"
+      body: "*"
+    };
+  };
+
+  // 修改用户信息
+  rpc Update(UserUpdateReq) returns (UserUpdateResp){
+    option (google.api.http) = {
+      post: "/api/user-service/update"
+      body: "*"
+    };
+  };
+
+  // 用户注销
+  rpc Deletion(UserDeletionReq) returns (DeletionResp){
+    option (google.api.http) = {
+      post: "/api/user-service/deletion"
+      body: "*"
+    };
+  };
+
+  // 用户登录
+  rpc Login(UserLoginReq) returns (UserLoginResp){
+    option (google.api.http) = {
+      post: "/api/user-service/v1/login"
+      body: "*"
+    };
+  };
+
+  // 检查登录状态
+  rpc CheckLogin(CheckLoginReq) returns (UserLoginResp){
+    option (google.api.http) = {
+      post: "/api/user-service/check-login"
+    };
+  };
+
+  // 用户登出
+  rpc Logout(LogoutReq) returns (LogoutResp){
+    option (google.api.http) = {
+      post: "/api/user-service/logout"
+    };
+  };
+
+  // 根据用户名查询乘车人列表
+  rpc ListPassengerQueryByUsername(ListPassengerByUsernameReq) returns (ListPassengerByUsernameResp){
+    option (google.api.http) = {
+      post: "/api/user-service/passenger/query"
+      body: "*"
+    };
+  };
+
+  // 根据乘车人 ID 集合查询乘车人列表
+  rpc ListPassengerQueryByIds(ListPassengerByIdsReq) returns (ListPassengerByIdsResp){
+    option (google.api.http) = {
+      post: "/api/user-service/inner/passenger/actual/query/ids"
+    };
+  };
+
+  // 新增乘车人
+  rpc SavePassenger(PassengerReq) returns (SavePassengerResp){
+    option (google.api.http) = {
+      post: "/api/user-service/passenger/save"
+      body: "*"
+    };
+  };
+
+  // 修改乘车人
+  rpc UpdatePassenger(PassengerReq) returns (UpdatePassengerResp){
+    option (google.api.http) = {
+      post: "/api/user-service/passenger/update"
+      body: "*"
+    };
+  };
+
+  // 移除乘车人
+  rpc RemovePassenger(RemovePassengerReq) returns (RemovePassengerResp){
+    option (google.api.http) = {
+      post: "/api/user-service/passenger/remove"
+      body: "*"
+    };
+  };
+}
+
+// 根据用户名查询用户信息的请求
+message QueryUserByUsernameReq {
+  string username = 1; // 用户名
+}
+
+message QueryUserData {
+  string username = 1;
+  string realName = 2;
+  string region = 3;
+  int32 idType = 4;
+  string idCard = 5;
+  string phone = 6;
+  string telephone = 7;
+  string mail = 8;
+  int32 userType = 9;
+  int32 verifyStatus = 10;
+  string postCode = 11;
+  string address = 12;
+}
+
+// 用户信息查询响应
+message QueryUserResp {
+  bool success = 1;
+  string message = 2;
+  QueryUserData data = 3;
+}
+
+// 用户更新请求
+message UserUpdateReq {
+  string id = 1;        // 用户ID
+  string username = 2;  // 用户名
+  string mail = 3;      // 邮箱
+  int32 userType = 4;   // 旅客类型
+  string postCode = 5;  // 邮编
+  string address = 6;   // 地址
+}
+
+// 更新响应
+message UserUpdateResp {
+  bool success = 1;
+  string message = 2;
+}
+
+// 登录请求
+message UserLoginReq {
+  string usernameOrMailOrPhone = 1;
+  string password = 2;
+}
+
+// 登录响应
+message UserLoginData {
+  string userId = 1;
+  string username = 2;
+  string realName = 3;
+  string accessToken = 4;
+}
+
+message UserLoginResp {
+  bool success = 1;
+  string message = 2;
+  UserLoginData data = 3;
+}
+
+// 检查登录状态请求
+message CheckLoginReq {
+  string accessToken = 1;
+}
+
+// 登出请求
+message LogoutReq {
+  string accessToken = 1;
+}
+
+message LogoutResp{
+  bool success = 1;
+  string message = 2;
+}
+
+
+// 检查用户名是否存在请求
+message HasUsernameReq {
+  string username = 1;
+}
+
+// 检查用户名是否存在响应
+message HasUsernameResp {
+  bool success = 1;
+  string message = 2;
+  bool exists = 3;
+}
+
+// 用户注册请求参数
+message UserRegisterReq {
+  // 用户名
+  string username = 1;
+
+  // 密码
+  string password = 2;
+
+  // 真实姓名
+  string realName = 3;
+
+  // 证件类型
+  int32 idType = 4;
+
+  // 证件号
+  string idCard = 5;
+
+  // 手机号
+  string phone = 6;
+
+  // 邮箱
+  string mail = 7;
+
+  // 旅客类型
+  int32 userType = 8;
+
+  // 审核状态
+  int32 verifyState = 9;
+
+  // 邮编
+  string postCode = 10;
+
+  // 地址
+  string address = 11;
+
+  // 国家/地区
+  string region = 12;
+
+  // 固定电话
+  string telephone = 13;
+}
+// 用户注册响应
+message UserRegisterData {
+  string username = 1;
+  string realName = 2;
+  string phone = 3;
+}
+
+message UserRegisterResp {
+  bool success = 1;
+  string message = 2;
+  UserRegisterData data = 3;
+}
+
+// 用户注销请求
+message UserDeletionReq {
+  string username = 1;
+}
+
+// 用户注销响应
+message DeletionResp {
+  bool success = 1;
+  string message = 2;
+}
+
+// 根据用户名查询乘车人列表请求
+message ListPassengerByUsernameReq {
+  string username = 1;
+}
+
+// 根据用户名查询乘车人列表响应
+message ListPassengerByUsernameResp {
+  bool success = 1;
+  string message = 2;
+  repeated Passenger data = 3;
+}
+
+// 根据乘车人 ID 集合查询乘车人列表请求
+message ListPassengerByIdsReq {
+  string username = 1;
+  repeated int64 ids = 2;
+}
+
+// 根据乘车人 ID 集合查询乘车人列表响应
+message ListPassengerByIdsResp {
+  bool success = 1;
+  string message = 2;
+  repeated PassengerActualData data = 3;
+}
+
+
+// 新增乘车人响应
+message SavePassengerResp {
+  bool success = 1;
+  string message = 2;
+}
+
+
+// 修改乘车人响应
+message UpdatePassengerResp {
+  bool success = 1;
+  string message = 2;
+}
+
+// 移除乘车人请求
+message RemovePassengerReq {
+  int64 id = 1;
+}
+
+// 移除乘车人响应
+message RemovePassengerResp {
+  bool success = 1;
+  string message = 2;
+}
+
+// 通用乘车人信息
+message PassengerReq {
+  // 乘车人 ID
+  string id = 1;
+
+  // 真实姓名
+  string realName = 2;
+
+  // 证件类型
+  int32 idType = 3;
+
+  // 证件号
+  string idCard = 4;
+
+  // 优惠类型
+  int32 discountType = 5;
+
+  // 手机号
+  string phone = 6;
+}
+
+// 返回的乘车人响应信息
+message Passenger {
+  string id = 1;
+  string username = 2;
+  string realName = 3;
+  int32 idType = 4;
+  string idCard = 5;
+  string actualIdCard = 6;
+  int32 discountType = 7;
+  string phone = 8;
+  string actualPhone = 9;
+  string createDate = 10;
+  int32 verifyStatus = 11;
+}
+
+// 实际乘车人响应信息
+message PassengerActualData {
+  string id = 1;
+  string username = 2;
+  string realName = 3;
+  int32 idType = 4;
+  string idCard = 5;
+  int32 discountType = 6;
+  string phone = 7;
+  string createDate = 8;
+  int32 verifyStatus = 9;
+}
