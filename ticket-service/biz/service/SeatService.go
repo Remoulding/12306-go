@@ -5,6 +5,7 @@ import (
 	"github.com/Remoulding/12306-go/ticket-service/biz/dao"
 	"github.com/Remoulding/12306-go/ticket-service/biz/model"
 	"strconv"
+	"sync"
 )
 
 type SeatService struct {
@@ -81,10 +82,13 @@ func (s *SeatService) updateSeatStatus(ctx context.Context, trainId string, depa
 		log.WithContext(ctx).Errorf("list takeout train station route failed, err: %v", err)
 		return err
 	}
+	var wg sync.WaitGroup
 	errs := make(chan error, len(trainPurchaseTicketResults)*len(routes))
 	for _, item := range trainPurchaseTicketResults {
 		for _, route := range routes {
-			go func() {
+			wg.Add(1)
+			go func(item *TrainPurchaseTicketDTO, route *Route) {
+				defer wg.Done()
 				condition := map[string]interface{}{
 					"train_id = ?":        trainId,
 					"carriage_number = ?": item.CarriageNumber,
@@ -96,10 +100,18 @@ func (s *SeatService) updateSeatStatus(ctx context.Context, trainId string, depa
 					"seat_status": seatStatus,
 				}
 				errs <- dao.UpdateSeats(ctx, condition, update)
-			}()
+			}(item, route) // 显式传递 item 和 route，防止变量捕获问题
 		}
 	}
-	for err = range errs {
+
+	// 另外起一个 goroutine 关闭 errs，防止主 goroutine 死锁
+	go func() {
+		wg.Wait()
+		close(errs)
+	}()
+
+	// 收集错误
+	for err := range errs {
 		if err != nil {
 			log.WithContext(ctx).Errorf("update seat failed, err: %v", err)
 			return err
