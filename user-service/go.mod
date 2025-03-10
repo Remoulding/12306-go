@@ -2,10 +2,9 @@ module github.com/Remoulding/12306-go/user-service
 
 go 1.23.3
 
-replace github.com/Remoulding/12306-go/idl-gen => ../idl-gen
-
 require (
-	github.com/Remoulding/12306-go/idl-gen v0.0.0-20250105175935-811c8b7971d6
+	github.com/Remoulding/12306-go/idl-gen v0.0.0-20250309170645-f976943c37a2
+	github.com/bytedance/sonic v1.12.8
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-jwt/jwt/v4 v4.5.1
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
@@ -21,7 +20,6 @@ require (
 )
 
 require (
-	github.com/bytedance/sonic v1.12.8 // indirect
 	github.com/bytedance/sonic/loader v0.2.2 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/cloudwego/base64x v0.1.5 // indirect

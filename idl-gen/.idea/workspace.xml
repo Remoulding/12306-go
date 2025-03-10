@@ -5,54 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf30136-edbd-42ce-8252-66c07cc05248" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/../idl/proto/order/order_service.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user-service/handler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user-service/rpcServer.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user-service/utils/convert.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user-service/webServer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticket/regionStationService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticket/regionStationService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticket/region_station_service/regionStationService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticket/region_station_service/regionStationService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/passenger/passengerService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/passenger/passengerService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_login/userLoginService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_login/userLoginService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_service/userService.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_service/userService_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/ticket/regionStationService.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/user/passengerService.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/user/userLoginService.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/user/userService.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/req/PassengerRemoveReqDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/req/PassengerReqDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/req/UserDeletionReqDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/req/UserLoginReqDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/req/UserRegisterReqDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/req/UserUpdateReqDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/resp/PassengerActualRespDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/resp/PassengerRespDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/resp/UserLoginRespDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/resp/UserQueryRespDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/dto/resp/UserRegisterRespDTO.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/model/Base.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/biz/model/Base.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/service/PassengerService.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/biz/service/PassengerService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/service/UserLoginService.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/biz/service/UserLoginService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/biz/service/UserService.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/biz/service/UserService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/init/DB.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/init/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/rpc/grpc_server.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/utils/Common.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/utils/common.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/utils/UserLoginServiceUtil.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/web/gin_server.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/status.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../idl/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../idl/proto/UserService.proto" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +36,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2sB5EiTpk6n6DWbvumrQgK8eWcT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

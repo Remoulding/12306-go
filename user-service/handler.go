@@ -44,7 +44,6 @@ func (u UserServiceHandler) HasUsername(ctx context.Context, req *user_service.H
 
 func (u UserServiceHandler) Register(ctx context.Context, req *user_service.UserRegisterReq) (*user_service.UserRegisterResp, error) {
 	return service.NewUserLoginServiceImpl().Register(ctx, req)
-
 }
 
 func (u UserServiceHandler) Deletion(ctx context.Context, req *user_service.UserDeletionReq) (*user_service.DeletionResp, error) {

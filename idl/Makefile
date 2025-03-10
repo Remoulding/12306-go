@@ -1,4 +1,3 @@
-
 OUTPUT_DIR="../idl-gen"
 
 all:

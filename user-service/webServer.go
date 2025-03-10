@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"github.com/Remoulding/12306-go/idl-gen/user_service"
 	"github.com/Remoulding/12306-go/user-service/configs"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
@@ -10,6 +11,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 )
 
 // 注入 HTTP Header 到 context
@@ -28,33 +30,47 @@ func customHeaderMatcher(ctx context.Context, req *http.Request) metadata.MD {
 	return md
 }
 
-func InitWebServer() {
-	// 初始化 grpc gateway
-	conn, err := grpc.NewClient("localhost:50051", grpc.WithInsecure())
+func InitWebServer(ctx context.Context) *http.Server {
+	// 等待 gRPC 服务启动
+	time.Sleep(1 * time.Second)
+
+	// 连接 gRPC 服务器
+	conn, err := grpc.DialContext(ctx, "localhost:50051", grpc.WithInsecure())
 	if err != nil {
-		panic(err)
+		log.Fatalf("Failed to connect to gRPC server: %v", err)
 	}
-	defer func() {
-		if err := conn.Close(); err != nil {
-			log.Fatalf("Failed to close connection: %v", err)
-		}
-	}()
+
 	gwMux := runtime.NewServeMux(
 		runtime.WithMetadata(customHeaderMatcher),
 	)
-	err = user_service.RegisterUserServiceHandler(context.Background(), gwMux, conn)
+	err = user_service.RegisterUserServiceHandler(ctx, gwMux, conn)
 	if err != nil {
-		log.Fatalf("failed to register gateway: %v", err)
+		log.Fatalf("Failed to register gRPC-Gateway: %v", err)
 	}
-	// http服务，使用rpc客户端
+
 	gwServer := &http.Server{
 		Addr:    ":8081",
 		Handler: gwMux,
 	}
-	log.Println("gRPC-Gateway server is running at port 50052")
+
+	log.Println("🚀 gRPC-Gateway server is running at port 8081")
+
 	go func() {
-		if err := gwServer.ListenAndServe(); err != nil {
-			log.Fatalf("failed to serve: %v", err)
+		if err = gwServer.ListenAndServe(); err != nil && !errors.Is(http.ErrServerClosed, err) {
+			log.Fatalf("gRPC-Gateway Server failed: %v", err)
 		}
 	}()
+
+	// 监听 context 退出信号
+	go func() {
+		<-ctx.Done()
+		log.Println("⏳ Shutting down gRPC-Gateway server...")
+		shutdownCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		if err = gwServer.Shutdown(shutdownCtx); err != nil {
+			log.Fatalf("Failed to shutdown gRPC-Gateway: %v", err)
+		}
+	}()
+
+	return gwServer
 }

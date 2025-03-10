@@ -132,7 +132,7 @@ message TicketPageQueryData {
   repeated int32 seatClassTypeList = 5;
 }
 
-message TicketInfo {
+message TicketInfo {/**/
   string trainId = 1;
   string trainNumber = 2;
   string departureTime = 3;

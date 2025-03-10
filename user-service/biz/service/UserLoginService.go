@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"github.com/Remoulding/12306-go/user-service/configs"
 	json "github.com/bytedance/sonic"
@@ -142,6 +143,9 @@ func (s *UserLoginServiceImpl) Register(ctx context.Context, req *user_service.U
 	if err != nil {
 		log.WithContext(ctx).Errorf("UserLoginServiceImpl.Register failed, err: %v", err)
 		resp.Message = "注册失败"
+		if errors.Is(err, gorm.ErrDuplicatedKey) {
+			resp.Message = "用户名已存在"
+		}
 		return resp, nil
 	}
 	resp.Success = true
