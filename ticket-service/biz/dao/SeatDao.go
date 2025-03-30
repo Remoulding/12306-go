@@ -4,24 +4,25 @@ import (
 	"context"
 	"errors"
 	"github.com/Remoulding/12306-go/ticket-service/biz/model"
+	"github.com/Remoulding/12306-go/ticket-service/configs"
 )
 
 func QuerySeats(ctx context.Context, condition map[string]interface{}) ([]*model.SeatDO, error) {
 	var seats []*model.SeatDO
-	query := db.Model(&model.SeatDO{})
+	query := configs.DB.Model(&model.SeatDO{})
 	for exp, val := range condition {
 		query = query.Where(exp, val)
 	}
-	err := query.Scan(&seats).Error
+	err := query.Scan(seats).Error
 	if err != nil {
-		log.WithContext(ctx).Errorf("query seat failed, err: %v", err)
+		configs.Log.WithContext(ctx).Errorf("query seat failed, err: %v", err)
 		return nil, err
 	}
 	return seats, nil
 }
 
 func UpdateSeats(ctx context.Context, condition, update map[string]interface{}) error {
-	tx := db.Model(&model.SeatDO{})
+	tx := configs.DB.Model(&model.SeatDO{})
 	for exp, val := range condition {
 		tx = tx.Where(exp, val)
 	}
@@ -29,15 +30,15 @@ func UpdateSeats(ctx context.Context, condition, update map[string]interface{}) 
 		tx = tx.Update(exp, val)
 	}
 	if err := tx.Error; err != nil {
-		log.WithContext(ctx).Errorf("query seat failed, err: %v", err)
+		configs.Log.WithContext(ctx).Errorf("query seat failed, err: %v", err)
 		return err
 	}
 	return nil
 }
 
 type SeatRemainingResult struct {
-	CarriageNumber string
-	Count          int
+	CarriageNumber string `gorm:"column:carriage_number"`
+	Count          int    `gorm:"column:count"`
 }
 
 // ListSeatRemainingTicket 查询余票数量
@@ -47,18 +48,19 @@ func ListSeatRemainingTicket(ctx context.Context, seatDO *model.SeatDO, carriage
 	}
 	var results []SeatRemainingResult
 	// 构建查询
-	err := db.Model(&model.SeatDO{}).
+	err := configs.DB.Model(&model.SeatDO{}).
 		Select("carriage_number, COUNT(*) as count").
 		Where("train_id = ?", seatDO.TrainID).
 		Where("start_station = ?", seatDO.StartStation).
 		Where("end_station = ?", seatDO.EndStation).
 		Where("seat_status = 0").
+		Where("departure_date = ", seatDO.DepartureDate).
 		Where("carriage_number IN ?", carriageList).
 		Group("carriage_number").
 		Find(&results).Error
 
 	if err != nil {
-		log.WithContext(ctx).Errorf("query seat remaining failed, err: %v", err)
+		configs.Log.WithContext(ctx).Errorf("query seat remaining failed, err: %v", err)
 		return nil, err
 	}
 
@@ -77,6 +79,5 @@ func ListSeatRemainingTicket(ctx context.Context, seatDO *model.SeatDO, carriage
 			finalCounts[i] = 0
 		}
 	}
-
 	return finalCounts, nil
 }

@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"errors"
-	"github.com/Remoulding/12306-go/idl-gen/user_service"
+	"github.com/Remoulding/12306-go/idl-gen/ticket_service"
 	"github.com/Remoulding/12306-go/ticket-service/configs"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
@@ -21,7 +21,6 @@ func customHeaderMatcher(ctx context.Context, req *http.Request) metadata.MD {
 		for _, value := range values {
 			if key == configs.UserIdKey || key == configs.UserNameKey ||
 				key == configs.RealNameKey || key == configs.UserTokenKey {
-				log.Println(key, value)
 				md.Append(strings.ToLower(key), value)
 			}
 		}
@@ -43,14 +42,14 @@ func InitWebServer(ctx context.Context) *http.Server {
 	gwMux := runtime.NewServeMux(
 		runtime.WithMetadata(customHeaderMatcher),
 	)
-	err = user_service.RegisterUserServiceHandler(ctx, gwMux, conn)
+	err = ticket_service.RegisterTicketServiceHandler(ctx, gwMux, conn)
 	if err != nil {
 		log.Fatalf("Failed to register gRPC-Gateway: %v", err)
 	}
 
 	gwServer := &http.Server{
 		Addr:    ":8082",
-		Handler: gwMux,
+		Handler: gwMux, // 使用带 CORS 处理的 Handler
 	}
 
 	log.Println("🚀 gRPC-Gateway server is running at port 8082")

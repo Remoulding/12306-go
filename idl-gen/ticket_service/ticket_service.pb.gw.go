@@ -172,59 +172,51 @@ func local_request_TicketService_PurchaseTickets_0(ctx context.Context, marshale
 	return msg, metadata, err
 }
 
-func request_TicketService_CancelTicketOrder_0(ctx context.Context, marshaler runtime.Marshaler, client TicketServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_TicketService_CancelTicket_0(ctx context.Context, marshaler runtime.Marshaler, client TicketServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq CancelTicketOrderRequest
+		protoReq CancelTicketRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	msg, err := client.CancelTicketOrder(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.CancelTicket(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 }
 
-func local_request_TicketService_CancelTicketOrder_0(ctx context.Context, marshaler runtime.Marshaler, server TicketServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_TicketService_CancelTicket_0(ctx context.Context, marshaler runtime.Marshaler, server TicketServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq CancelTicketOrderRequest
+		protoReq CancelTicketRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	msg, err := server.CancelTicketOrder(ctx, &protoReq)
+	msg, err := server.CancelTicket(ctx, &protoReq)
 	return msg, metadata, err
 }
 
-var filter_TicketService_GetPayInfo_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-
-func request_TicketService_GetPayInfo_0(ctx context.Context, marshaler runtime.Marshaler, client TicketServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_TicketService_GetTicket_0(ctx context.Context, marshaler runtime.Marshaler, client TicketServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq PayInfoRequest
+		protoReq GetTicketRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := req.ParseForm(); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_TicketService_GetPayInfo_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	msg, err := client.GetPayInfo(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetTicket(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 }
 
-func local_request_TicketService_GetPayInfo_0(ctx context.Context, marshaler runtime.Marshaler, server TicketServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_TicketService_GetTicket_0(ctx context.Context, marshaler runtime.Marshaler, server TicketServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq PayInfoRequest
+		protoReq GetTicketRequest
 		metadata runtime.ServerMetadata
 	)
-	if err := req.ParseForm(); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_TicketService_GetPayInfo_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	msg, err := server.GetPayInfo(ctx, &protoReq)
+	msg, err := server.GetTicket(ctx, &protoReq)
 	return msg, metadata, err
 }
 
@@ -334,45 +326,45 @@ func RegisterTicketServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		}
 		forward_TicketService_PurchaseTickets_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_TicketService_CancelTicketOrder_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_TicketService_CancelTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/ticket.TicketService/CancelTicketOrder", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/cancel"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/ticket.TicketService/CancelTicket", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/cancel"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_TicketService_CancelTicketOrder_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_TicketService_CancelTicket_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		forward_TicketService_CancelTicketOrder_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_TicketService_CancelTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_TicketService_GetPayInfo_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_TicketService_GetTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/ticket.TicketService/GetPayInfo", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/pay/query"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/ticket.TicketService/GetTicket", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/my-ticket"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_TicketService_GetPayInfo_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_TicketService_GetTicket_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		forward_TicketService_GetPayInfo_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_TicketService_GetTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 
 	return nil
@@ -499,39 +491,39 @@ func RegisterTicketServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		}
 		forward_TicketService_PurchaseTickets_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_TicketService_CancelTicketOrder_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_TicketService_CancelTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/ticket.TicketService/CancelTicketOrder", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/cancel"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/ticket.TicketService/CancelTicket", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/cancel"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_TicketService_CancelTicketOrder_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_TicketService_CancelTicket_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		forward_TicketService_CancelTicketOrder_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_TicketService_CancelTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_TicketService_GetPayInfo_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_TicketService_GetTicket_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/ticket.TicketService/GetPayInfo", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/pay/query"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/ticket.TicketService/GetTicket", runtime.WithHTTPPathPattern("/api/ticket-service/ticket/my-ticket"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_TicketService_GetPayInfo_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_TicketService_GetTicket_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		forward_TicketService_GetPayInfo_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_TicketService_GetTicket_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	return nil
 }
@@ -542,8 +534,8 @@ var (
 	pattern_TicketService_ListTrainStationQuery_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ticket-service", "train-station", "query"}, ""))
 	pattern_TicketService_PageListTicketQuery_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ticket-service", "ticket", "query"}, ""))
 	pattern_TicketService_PurchaseTickets_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ticket-service", "ticket", "purchase"}, ""))
-	pattern_TicketService_CancelTicketOrder_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ticket-service", "ticket", "cancel"}, ""))
-	pattern_TicketService_GetPayInfo_0            = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "ticket-service", "ticket", "pay", "query"}, ""))
+	pattern_TicketService_CancelTicket_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ticket-service", "ticket", "cancel"}, ""))
+	pattern_TicketService_GetTicket_0             = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "ticket-service", "ticket", "my-ticket"}, ""))
 )
 
 var (
@@ -552,6 +544,6 @@ var (
 	forward_TicketService_ListTrainStationQuery_0 = runtime.ForwardResponseMessage
 	forward_TicketService_PageListTicketQuery_0   = runtime.ForwardResponseMessage
 	forward_TicketService_PurchaseTickets_0       = runtime.ForwardResponseMessage
-	forward_TicketService_CancelTicketOrder_0     = runtime.ForwardResponseMessage
-	forward_TicketService_GetPayInfo_0            = runtime.ForwardResponseMessage
+	forward_TicketService_CancelTicket_0          = runtime.ForwardResponseMessage
+	forward_TicketService_GetTicket_0             = runtime.ForwardResponseMessage
 )

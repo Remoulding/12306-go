@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"github.com/Remoulding/12306-go/ticket-service/configs"
+	"github.com/Remoulding/12306-go/ticket-service/rpc"
 	"log"
 	"os"
 	"os/signal"
@@ -14,6 +15,8 @@ func main() {
 	configs.InitDBInstance()
 	configs.InitCache()
 	configs.InitRedSync()
+	// 初始化client
+	rpc.InitClient()
 	// 创建全局 context，用于优雅退出
 	ctx, cancel := context.WithCancel(context.Background())
 

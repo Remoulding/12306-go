@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 // BaseDO 是数据持久层基础属性
 type BaseDO struct {

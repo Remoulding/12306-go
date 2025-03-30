@@ -4,7 +4,7 @@ import "time"
 
 // 常量定义
 const (
-	CacheTTL = 60 * time.Minute
+	CacheTTL = 24 * 60 * time.Minute
 )
 
 const (
@@ -41,10 +41,10 @@ const (
 	LockRegionTrainStationMapping = "index12306TicketService:lock:regionTrainStationMapping"
 
 	// RegionTrainStation 站点查询，Key Prefix + 起始城市_终点城市_日期
-	RegionTrainStation = "index12306TicketService:regionTrainStation:%s_%s"
+	RegionTrainStation = "index12306TicketService:regionTrainStation:%s_%s_%s"
 
 	// LockRegionTrainStation 站点查询分布式锁 Key
-	LockRegionTrainStation = "index12306TicketService:lock:regionTrainStation"
+	LockRegionTrainStation = "index12306TicketService:lock:regionTrainStation:%s_%s_%s"
 
 	// LockTrain 列车查询分布式锁 Key
 	LockTrain = "index12306TicketService:lock:train"
@@ -53,7 +53,7 @@ const (
 	TrainStationPrice = "index12306TicketService:trainStationPrice:%s_%s_%s"
 
 	// LockTrainStationPrice 列车站点座位价格查询分布式锁 Key
-	LockTrainStationPrice = "index12306TicketService:lock:trainStationPrice"
+	LockTrainStationPrice = "index12306TicketService:lock:trainStationPrice:%s_%s_%s"
 
 	// RegionStation 地区以及车站查询，Key Prefix + (车站名称或查询方式)
 	RegionStation = "index12306TicketService:regionStation:"

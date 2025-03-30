@@ -8,7 +8,6 @@ import (
 	"github.com/Remoulding/12306-go/user-service/biz/dao"
 	"github.com/Remoulding/12306-go/user-service/biz/model"
 	"github.com/Remoulding/12306-go/user-service/configs"
-	"github.com/Remoulding/12306-go/user-service/tools"
 	"gorm.io/gorm"
 )
 
@@ -57,9 +56,9 @@ func (s *PassengerServiceImpl) ListPassengerQueryByIds(ctx context.Context, req 
 		resp.Message = "查询失败"
 		return resp, nil
 	}
-	mp := map[int64]struct{}{}
+	mp := map[uint64]struct{}{}
 	for _, id := range req.GetIds() {
-		mp[id] = struct{}{}
+		mp[uint64(id)] = struct{}{}
 	}
 	data := make([]*user_service.PassengerActualData, 0)
 	for _, passenger := range passengers {
@@ -85,7 +84,8 @@ func (s *PassengerServiceImpl) SavePassenger(ctx context.Context, req *user_serv
 	resp := &user_service.SavePassengerResp{}
 	id, _ := strconv.ParseInt(req.GetId(), 10, 64)
 	passengerDO := &model.PassengerDO{
-		ID:           id,
+		ID:           uint64(id),
+		Username:     req.GetUsername(),
 		RealName:     req.GetRealName(),
 		IDType:       int(req.GetIdType()),
 		IDCard:       req.GetIdCard(),
@@ -105,8 +105,8 @@ func (s *PassengerServiceImpl) UpdatePassenger(ctx context.Context, req *user_se
 	resp := &user_service.UpdatePassengerResp{}
 	id, _ := strconv.ParseInt(req.GetId(), 10, 64)
 	passengerDO := &model.PassengerDO{
-		ID:           id,
-		Username:     tools.ContextGetUserInfo(ctx, configs.UserNameKey),
+		ID:           uint64(id),
+		Username:     req.GetUsername(),
 		RealName:     req.GetRealName(),
 		IDType:       int(req.GetIdType()),
 		IDCard:       req.GetIdCard(),
@@ -125,7 +125,7 @@ func (s *PassengerServiceImpl) UpdatePassenger(ctx context.Context, req *user_se
 
 func (s *PassengerServiceImpl) RemovePassenger(ctx context.Context, req *user_service.RemovePassengerReq) (*user_service.RemovePassengerResp, error) {
 	resp := &user_service.RemovePassengerResp{}
-	if err := dao.DeletePassengers(ctx, req.GetId()); err != nil {
+	if err := dao.DeletePassengers(ctx, uint64(req.GetId())); err != nil {
 		log.WithContext(ctx).Errorf("PassengerServiceImpl.RemovePassenger failed, err: %v", err)
 		resp.Message = "删除失败"
 	}

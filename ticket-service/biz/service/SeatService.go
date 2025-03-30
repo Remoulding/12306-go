@@ -41,24 +41,26 @@ func (s *SeatService) ListAvailableSeat(ctx context.Context, trainId string, car
 }
 
 // ListSeatRemainingTicket 获取列车车厢余票集合
-func (s *SeatService) ListSeatRemainingTicket(ctx context.Context, trainId string, departure string, arrival string, trainCarriageList []string) ([]int, error) {
+func (s *SeatService) ListSeatRemainingTicket(ctx context.Context, trainId string, departure string, arrival, departureDate string, trainCarriageList []string) ([]int, error) {
 	trainID, _ := strconv.ParseInt(trainId, 10, 64)
 	seatDO := &model.SeatDO{
-		TrainID:      trainID,
-		StartStation: departure,
-		EndStation:   arrival,
+		TrainID:       trainID,
+		StartStation:  departure,
+		EndStation:    arrival,
+		DepartureDate: departureDate,
 	}
 	return dao.ListSeatRemainingTicket(ctx, seatDO, trainCarriageList)
 }
 
 // ListUsableCarriageNumber 查询列车批次有余票的车厢号集合
-func (s *SeatService) ListUsableCarriageNumber(ctx context.Context, trainId string, seatType int, departure string, arrival string) ([]string, error) {
+func (s *SeatService) ListUsableCarriageNumber(ctx context.Context, trainId string, seatType int, departure string, arrival string, departureDate string) ([]string, error) {
 	conditions := map[string]interface{}{
-		"train_id = ?":      trainId,
-		"seat_type = ?":     seatType,
-		"start_station = ?": departure,
-		"end_station = ?":   arrival,
-		"seat_status = ?":   model.SeatAvailable,
+		"train_id = ?":       trainId,
+		"seat_type = ?":      seatType,
+		"start_station = ?":  departure,
+		"end_station = ?":    arrival,
+		"seat_status = ?":    model.SeatAvailable,
+		"departure_date = ?": departureDate,
 	}
 	seats, err := dao.QuerySeats(ctx, conditions)
 	if err != nil {
@@ -77,6 +79,7 @@ func (s *SeatService) ListUsableCarriageNumber(ctx context.Context, trainId stri
 }
 
 func (s *SeatService) updateSeatStatus(ctx context.Context, trainId string, departure string, arrival string, trainPurchaseTicketResults []*TrainPurchaseTicketDTO, seatStatus int32) error {
+	// 改成事务
 	routes, err := s.trainStationService.ListTakeoutTrainStationRoute(ctx, trainId, departure, arrival)
 	if err != nil {
 		log.WithContext(ctx).Errorf("list takeout train station route failed, err: %v", err)
@@ -91,6 +94,7 @@ func (s *SeatService) updateSeatStatus(ctx context.Context, trainId string, depa
 				defer wg.Done()
 				condition := map[string]interface{}{
 					"train_id = ?":        trainId,
+					"departure_date = ?":  item.DepartureDate,
 					"carriage_number = ?": item.CarriageNumber,
 					"seat_number = ?":     item.SeatNumber,
 					"start_station = ?":   route.StartStation,
@@ -131,6 +135,7 @@ func (s *SeatService) Unlock(ctx context.Context, trainId string, departure stri
 }
 
 type TrainPurchaseTicketDTO struct {
+	DepartureDate  string `json:"departureDate"`  // 出发日期
 	PassengerId    string `json:"passengerId"`    // 乘车人 ID
 	RealName       string `json:"realName"`       // 乘车人姓名
 	IdType         int    `json:"idType"`         // 乘车人证件类型

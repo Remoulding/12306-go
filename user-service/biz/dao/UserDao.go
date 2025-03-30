@@ -7,9 +7,6 @@ import (
 )
 
 func InsertUser(ctx context.Context, user *model.UserDO) error {
-	if configs.DB == nil {
-		panic("DB is nil")
-	}
 	if err := configs.DB.Model(&model.UserDO{}).Create(user).Error; err != nil {
 		configs.Log.WithContext(ctx).Errorf("UserDao.InsertUser failed, err: %v", err)
 		return err

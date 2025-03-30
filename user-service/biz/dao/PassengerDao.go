@@ -8,7 +8,8 @@ import (
 
 func QueryPassengersByUsername(ctx context.Context, username string) ([]*model.PassengerDO, error) {
 	passengers := make([]*model.PassengerDO, 0)
-	if err := configs.DB.Model(&model.PassengerDO{}).Where("username = ?", username).Find(&passengers).Error; err != nil {
+	if err := configs.DB.Model(&model.PassengerDO{}).Where("username = ?", username).
+		Where("del_flag = ?", 0).Find(&passengers).Error; err != nil {
 		configs.Log.WithContext(ctx).Errorf("PassengerDao.QueryPassengersByUsername failed, err: %v", err)
 		return nil, err
 	}
@@ -32,10 +33,6 @@ func UpdatePassenger(ctx context.Context, passenger *model.PassengerDO) error {
 	return nil
 }
 
-func DeletePassengers(ctx context.Context, ids ...int64) error {
-	if err := configs.DB.Model(&model.PassengerDO{}).Where("id in (?)", ids).Update("del_flag", 1).Error; err != nil {
-		configs.Log.WithContext(ctx).Errorf("PassengerDao.DeletePassengers failed, err: %v", err)
-		return err
-	}
-	return nil
+func DeletePassengers(ctx context.Context, id uint64) error {
+	return configs.DB.Model(&model.PassengerDO{}).Where("id = ?", id).Update("del_flag", 1).Error
 }

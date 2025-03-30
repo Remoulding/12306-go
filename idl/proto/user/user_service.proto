@@ -69,7 +69,6 @@ service UserService {
   rpc ListPassengerQueryByUsername(ListPassengerByUsernameReq) returns (ListPassengerByUsernameResp){
     option (google.api.http) = {
       post: "/api/user-service/passenger/query"
-      body: "*"
     };
   };
 
@@ -330,6 +329,9 @@ message PassengerReq {
 
   // 手机号
   string phone = 6;
+
+  // 用户名
+  string username = 7;
 }
 
 // 返回的乘车人响应信息

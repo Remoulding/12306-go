@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/Remoulding/12306-go/idl-gen/ticket_service"
 	"github.com/Remoulding/12306-go/ticket-service/biz/dao"
-	"github.com/Remoulding/12306-go/ticket-service/tools"
 )
 
 type TrainStationService struct {
@@ -35,8 +34,8 @@ func (s *TrainStationService) ListTrainStationQuery(ctx context.Context, request
 		data = append(data, &ticket_service.TrainStation{
 			Sequence:      station.Sequence,
 			Departure:     station.Departure,
-			ArrivalTime:   tools.ConvertTimeToStr(station.ArrivalTime),
-			DepartureTime: tools.ConvertTimeToStr(station.DepartureTime),
+			ArrivalTime:   station.ArrivalTime,
+			DepartureTime: station.DepartureTime,
 			StopoverTime:  int32(station.StopoverTime),
 		})
 	}

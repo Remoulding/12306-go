@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abf30136-edbd-42ce-8252-66c07cc05248" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/status.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../idl/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idl/proto/UserService.proto" beforeDir="false" />
-    </list>
+    <list default="true" id="abf30136-edbd-42ce-8252-66c07cc05248" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

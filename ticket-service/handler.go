@@ -28,25 +28,17 @@ func (t TicketServiceHandler) ListTrainStationQuery(ctx context.Context, request
 }
 
 func (t TicketServiceHandler) PageListTicketQuery(ctx context.Context, request *ticket_service.TicketPageQueryRequest) (*ticket_service.TicketPageQueryResponse, error) {
-	//TODO implement me
-	// 查一下就完事
-	panic("implement me")
+	return service.NewTicketService().PageListTicketQuery(ctx, request)
 }
 
 func (t TicketServiceHandler) PurchaseTickets(ctx context.Context, request *ticket_service.PurchaseTicketRequest) (*ticket_service.PurchaseTicketResponse, error) {
-	//TODO implement me
-	// 买票锁全车，孩子你无敌了，搞个策略模式应付一下得了
-	panic("implement me")
+	return service.NewTicketService().PurchaseTickets(ctx, request)
 }
 
-func (t TicketServiceHandler) CancelTicketOrder(ctx context.Context, request *ticket_service.CancelTicketOrderRequest) (*ticket_service.CancelTicketOrderResponse, error) {
-	//TODO implement me
-	// 回滚一下就完事
-	panic("implement me")
+func (t TicketServiceHandler) CancelTicketOrder(ctx context.Context, request *ticket_service.CancelTicketRequest) (*ticket_service.CancelTicketResponse, error) {
+	return service.NewTicketService().CancelTicketOrder(ctx, request)
 }
 
-func (t TicketServiceHandler) GetPayInfo(ctx context.Context, request *ticket_service.PayInfoRequest) (*ticket_service.PayInfoResponse, error) {
-	//TODO implement me
-	// 老子不想写了
-	return nil, nil
+func (t TicketServiceHandler) GetTicket(ctx context.Context, request *ticket_service.GetTicketRequest) (*ticket_service.GetTicketResponse, error) {
+	return service.NewTicketService().GetTicket(ctx, request)
 }

@@ -10,6 +10,7 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/go-redsync/redsync/v4 v4.13.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
+	github.com/rs/cors v1.11.1
 	github.com/samber/lo v1.49.1
 	github.com/sirupsen/logrus v1.9.3
 	google.golang.org/grpc v1.70.0

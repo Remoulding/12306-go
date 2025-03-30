@@ -12,6 +12,7 @@ type SeatDO struct {
 	EndStation     string `gorm:"column:end_station"`     // 终点站
 	SeatStatus     int    `gorm:"column:seat_status"`     // 座位状态
 	Price          int    `gorm:"column:price"`           // 车票价格
+	DepartureDate  string `gorm:"column:departure_date"`  // 出发日期 yyyy-MM-dd
 }
 
 // TableName 设置表名
@@ -22,5 +23,4 @@ func (SeatDO) TableName() string {
 const (
 	SeatAvailable = 0 // 座位可用
 	SeatLocked    = 1 // 座位已锁定
-	SeatSold      = 2 // 座位已售出
 )

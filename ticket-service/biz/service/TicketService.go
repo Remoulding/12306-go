@@ -4,9 +4,11 @@ import (
 	"context"
 	"fmt"
 	"github.com/Remoulding/12306-go/idl-gen/ticket_service"
+	"github.com/Remoulding/12306-go/idl-gen/user_service"
 	"github.com/Remoulding/12306-go/ticket-service/biz/dao"
 	"github.com/Remoulding/12306-go/ticket-service/biz/model"
 	"github.com/Remoulding/12306-go/ticket-service/configs"
+	"github.com/Remoulding/12306-go/ticket-service/rpc"
 	"github.com/Remoulding/12306-go/ticket-service/tools"
 	"github.com/bytedance/sonic"
 	"github.com/go-redsync/redsync/v4"
@@ -19,10 +21,13 @@ import (
 )
 
 type TicketService struct {
+	seatService *SeatService
 }
 
 func NewTicketService() *TicketService {
-	return &TicketService{}
+	return &TicketService{
+		seatService: NewSeatService(),
+	}
 }
 
 func (s *TicketService) PageListTicketQuery(ctx context.Context, req *ticket_service.TicketPageQueryRequest) (*ticket_service.TicketPageQueryResponse, error) {
@@ -48,9 +53,10 @@ func (s *TicketService) PageListTicketQuery(ctx context.Context, req *ticket_ser
 		startRegion = stationDetailMap[req.FromStation]
 		endRegion = stationDetailMap[req.ToStation]
 	}
-
-	regionStationHashKey := fmt.Sprintf(configs.RegionTrainStation, startRegion, endRegion)
-	loadData, err := SafeLoad(ctx, regionStationHashKey, configs.LockRegionTrainStation, func(ctx context.Context) (interface{}, error) {
+	// 拿到出发站和到达站的区域
+	regionStationHashKey := fmt.Sprintf(configs.RegionTrainStation, startRegion, endRegion, req.DepartureDate)
+	lockKey := fmt.Sprintf(configs.LockRegionTrainStation, startRegion, endRegion, req.DepartureDate)
+	loadData, err := SafeLoad(ctx, regionStationHashKey, lockKey, func(ctx context.Context) (interface{}, error) {
 		trainInfoMap := make(map[string]string)
 		conditions := map[string]interface{}{
 			"start_region = ?": startRegion,
@@ -74,23 +80,13 @@ func (s *TicketService) PageListTicketQuery(ctx context.Context, req *ticket_ser
 			trainInfo := &ticket_service.TicketInfo{}
 			trainInfo.TrainId = trainID
 			trainInfo.TrainNumber = train.TrainNumber
-			trainInfo.DepartureTime = tools.ConvertTimeToStr(train.DepartureTime)
-			trainInfo.ArrivalTime = tools.ConvertTimeToStr(train.ArrivalTime)
-			trainInfo.Duration = tools.CalculateHourDifference(train.DepartureTime, train.ArrivalTime)
+			trainInfo.DepartureTime, trainInfo.ArrivalTime = tools.ComputeFullTimes(req.GetDepartureDate(), train.DepartureTime, train.ArrivalTime, train.CrossDay)
+			trainInfo.Duration = tools.CalculateHourDifference(trainInfo.DepartureTime, trainInfo.ArrivalTime)
 			trainInfo.Departure = item.Departure
 			trainInfo.Arrival = item.Arrival
 			trainInfo.DepartureFlag = item.DepartureFlag
 			trainInfo.ArrivalFlag = item.ArrivalFlag
-			trainInfo.TrainType = int32(train.TrainType)
-			trainInfo.TrainBrand = train.TrainBrand
-			if len(train.TrainTag) > 0 {
-				trainInfo.TrainTags = strings.Split(train.TrainTag, ",")
-			}
-			if time.Now().Before(train.DepartureTime) {
-				trainInfo.SaleStatus = 1 // 未开售
-			}
-			trainInfo.DaysArrived = int32((train.ArrivalTime.Hour() - train.DepartureTime.Hour()) / 24)
-			trainInfo.SaleTime = train.ArrivalTime.Format("01-02 15:04")
+			trainInfo.DaysArrived = int32(train.CrossDay)
 			tranInfoKey := fmt.Sprintf("%d_%s_%s", item.TrainID, item.Departure, item.Arrival)
 			trainInfoData, _ := sonic.MarshalString(trainInfo)
 			trainInfoMap[tranInfoKey] = trainInfoData
@@ -111,7 +107,43 @@ func (s *TicketService) PageListTicketQuery(ctx context.Context, req *ticket_ser
 	slices.SortStableFunc(trainList, func(a, b *ticket_service.TicketInfo) int {
 		return strings.Compare(a.DepartureTime, b.DepartureTime)
 	})
-
+	// 获取座位信息
+	for _, item := range trainList {
+		redisKey := fmt.Sprintf(configs.TrainStationPrice, item.TrainId, item.Departure, item.Arrival)
+		loadData, err = SafeLoad(ctx, redisKey, "", func(ctx context.Context) (interface{}, error) {
+			return dao.QueryTrainStationPrice(ctx, map[string]interface{}{
+				"train_id":  item.TrainId,
+				"departure": item.Departure,
+				"arrival":   item.Arrival,
+			})
+		})
+		if err != nil {
+			log.WithContext(ctx).Errorf("query train station price failed, err: %v", err)
+			return resp, nil
+		}
+		var seatClassList []*model.TrainStationPriceDO
+		_ = sonic.UnmarshalString(loadData, &seatClassList)
+		seatClassInfoList := make([]*ticket_service.SeatClassInfo, 0, len(seatClassList))
+		for _, seatClass := range seatClassList {
+			if seatClass.SeatType > 2 {
+				continue
+			}
+			seatClassInfo := &ticket_service.SeatClassInfo{
+				Type:      int32(seatClass.SeatType),
+				Price:     float64(seatClass.Price) / 100,
+				Candidate: false,
+				// TODO
+				// 从缓存读
+				Quantity: 50,
+			}
+			// 根据 type 从小到大排序
+			slices.SortStableFunc(seatClassInfoList, func(a, b *ticket_service.SeatClassInfo) int {
+				return int(a.Type - b.Type)
+			})
+			seatClassInfoList = append(seatClassInfoList, seatClassInfo)
+		}
+		item.SeatClassList = seatClassInfoList
+	}
 	resp.Data = s.buildPageListTicketQueryData(trainList)
 	resp.Success = true
 	return resp, nil
@@ -120,13 +152,19 @@ func (s *TicketService) PageListTicketQuery(ctx context.Context, req *ticket_ser
 func (s *TicketService) buildPageListTicketQueryData(trainList []*ticket_service.TicketInfo) *ticket_service.TicketPageQueryData {
 	data := &ticket_service.TicketPageQueryData{}
 	data.TrainList = trainList
+	var departureStationList, arrivalStationList []string
+	var seatClassTypeList []int32
 	for _, item := range trainList {
-		data.DepartureStationList = append(data.DepartureStationList, item.GetDeparture())
-		data.ArrivalStationList = append(data.ArrivalStationList, item.GetArrival())
+		departureStationList = append(departureStationList, item.GetDeparture())
+		arrivalStationList = append(arrivalStationList, item.GetArrival())
 		for _, seatClassInfo := range item.GetSeatClassList() {
-			data.SeatClassTypeList = append(data.SeatClassTypeList, seatClassInfo.GetType())
+			seatClassTypeList = append(seatClassTypeList, seatClassInfo.GetType())
 		}
 	}
+	data.DepartureStationList = lo.Uniq(departureStationList)
+	data.ArrivalStationList = lo.Uniq(arrivalStationList)
+	data.SeatClassTypeList = lo.Uniq(seatClassTypeList)
+
 	buildBrandList := func(trainList []*ticket_service.TicketInfo) []int32 {
 		brandMap := map[int32]struct{}{}
 		for _, item := range trainList {
@@ -146,7 +184,7 @@ func (s *TicketService) buildPageListTicketQueryData(trainList []*ticket_service
 
 func (s *TicketService) PurchaseTickets(ctx context.Context, req *ticket_service.PurchaseTicketRequest) (*ticket_service.PurchaseTicketResponse, error) {
 	lockKey := fmt.Sprintf(configs.LockPurchaseTickets, req.GetTrainId())
-	mutex := rs.NewMutex(lockKey, redsync.WithExpiry(5*time.Second))
+	mutex := configs.Rs.NewMutex(lockKey, redsync.WithExpiry(5*time.Second))
 	_ = mutex.Lock()
 	defer func(mutex *redsync.Mutex) {
 		if _, err := mutex.Unlock(); err != nil {
@@ -163,42 +201,212 @@ func (s *TicketService) PurchaseTickets(ctx context.Context, req *ticket_service
 		return resp, nil
 	}
 	var train model.TrainDO
-	_ = sonic.UnmarshalString(trainData, &train)
-
+	if err = sonic.UnmarshalString(trainData, &train); err != nil {
+		return resp, nil
+	}
+	tx := configs.DB.Begin()
+	defer func() {
+		if r := recover(); r != nil {
+			tx.Rollback()
+		}
+	}()
+	// 开启事务
+	tx.Begin()
+	seats, err := s.selectSeat(ctx, req)
+	if err != nil {
+		resp.Message = "预占座位失败"
+		return resp, nil
+	}
+	// 生成 Ticket
+	ticketList := make([]*model.TicketDO, 0, len(seats))
+	for _, seat := range seats {
+		depTime, arrTime := tools.ComputeFullTimes(req.GetDepartureDate(), train.DepartureTime, train.ArrivalTime, train.CrossDay)
+		pid, _ := strconv.ParseInt(seat.PassengerId, 10, 64)
+		ticketList = append(ticketList, &model.TicketDO{
+			TrainID:        train.ID,
+			TrainNumber:    train.TrainNumber,
+			CarriageNumber: seat.CarriageNumber,
+			SeatNumber:     seat.SeatNumber,
+			Departure:      req.GetDeparture(),
+			Arrival:        req.GetArrival(),
+			DepartureTime:  tools.ConvertStrToTime(depTime, true),
+			ArrivalTime:    tools.ConvertStrToTime(arrTime, true),
+			PassengerID:    pid,
+			TicketStatus:   model.TicketValid,
+		})
+	}
+	if err = dao.BatchInsertTicket(ctx, ticketList); err != nil {
+		resp.Message = "购票失败"
+		return resp, nil
+	}
+	tx.Commit()
+	data := make([]*ticket_service.TicketOrderDetail, 0, len(seats))
+	for _, seat := range seats {
+		data = append(data, &ticket_service.TicketOrderDetail{
+			SeatType:       int32(seat.SeatType),
+			SeatNumber:     seat.SeatNumber,
+			CarriageNumber: seat.CarriageNumber,
+			Amount:         int32(seat.Amount),
+			RealName:       seat.RealName,
+			IdCard:         seat.IdCard,
+		})
+	}
+	resp.Data = &ticket_service.TicketPurchaseData{
+		TicketOrderDetails: data,
+	}
+	resp.Success = true
 	return resp, nil
 }
 
-func (s *TicketService) SelectSeat(ctx context.Context, trainType int, req *ticket_service.PurchaseTicketRequest) []*TrainPurchaseTicketDTO {
+func (s *TicketService) selectSeat(ctx context.Context, req *ticket_service.PurchaseTicketRequest) ([]*TrainPurchaseTicketDTO, error) {
 	passengers := req.GetPassengers()
+	passengerIds := make([]int64, 0, len(passengers))
 	seatTypeMap := make(map[int32][]*ticket_service.PurchaseTicketPassengerInfo)
 	for _, passenger := range passengers {
+		pid, _ := strconv.ParseInt(passenger.GetPassengerId(), 10, 64)
+		passengerIds = append(passengerIds, pid)
 		seatTypeMap[passenger.SeatType] = append(seatTypeMap[passenger.SeatType], passenger)
 	}
-	for seatType, list := range seatTypeMap {
-		switch seatType {
-		case 0:
-			s.selectBusinessSeat(ctx, list, req)
-		case 1:
-			s.selectFirstSeat(ctx, list, req)
-		case 2:
-			s.selectSecondSeat(ctx, list, req)
+	resp := make([]*TrainPurchaseTicketDTO, 0, len(passengers))
+	for seatType, passengerList := range seatTypeMap {
+		seats, err := NewSeatSelectorService(ctx, int(seatType)).SelectSeats(passengerList, req)
+		if err != nil {
+			return nil, err
+		}
+		resp = append(resp, seats...)
+	}
+	lockKey := fmt.Sprintf(configs.LockTrainStationPrice, req.GetTrainId(), req.GetDeparture(), req.GetArrival())
+	loadData, err := SafeLoad(ctx, fmt.Sprintf(configs.TrainStationPrice, req.GetTrainId(), req.GetDeparture(), req.GetArrival()), lockKey, func(ctx context.Context) (interface{}, error) {
+		trainStationPrices, err := dao.QueryTrainStationPrice(ctx, map[string]interface{}{
+			"train_id":  req.GetTrainId(),
+			"departure": req.GetDeparture(),
+			"arrival":   req.GetArrival(),
+		})
+		if err != nil {
+			return nil, err
+		}
+		mp := make(map[int]int)
+		for i := range trainStationPrices {
+			mp[trainStationPrices[i].SeatType] = trainStationPrices[i].Price
+		}
+		return mp, nil
+	})
+	if err != nil {
+		log.WithContext(ctx).Errorf("query train station price failed, err: %v", err)
+		return nil, err
+	}
+	priceMap := make(map[int]int)
+	if err = sonic.UnmarshalString(loadData, &priceMap); err != nil {
+		return nil, err
+	}
+	queryResp, err := rpc.UserServiceClient.ListPassengerQueryByIds(ctx, &user_service.ListPassengerByIdsReq{
+		Ids: passengerIds,
+	})
+	if err != nil {
+		return nil, err
+	}
+	passengerMap := make(map[string]*user_service.PassengerActualData, len(passengers))
+	for _, passenger := range queryResp.GetData() {
+		passengerMap[passenger.GetId()] = passenger
+	}
+	for _, item := range resp {
+		if passenger, ok := passengerMap[item.PassengerId]; ok {
+			item.IdType = int(passenger.GetIdType())
+			item.IdCard = passenger.GetIdCard()
+			item.RealName = passenger.GetRealName()
+			item.Phone = passenger.GetPhone()
+			item.PassengerId = passenger.GetId()
+			item.Amount = priceMap[item.SeatType]
+			item.DepartureDate = req.GetDepartureDate()
 		}
 	}
-	return nil
-}
-func (s *TicketService) selectBusinessSeat(ctx context.Context, list []*ticket_service.PurchaseTicketPassengerInfo, req *ticket_service.PurchaseTicketRequest) []*TrainPurchaseTicketDTO {
-	return nil
-}
-
-func (s *TicketService) selectFirstSeat(ctx context.Context, list []*ticket_service.PurchaseTicketPassengerInfo, req *ticket_service.PurchaseTicketRequest) []*TrainPurchaseTicketDTO {
-	return nil
-}
-func (s *TicketService) selectSecondSeat(ctx context.Context, list []*ticket_service.PurchaseTicketPassengerInfo, req *ticket_service.PurchaseTicketRequest) []*TrainPurchaseTicketDTO {
-	return nil
+	if err = s.seatService.LockSeat(ctx, req.GetTrainId(), req.GetDeparture(), req.GetArrival(), resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
 }
 
-func (s *TicketService) CancelTicketOrder(ctx context.Context, req *ticket_service.CancelTicketOrderRequest) (*ticket_service.CancelTicketOrderResponse, error) {
-	//TODO implement me
-	// 回滚一下就完事
-	panic("implement me")
+func (s *TicketService) CancelTicketOrder(ctx context.Context, req *ticket_service.CancelTicketRequest) (*ticket_service.CancelTicketResponse, error) {
+	resp := &ticket_service.CancelTicketResponse{}
+	condition := map[string]interface{}{
+		"id = ?": req.GetTicketID(),
+	}
+	tickets, err := dao.QueryTicket(ctx, condition)
+	if err != nil {
+		resp.Message = "系统错误"
+		return resp, nil
+	}
+	if len(tickets) == 0 {
+		resp.Message = "车票不存在"
+		return resp, nil
+	}
+	ticket := tickets[0]
+	var trainPurchaseTicketResults []*TrainPurchaseTicketDTO
+	trainPurchaseTicketResults = append(trainPurchaseTicketResults, &TrainPurchaseTicketDTO{})
+	// 开启事务
+	tx := configs.DB.Begin()
+	defer func() {
+		if r := recover(); r != nil {
+			tx.Rollback()
+		}
+	}()
+	tx.Begin()
+	if err = s.seatService.Unlock(ctx, strconv.Itoa(int(ticket.TrainID)), ticket.Departure, ticket.Arrival, trainPurchaseTicketResults); err != nil {
+		resp.Message = "系统错误"
+	}
+	if err = dao.CancelTicket(ctx, ticket.ID); err != nil {
+		resp.Message = "系统错误"
+	}
+	tx.Commit()
+	resp.Success = true
+	return resp, nil
+}
+
+func (s *TicketService) GetTicket(ctx context.Context, req *ticket_service.GetTicketRequest) (*ticket_service.GetTicketResponse, error) {
+	resp := &ticket_service.GetTicketResponse{}
+	passengerResp, err := rpc.UserServiceClient.ListPassengerQueryByUsername(ctx, &user_service.ListPassengerByUsernameReq{
+		Username: req.GetUsername(),
+	})
+	if err != nil {
+		resp.Message = "查询乘客信息失败"
+		return resp, nil
+	}
+	passengers := passengerResp.GetData()
+	passengerIdMap := make(map[int64]*user_service.Passenger, len(passengers))
+	passengerIds := make([]int64, 0, len(passengers))
+	for _, passenger := range passengers {
+		pid, _ := strconv.ParseInt(passenger.GetId(), 10, 64)
+		passengerIdMap[pid] = passenger
+		passengerIds = append(passengerIds, pid)
+	}
+	condition := map[string]interface{}{
+		"passenger_id in ?": passengerIds,
+	}
+	tickets, err := dao.QueryTicket(ctx, condition)
+	if err != nil {
+		resp.Message = "查询车票信息失败"
+		return resp, nil
+	}
+	data := make([]*ticket_service.MyTicketInfo, 0, len(tickets))
+	for _, ticket := range tickets {
+		passenger := passengerIdMap[ticket.PassengerID]
+		if passenger == nil {
+			continue
+		}
+		data = append(data, &ticket_service.MyTicketInfo{
+			Id:             strconv.Itoa(int(ticket.ID)),
+			TrainNumber:    ticket.TrainNumber,
+			Departure:      ticket.Departure,
+			Arrival:        ticket.Arrival,
+			DepartureTime:  tools.ConvertTimeToStr(ticket.DepartureTime, true),
+			ArrivalTime:    tools.ConvertTimeToStr(ticket.ArrivalTime, true),
+			CarriageNumber: ticket.CarriageNumber,
+			SeatNumber:     ticket.SeatNumber,
+			PassengerName:  passenger.GetRealName(),
+			TicketStatus:   int32(ticket.TicketStatus),
+		})
+	}
+	resp.Data = data
+	resp.Success = true
+	return resp, nil
 }
