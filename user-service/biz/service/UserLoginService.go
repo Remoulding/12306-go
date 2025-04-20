@@ -68,7 +68,7 @@ func (s *UserLoginServiceImpl) Login(ctx context.Context, req *user_service.User
 	}
 	// 将登录信息存储到 Redis
 	redisData, _ := json.MarshalString(data)
-	err = s.redisClient.Set(ctx, tokenString, redisData, configs.CacheTTL).Err()
+	err = s.redisClient.Set(ctx, fmt.Sprintf("index12306UserService:*:token:%s", tokenString), redisData, configs.CacheTTL).Err()
 	if err != nil {
 		resp.Message = "登录失败"
 		return resp, nil

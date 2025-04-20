@@ -175,6 +175,7 @@ message PurchaseTicketRequest {
   string departure = 4;
   string arrival = 5;
   string departureDate = 6;
+  string username = 7;
 }
 
 message PurchaseTicketPassengerInfo {

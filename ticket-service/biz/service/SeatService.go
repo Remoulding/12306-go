@@ -4,8 +4,8 @@ import (
 	"context"
 	"github.com/Remoulding/12306-go/ticket-service/biz/dao"
 	"github.com/Remoulding/12306-go/ticket-service/biz/model"
+	"github.com/Remoulding/12306-go/ticket-service/tools"
 	"strconv"
-	"sync"
 )
 
 type SeatService struct {
@@ -53,7 +53,7 @@ func (s *SeatService) ListSeatRemainingTicket(ctx context.Context, trainId strin
 }
 
 // ListUsableCarriageNumber 查询列车批次有余票的车厢号集合
-func (s *SeatService) ListUsableCarriageNumber(ctx context.Context, trainId string, seatType int, departure string, arrival string, departureDate string) ([]string, error) {
+func (s *SeatService) ListUsableCarriageNumber(ctx context.Context, trainId int64, seatType int, departure string, arrival string, departureDate string) ([]string, error) {
 	conditions := map[string]interface{}{
 		"train_id = ?":       trainId,
 		"seat_type = ?":      seatType,
@@ -78,60 +78,45 @@ func (s *SeatService) ListUsableCarriageNumber(ctx context.Context, trainId stri
 	return carriageNumbers, nil
 }
 
-func (s *SeatService) updateSeatStatus(ctx context.Context, trainId string, departure string, arrival string, trainPurchaseTicketResults []*TrainPurchaseTicketDTO, seatStatus int32) error {
+func (s *SeatService) updateSeatStatus(ctx context.Context, trainId int64, departure string, arrival string, trainPurchaseTicketResults []*TrainPurchaseTicketDTO, seatStatus int32) error {
 	// 改成事务
 	routes, err := s.trainStationService.ListTakeoutTrainStationRoute(ctx, trainId, departure, arrival)
 	if err != nil {
 		log.WithContext(ctx).Errorf("list takeout train station route failed, err: %v", err)
 		return err
 	}
-	var wg sync.WaitGroup
-	errs := make(chan error, len(trainPurchaseTicketResults)*len(routes))
+	log.WithContext(ctx).Infof("takeout routes: %v", tools.MustJson(routes))
+	seats := make([]*model.SeatDO, 0)
 	for _, item := range trainPurchaseTicketResults {
 		for _, route := range routes {
-			wg.Add(1)
-			go func(item *TrainPurchaseTicketDTO, route *Route) {
-				defer wg.Done()
-				condition := map[string]interface{}{
-					"train_id = ?":        trainId,
-					"departure_date = ?":  item.DepartureDate,
-					"carriage_number = ?": item.CarriageNumber,
-					"seat_number = ?":     item.SeatNumber,
-					"start_station = ?":   route.StartStation,
-					"end_station = ?":     route.EndStation,
-				}
-				update := map[string]interface{}{
-					"seat_status": seatStatus,
-				}
-				errs <- dao.UpdateSeats(ctx, condition, update)
-			}(item, route) // 显式传递 item 和 route，防止变量捕获问题
+			seats = append(seats, &model.SeatDO{
+				TrainID:        trainId,
+				CarriageNumber: item.CarriageNumber,
+				SeatNumber:     item.SeatNumber,
+				StartStation:   route.StartStation,
+				EndStation:     route.EndStation,
+				DepartureDate:  item.DepartureDate,
+				SeatStatus:     int(seatStatus),
+			})
 		}
 	}
-
-	// 另外起一个 goroutine 关闭 errs，防止主 goroutine 死锁
-	go func() {
-		wg.Wait()
-		close(errs)
-	}()
-
-	// 收集错误
-	for err := range errs {
-		if err != nil {
-			log.WithContext(ctx).Errorf("update seat failed, err: %v", err)
-			return err
-		}
+	eqCondition := map[string]interface{}{
+		"seat_status": 1 - seatStatus,
 	}
-	return nil
+	log.WithContext(ctx).Infof("update seat status: %v", tools.MustJson(seats))
+	return dao.UpsertSeats(ctx, seats, false, []string{"seat_status"}, eqCondition)
 }
 
 // LockSeat 锁定选中以及沿途车票状态
 func (s *SeatService) LockSeat(ctx context.Context, trainId string, departure string, arrival string, trainPurchaseTicketRespList []*TrainPurchaseTicketDTO) error {
-	return s.updateSeatStatus(ctx, trainId, departure, arrival, trainPurchaseTicketRespList, model.SeatLocked)
+	tid, _ := strconv.ParseInt(trainId, 10, 64)
+	return s.updateSeatStatus(ctx, tid, departure, arrival, trainPurchaseTicketRespList, model.SeatLocked)
 }
 
 // Unlock 解锁选中以及沿途车票状态
 func (s *SeatService) Unlock(ctx context.Context, trainId string, departure string, arrival string, trainPurchaseTicketResults []*TrainPurchaseTicketDTO) error {
-	return s.updateSeatStatus(ctx, trainId, departure, arrival, trainPurchaseTicketResults, model.SeatAvailable)
+	tid, _ := strconv.ParseInt(trainId, 10, 64)
+	return s.updateSeatStatus(ctx, tid, departure, arrival, trainPurchaseTicketResults, model.SeatAvailable)
 }
 
 type TrainPurchaseTicketDTO struct {

@@ -1,0 +1,614 @@
+2021/07/15 16:20:46 [notice] 27068#30284: signal process started
+2021/07/29 09:09:10 [error] 6804#13316: *2 CreateFile() "D:/lesson/heima127/code/hm-mall-admin/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:9001"
+2021/07/29 09:09:13 [error] 6804#13316: *2 CreateFile() "D:/lesson/heima127/code/hm-mall-admin/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:9001"
+2021/07/29 09:09:34 [notice] 3000#11316: signal process started
+2023/10/12 20:05:26 [error] 21300#6576: *7 connect() failed (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /api HTTP/1.1", upstream: "http://192.168.150.101:8081/api", host: "127.0.0.1"
+2023/10/12 20:05:40 [error] 21300#6576: *10 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/item" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /item?10001 HTTP/1.1", host: "127.0.0.1"
+2023/10/12 20:05:52 [error] 21300#6576: *16 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/assets/img/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /assets/img/favicon.ico HTTP/1.1", host: "127.0.0.1", referrer: "http://127.0.0.1/item.html?10001"
+2023/10/14 21:30:41 [alert] 19128#20336: worker process 7316 exited with code C0000142
+2023/10/14 21:30:41 [alert] 19128#20336: could not respawn worker
+2023/10/17 14:36:45 [error] 7220#20312: *7 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/assets/img/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /assets/img/favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/item.html"
+2023/10/17 15:22:18 [error] 7220#20312: *16 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:22:23 [error] 7220#20312: *16 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:26:01 [error] 7220#20312: *22 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:26:34 [error] 7220#20312: *25 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:26:37 [error] 7220#20312: *25 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:27:06 [emerg] 2056#23224: unexpected "}" in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:19
+2023/10/17 15:27:09 [emerg] 10968#22684: unexpected "}" in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:19
+2023/10/17 15:27:15 [emerg] 19708#22320: unexpected "}" in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:19
+2023/10/17 15:28:30 [emerg] 17548#22512: unexpected "}" in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:19
+2023/10/17 15:29:55 [error] 7220#20312: *30 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:31:00 [error] 7220#20312: *34 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:31:17 [error] 7220#20312: *36 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:33:37 [error] 7220#20312: *38 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:37:43 [error] 7220#20312: *41 connect() failed (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /api HTTP/1.1", upstream: "http://192.168.150.101:8081/api", host: "localhost"
+2023/10/17 15:40:39 [error] 7220#20312: *45 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/item" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /item HTTP/1.1", host: "localhost"
+2023/10/17 15:40:50 [error] 7220#20312: *45 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:41:53 [notice] 19916#11292: signal process started
+2023/10/17 15:41:58 [error] 7220#20312: *49 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 15:42:04 [error] 7220#20312: *50 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 16:45:53 [error] 7220#20312: *58 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 16:46:00 [error] 7220#20312: *58 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 16:48:05 [error] 7220#20312: *62 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 16:48:09 [error] 7220#20312: *62 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 16:54:12 [error] 7220#20312: *70 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 16:54:12 [error] 7220#20312: *71 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 16:56:44 [notice] 16060#2760: signal process started
+2023/10/17 16:56:50 [error] 7220#20312: *74 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 17:01:23 [notice] 18980#23256: signal process started
+2023/10/17 17:01:37 [notice] 11788#16212: signal process started
+2023/10/17 17:01:37 [error] 11788#16212: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2023/10/17 17:02:02 [error] 7220#20312: *96 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 17:02:04 [error] 7220#20312: *97 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 17:03:23 [error] 7220#20312: *100 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 17:05:09 [error] 7220#20312: *105 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost"
+2023/10/17 17:08:01 [error] 22708#10380: *2 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 17:08:01 [error] 22708#10380: *1 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/assets/img/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /assets/img/favicon.ico HTTP/1.1", host: "localhost:8082", referrer: "http://localhost:8082/item.html?id=10001"
+2023/10/17 18:02:40 [notice] 19720#19672: signal process started
+2023/10/17 18:06:51 [error] 13504#15024: *10 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:06:54 [error] 13504#15024: *10 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:07:40 [error] 13504#15024: *15 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:10:42 [error] 13504#15024: *19 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:10:45 [error] 13504#15024: *24 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:13:21 [notice] 1768#18904: signal process started
+2023/10/17 18:13:35 [notice] 4768#10692: signal process started
+2023/10/17 18:13:35 [error] 4768#10692: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2023/10/17 18:13:42 [error] 17708#19616: *1 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:13:47 [error] 17708#19616: *5 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:15:05 [error] 17708#19616: *9 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/item.html/10002" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /item.html/10002 HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:15:12 [error] 17708#19616: *9 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:15:12 [error] 17708#19616: *9 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:15:12 [error] 17708#19616: *9 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:15:13 [error] 17708#19616: *10 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:15:14 [error] 17708#19616: *13 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:15:38 [error] 17708#19616: *17 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:17:52 [error] 23428#15584: *21 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:17:54 [error] 23428#15584: *25 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:18:01 [error] 23428#15584: *25 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:18:08 [notice] 1204#19540: signal process started
+2023/10/17 18:19:47 [error] 22936#1744: *1 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:20:00 [error] 22936#1744: *6 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:20:40 [notice] 21232#8972: signal process started
+2023/10/17 18:27:55 [error] 20848#22320: *8 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:27:59 [error] 20848#22320: *8 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:29:19 [error] 20848#22320: *12 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:29:33 [error] 20848#22320: *17 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:29:35 [error] 20848#22320: *16 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /api/item/10002 HTTP/1.1", upstream: "http://172.21.149.130:8081/api/item/10002", host: "localhost:8082", referrer: "http://localhost:8082/item.html?id=10002"
+2023/10/17 18:29:56 [error] 20848#22320: *20 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:33:13 [error] 20848#22320: *24 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:33:20 [error] 20848#22320: *29 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:38:24 [error] 20848#22320: *32 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:38:26 [error] 20848#22320: *32 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:40:47 [error] 20848#22320: *37 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:44:22 [error] 20848#22320: *41 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:44:34 [notice] 17240#2264: signal process started
+2023/10/17 18:44:36 [error] 2008#10380: *45 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/17 18:44:39 [error] 2008#10380: *45 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 10:34:14 [error] 2008#10380: *50 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 10:34:23 [error] 2008#10380: *58 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 10:34:28 [error] 2008#10380: *58 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:27:51 [error] 2008#10380: *62 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /api/item/10002 HTTP/1.1", upstream: "http://172.21.149.130:8081/api/item/10002", host: "localhost:8082", referrer: "http://localhost:8082/item.html?id=10002"
+2023/10/18 11:30:56 [notice] 5940#23120: signal process started
+2023/10/18 11:31:28 [error] 15852#13116: *96 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:31:32 [error] 15852#13116: *97 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:31:44 [error] 15852#13116: *100 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:35:14 [error] 15852#13116: *116 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:35:17 [error] 15852#13116: *118 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:38:07 [error] 15852#13116: *123 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:38:10 [error] 15852#13116: *123 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:38:24 [notice] 20628#21704: signal process started
+2023/10/18 11:44:00 [notice] 16752#7212: signal process started
+2023/10/18 11:44:33 [notice] 21636#13428: signal process started
+2023/10/18 11:44:33 [error] 21636#13428: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2023/10/18 11:49:40 [error] 22968#24136: *5 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:49:43 [error] 22968#24136: *10 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:52:34 [error] 22968#24136: *20 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:52:36 [error] 22968#24136: *20 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:53:55 [error] 22968#24136: *26 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:54:07 [error] 22968#24136: *29 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:54:10 [error] 22968#24136: *29 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:57:34 [error] 22968#24136: *35 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 11:57:39 [error] 22968#24136: *39 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 12:01:46 [error] 22968#24136: *42 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 12:01:50 [error] 22968#24136: *43 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/18 12:12:13 [error] 22968#24136: *47 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/js/axios.min.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /js/axios.min.map HTTP/1.1", host: "localhost:8082"
+2023/10/19 08:53:26 [notice] 24092#20320: signal process started
+2023/10/22 17:52:30 [error] 10476#6960: *108 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/assets/img/favicon.ico" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /assets/img/favicon.ico HTTP/1.1", host: "localhost:8082", referrer: "http://localhost:8082/item.html?id=10003"
+2025/03/13 03:21:09 [emerg] 22928#10728: "server" directive is not allowed here in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:1
+2025/03/13 03:24:31 [notice] 22432#20440: signal process started
+2025/03/13 03:31:31 [emerg] 7476#18028: "server" directive is not allowed here in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:1
+2025/03/13 03:32:38 [notice] 18028#20524: signal process started
+2025/03/13 03:33:09 [error] 19512#14728: *3 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/xxx/api/ticket-service/station/all" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "GET /xxx/api/ticket-service/station/all HTTP/1.1", host: "localhost:9002"
+2025/03/13 03:33:22 [error] 19512#14728: *6 CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/html/xxx/api/ticket-service/station/all" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: localhost, request: "POST /xxx/api/ticket-service/station/all HTTP/1.1", host: "localhost:9002", referrer: ""
+2025/03/13 03:36:36 [notice] 1388#10512: signal process started
+2025/03/13 03:37:26 [notice] 15840#19932: signal process started
+2025/03/13 03:43:30 [notice] 17844#9628: signal process started
+2025/03/13 03:45:10 [notice] 20752#12792: signal process started
+2025/03/13 03:45:10 [error] 20752#12792: OpenEvent("Global\ngx_stop_19272") failed (5: Access is denied)
+2025/03/13 21:54:26 [notice] 27864#26148: signal process started
+2025/03/13 21:58:01 [notice] 26796#25376: signal process started
+2025/03/13 22:11:40 [notice] 23124#25920: signal process started
+2025/03/13 22:23:24 [notice] 27132#7616: signal process started
+2025/03/13 22:25:00 [notice] 21032#26128: signal process started
+2025/03/13 22:25:04 [notice] 8516#21268: signal process started
+2025/03/13 22:26:27 [notice] 12856#17372: signal process started
+2025/03/13 22:26:29 [notice] 24248#24528: signal process started
+2025/03/13 22:26:29 [error] 24248#24528: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 22:27:37 [notice] 25340#5652: signal process started
+2025/03/13 22:28:07 [notice] 2840#21172: signal process started
+2025/03/13 22:30:17 [notice] 20968#26772: signal process started
+2025/03/13 22:32:15 [notice] 21088#14140: signal process started
+2025/03/13 22:32:49 [notice] 26100#27948: signal process started
+2025/03/13 22:33:21 [notice] 10868#25624: signal process started
+2025/03/13 22:33:43 [notice] 21716#27996: signal process started
+2025/03/13 22:34:11 [notice] 2624#27600: signal process started
+2025/03/13 22:35:21 [notice] 22908#12592: signal process started
+2025/03/13 22:35:21 [error] 22908#12592: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 22:35:59 [notice] 24500#26724: signal process started
+2025/03/13 22:36:02 [notice] 26528#24924: signal process started
+2025/03/13 22:36:02 [error] 26528#24924: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 22:38:01 [notice] 28176#20796: signal process started
+2025/03/13 22:38:08 [notice] 20548#23148: signal process started
+2025/03/13 22:38:08 [error] 20548#23148: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 22:38:52 [notice] 28464#25392: signal process started
+2025/03/13 22:38:52 [error] 28464#25392: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 22:40:16 [notice] 25020#24960: signal process started
+2025/03/13 22:40:16 [error] 25020#24960: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 22:40:55 [notice] 2804#4216: signal process started
+2025/03/13 22:41:56 [emerg] 21676#21720: "server" directive is not allowed here in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:7
+2025/03/13 22:42:09 [emerg] 27000#27532: "server" directive is not allowed here in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:7
+2025/03/13 22:43:03 [emerg] 26572#24012: invalid parameter "http" in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:14
+2025/03/13 22:43:38 [notice] 26088#16364: signal process started
+2025/03/13 22:43:38 [error] 26088#16364: invalid PID number "" in "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid"
+2025/03/13 22:44:25 [notice] 27596#24272: signal process started
+2025/03/13 22:54:00 [notice] 28296#7752: signal process started
+2025/03/13 22:54:36 [notice] 22896#26876: signal process started
+2025/03/13 22:54:38 [notice] 20136#25272: signal process started
+2025/03/13 22:57:35 [notice] 27624#19200: signal process started
+2025/03/13 22:57:35 [error] 27624#19200: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 22:59:13 [notice] 13104#25968: signal process started
+2025/03/13 22:59:17 [notice] 24344#1600: signal process started
+2025/03/13 23:00:17 [notice] 24060#18480: signal process started
+2025/03/13 23:00:27 [notice] 10864#21708: signal process started
+2025/03/13 23:14:15 [notice] 24008#7480: signal process started
+2025/03/13 23:14:33 [notice] 1388#28044: signal process started
+2025/03/13 23:14:33 [error] 1388#28044: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/13 23:16:21 [notice] 20240#2728: signal process started
+2025/03/13 23:17:51 [notice] 20008#16468: signal process started
+2025/03/13 23:17:59 [notice] 16364#26512: signal process started
+2025/03/13 23:22:20 [emerg] 28176#21556: unexpected ";" in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:23
+2025/03/13 23:22:38 [emerg] 16548#22328: unexpected ";" in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:23
+2025/03/13 23:24:03 [notice] 24172#12112: signal process started
+2025/03/13 23:25:38 [emerg] 26164#27844: unknown "origin" variable
+2025/03/13 23:25:50 [emerg] 15208#2840: unknown "origin" variable
+2025/03/13 23:27:19 [emerg] 28396#23876: invalid number of arguments in "add_header" directive in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:24
+2025/03/13 23:28:47 [notice] 26356#28440: signal process started
+2025/03/13 23:29:40 [notice] 27068#28372: signal process started
+2025/03/13 23:30:54 [notice] 18132#16036: signal process started
+2025/03/13 23:33:02 [notice] 11308#25420: signal process started
+2025/03/13 23:37:11 [notice] 26380#19524: signal process started
+2025/03/13 23:37:50 [notice] 22328#21564: signal process started
+2025/03/13 23:40:53 [notice] 22684#21736: signal process started
+2025/03/13 23:41:45 [notice] 13988#23596: signal process started
+2025/03/13 23:42:17 [notice] 3784#27612: signal process started
+2025/03/13 23:43:07 [notice] 19792#27232: signal process started
+2025/03/13 23:44:38 [notice] 27252#27008: signal process started
+2025/03/13 23:50:14 [notice] 18492#26796: signal process started
+2025/03/13 23:50:43 [notice] 12668#16928: signal process started
+2025/03/13 23:52:37 [notice] 27452#27960: signal process started
+2025/03/13 23:56:11 [notice] 24408#20004: signal process started
+2025/03/14 00:01:08 [notice] 8064#26276: signal process started
+2025/03/14 00:02:00 [notice] 20784#1848: signal process started
+2025/03/14 00:08:31 [notice] 28176#28164: signal process started
+2025/03/14 00:08:31 [error] 28176#28164: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/14 00:31:02 [notice] 27136#17344: signal process started
+2025/03/14 00:31:02 [emerg] 26636#22260: CreateFile() "D:/var/log/nginx/error.log" failed (3: The system cannot find the path specified)
+2025/03/14 00:31:26 [notice] 21100#27304: signal process started
+2025/03/14 00:31:26 [emerg] 26636#22260: CreateFile() "D:/var/log/nginx/error.log" failed (3: The system cannot find the path specified)
+2025/03/14 00:32:13 [notice] 26468#26772: signal process started
+2025/03/14 00:32:18 [notice] 25396#16460: signal process started
+2025/03/14 00:32:18 [error] 25396#16460: CreateFile() "D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2025/03/14 00:32:24 [emerg] 24832#11064: CreateFile() "D:/var/log/nginx/error.log" failed (3: The system cannot find the path specified)
+2025/03/14 00:33:49 [emerg] 28668#21140: CreateFile() "D:/var/log/nginx/error.log" failed (3: The system cannot find the path specified)
+2025/03/14 20:08:39 [emerg] 32564#24644: unknown "service_name" variable
+2025/03/14 20:09:06 [notice] 29960#21652: signal process started
+2025/03/14 20:12:02 [notice] 27340#17076: signal process started
+2025/03/14 20:15:37 [notice] 18588#29784: signal process started
+2025/03/14 20:16:38 [error] 30048#23676: *27 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/register HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/register", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/14 20:16:40 [error] 30048#23676: *27 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/register HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/register", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/15 18:08:28 [error] 30048#23676: *127 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/15 18:08:30 [error] 30048#23676: *127 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/15 19:07:07 [emerg] 24388#30568: invalid number of arguments in "proxy_pass_header" directive in D:\CODE\PROJECT\FRONTEND\nginx-1.18.0/conf/nginx.conf:45
+2025/03/15 19:07:39 [notice] 1328#27964: signal process started
+2025/03/16 22:41:57 [error] 15732#16232: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:41:57 [error] 15732#16232: *2 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:41:57 [error] 15732#16232: *2 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:41:59 [error] 15732#16232: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:43:36 [error] 15732#16232: *7 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:43:36 [error] 15732#16232: *7 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16 HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:43:36 [error] 15732#16232: *8 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:43:36 [error] 15732#16232: *8 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:44:50 [error] 15732#16232: *12 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:44:50 [error] 15732#16232: *12 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16 HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-16", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:44:50 [error] 15732#16232: *13 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/16 22:44:50 [error] 15732#16232: *13 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:50 [error] 15732#16232: *683 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:50 [error] 15732#16232: *682 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:50 [error] 15732#16232: *682 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:52 [error] 15732#16232: *683 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:56 [error] 15732#16232: *683 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:56 [error] 15732#16232: *682 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:56 [error] 15732#16232: *682 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:58 [error] 15732#16232: *683 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:58 [error] 15732#16232: *683 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22 HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:25:58 [error] 15732#16232: *682 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:26:08 [error] 15732#16232: *683 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:26:08 [error] 15732#16232: *683 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:26:08 [error] 15732#16232: *682 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:26:08 [error] 15732#16232: *682 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22 HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-22", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:35:42 [error] 15732#16232: *693 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:35:42 [error] 15732#16232: *693 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:35:42 [error] 15732#16232: *695 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:35:42 [error] 15732#16232: *695 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:35:46 [error] 15732#16232: *695 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:35:47 [error] 15732#16232: *695 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:35:48 [error] 15732#16232: *695 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:25 [error] 15732#16232: *698 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:26 [error] 15732#16232: *700 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/logout HTTP/1.1", upstream: "http://user-cluster/api/user-service/logout", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:27 [error] 15732#16232: *698 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:32 [error] 15732#16232: *702 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:34 [error] 15732#16232: *702 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/logout HTTP/1.1", upstream: "http://user-cluster/api/user-service/logout", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:51 [error] 15732#16232: *709 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:53 [error] 15732#16232: *709 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:53 [error] 15732#16232: *709 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:36:54 [error] 15732#16232: *709 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:37:57 [error] 15732#16232: *715 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:37:57 [error] 15732#16232: *715 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:37:58 [error] 15732#16232: *717 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:37:58 [error] 15732#16232: *717 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:39:51 [error] 15732#16232: *719 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:39:53 [error] 15732#16232: *719 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:07 [error] 15732#16232: *723 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:07 [error] 15732#16232: *723 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:08 [error] 15732#16232: *725 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:08 [error] 15732#16232: *725 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:10 [error] 15732#16232: *725 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:17 [error] 15732#16232: *727 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:21 [error] 15732#16232: *727 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:21 [error] 15732#16232: *727 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:23 [error] 15732#16232: *728 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:40:23 [error] 15732#16232: *728 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:44:36 [error] 15732#16232: *743 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:44:36 [error] 15732#16232: *743 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:44:36 [error] 15732#16232: *745 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/22 23:44:36 [error] 15732#16232: *745 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:05:30 [error] 15732#16232: *781 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:05:30 [error] 15732#16232: *781 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:05:31 [error] 15732#16232: *783 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:05:31 [error] 15732#16232: *783 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:55:06 [error] 15732#16232: *808 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:55:08 [error] 15732#16232: *808 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:59:24 [error] 15732#16232: *819 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 00:59:26 [error] 15732#16232: *819 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 14:35:31 [error] 15732#16232: *908 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-23 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-23", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 14:35:31 [error] 15732#16232: *907 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 14:35:31 [error] 15732#16232: *907 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 14:35:33 [error] 15732#16232: *908 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-23 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-23", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 14:35:34 [error] 15732#16232: *908 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-23 HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-23", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 15:55:36 [error] 15732#16232: *937 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 15:55:38 [error] 15732#16232: *941 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 15:55:38 [error] 15732#16232: *941 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=hokit HTTP/1.1", upstream: "http://user-cluster/api/user-service/passenger/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 15:55:38 [error] 15732#16232: *937 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 16:04:11 [error] 15732#16232: *992 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://[::1]:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/23 16:04:13 [error] 15732#16232: *992 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=hokit HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=hokit", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/25 22:04:13 [error] 15732#16232: *1177 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-25 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-25", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/25 22:04:13 [error] 15732#16232: *1176 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/25 22:04:13 [error] 15732#16232: *1176 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/25 22:04:15 [error] 15732#16232: *1177 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-25 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-25", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:07:27 [error] 25936#7092: *53 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:07:29 [error] 25936#7092: *53 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:22:35 [error] 25936#7092: *78 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:24:25 [error] 25936#7092: *84 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:24:25 [error] 25936#7092: *84 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30 HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:24:25 [error] 25936#7092: *85 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:24:25 [error] 25936#7092: *85 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:24:27 [error] 25936#7092: *88 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:24:27 [error] 25936#7092: *88 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30 HTTP/1.1", upstream: "http://ticket-cluster/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:28:42 [error] 25936#7092: *99 WSARecv() failed (10054: An existing connection was forcibly closed by the remote host) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 20:33:39 [error] 25936#7092: *102 WSARecv() failed (10054: An existing connection was forcibly closed by the remote host) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 21:44:08 [error] 25936#7092: *135 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 22:06:12 [error] 25936#7092: *144 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 22:07:01 [error] 25936#7092: *147 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/purchase HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/purchase", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 22:11:25 [error] 25936#7092: *155 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30 HTTP/1.1", upstream: "http://[::1]:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 22:11:25 [error] 25936#7092: *156 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/station/all HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/station/all", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/03/30 22:11:36 [error] 25936#7092: *163 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-03-30", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 18:36:36 [emerg] 11040#11844: no "events" section in configuration
+2025/04/13 18:42:34 [emerg] 26964#2180: no "events" section in configuration
+2025/04/13 18:42:43 [emerg] 23748#21808: no "events" section in configuration
+2025/04/13 18:42:50 [emerg] 3256#23652: no "events" section in configuration
+2025/04/13 18:43:01 [emerg] 22420#25640: no "events" section in configuration
+2025/04/13 18:43:15 [emerg] 12028#3528: no "events" section in configuration
+2025/04/13 18:43:22 [emerg] 23080#22648: no "events" section in configuration
+2025/04/13 18:44:01 [notice] 9476#17452: signal process started
+2025/04/13 18:44:12 [notice] 13636#27496: signal process started
+2025/04/13 18:48:08 [notice] 27092#21304: signal process started
+2025/04/13 18:50:15 [notice] 26848#12256: signal process started
+2025/04/13 19:13:32 [notice] 9532#25056: signal process started
+2025/04/13 19:13:39 [notice] 14040#23856: signal process started
+2025/04/13 19:19:24 [info] 23780#20664: *67 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:19:24 [info] 23780#20664: *66 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:19:24 [info] 23780#20664: *70 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 19:20:26 [info] 23780#20664: *90 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 19:36:08 [error] 23780#20664: *94 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:11 [error] 23780#20664: *96 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:13 [error] 23780#20664: *98 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:13 [error] 23780#20664: *100 WSARecv() failed (10054: An existing connection was forcibly closed by the remote host) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:13 [error] 23780#20664: *104 WSARecv() failed (10054: An existing connection was forcibly closed by the remote host) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-19 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-19", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:13 [error] 23780#20664: *94 WSARecv() failed (10054: An existing connection was forcibly closed by the remote host) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-19 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-19", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:13 [error] 23780#20664: *102 WSARecv() failed (10054: An existing connection was forcibly closed by the remote host) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-18", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:15 [info] 23780#20664: *96 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:36:15 [info] 23780#20664: *100 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:36:15 [info] 23780#20664: *98 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:36:15 [info] 23780#20664: *94 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:36:15 [info] 23780#20664: *102 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:36:15 [info] 23780#20664: *104 client 127.0.0.1 closed keepalive connection
+2025/04/13 19:36:27 [info] 23780#20664: *119 client prematurely closed connection, so upstream connection is closed too while sending request to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:36:27 [info] 23780#20664: *121 client prematurely closed connection, so upstream connection is closed too while sending request to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:37:29 [error] 23780#20664: *123 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:37:31 [error] 23780#20664: *124 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:37:41 [error] 23780#20664: *127 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-13", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:37:44 [error] 23780#20664: *131 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:38:02 [error] 23780#20664: *138 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:38:11 [error] 23780#20664: *134 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14 HTTP/1.1", upstream: "http://127.0.0.1:8082/api/ticket-service/ticket/query?fromStation=BJP&toStation=HZH&departureDate=2025-04-14", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/13 19:39:46 [info] 23780#20664: *138 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:13:44 [info] 23780#20664: *149 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:13:44 [info] 23780#20664: *153 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:13:44 [info] 23780#20664: *150 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:14:24 [info] 23780#20664: *154 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:14:24 [info] 23780#20664: *156 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:14:34 [info] 23780#20664: *159 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:14:34 [info] 23780#20664: *157 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:14:54 [info] 23780#20664: *163 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:14:54 [info] 23780#20664: *161 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:18:54 [info] 23780#20664: *167 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:18:54 [info] 23780#20664: *169 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:19:39 [info] 23780#20664: *170 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:19:39 [info] 23780#20664: *172 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:23:54 [info] 23780#20664: *180 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:23:54 [info] 23780#20664: *178 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:24:04 [info] 23780#20664: *184 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:24:04 [info] 23780#20664: *186 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:24:34 [info] 23780#20664: *187 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:24:34 [info] 23780#20664: *189 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:24:39 [info] 23780#20664: *190 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:24:39 [info] 23780#20664: *192 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:24:45 [info] 23780#20664: *193 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:24:45 [info] 23780#20664: *195 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:26:05 [info] 23780#20664: *198 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:26:05 [info] 23780#20664: *196 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:26:10 [info] 23780#20664: *202 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:26:10 [info] 23780#20664: *204 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:29:20 [info] 23780#20664: *205 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:29:20 [info] 23780#20664: *207 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:29:40 [info] 23780#20664: *208 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:29:40 [info] 23780#20664: *210 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:29:50 [info] 23780#20664: *211 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:29:50 [info] 23780#20664: *213 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:30:00 [info] 23780#20664: *216 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:30:00 [info] 23780#20664: *214 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:30:10 [info] 23780#20664: *220 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:30:10 [info] 23780#20664: *218 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:30:20 [info] 23780#20664: *222 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:30:20 [info] 23780#20664: *224 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:31:00 [info] 23780#20664: *227 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:31:00 [info] 23780#20664: *225 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:31:20 [info] 23780#20664: *229 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:31:20 [info] 23780#20664: *231 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:32:50 [info] 23780#20664: *234 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:32:50 [info] 23780#20664: *232 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:35:00 [info] 23780#20664: *236 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:35:00 [info] 23780#20664: *238 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:35:10 [info] 23780#20664: *239 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:35:10 [info] 23780#20664: *241 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:35:15 [info] 23780#20664: *242 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:35:15 [info] 23780#20664: *244 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:35:20 [info] 23780#20664: *245 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:35:20 [info] 23780#20664: *247 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:40:46 [info] 23780#20664: *253 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:40:46 [info] 23780#20664: *255 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:41:56 [info] 23780#20664: *257 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:41:56 [info] 23780#20664: *256 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:41:56 [info] 23780#20664: *260 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:42:06 [info] 23780#20664: *264 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:42:06 [info] 23780#20664: *262 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:42:36 [info] 23780#20664: *266 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:42:36 [info] 23780#20664: *268 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:42:41 [info] 23780#20664: *269 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:42:41 [info] 23780#20664: *271 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:42:46 [info] 23780#20664: *272 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:42:46 [info] 23780#20664: *274 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:43:16 [info] 23780#20664: *275 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:43:16 [info] 23780#20664: *277 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:43:26 [info] 23780#20664: *278 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:43:26 [info] 23780#20664: *280 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:43:36 [info] 23780#20664: *281 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:43:36 [info] 23780#20664: *283 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:43:46 [info] 23780#20664: *284 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:43:46 [info] 23780#20664: *286 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:44:16 [info] 23780#20664: *287 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:44:16 [info] 23780#20664: *289 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:44:26 [info] 23780#20664: *292 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:44:26 [info] 23780#20664: *290 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:44:36 [info] 23780#20664: *296 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:44:36 [info] 23780#20664: *294 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:50:26 [info] 23780#20664: *301 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:52:12 [info] 23780#20664: *307 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:52:12 [info] 23780#20664: *305 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:53:25 [info] 23780#20664: *313 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 20:54:42 [info] 23780#20664: *316 client 127.0.0.1 closed keepalive connection
+2025/04/13 20:54:42 [info] 23780#20664: *310 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:04:21 [info] 23780#20664: *341 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:04:21 [info] 23780#20664: *342 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:04:21 [info] 23780#20664: *343 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:05:33 [info] 23780#20664: *347 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:05:33 [info] 23780#20664: *346 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:05:33 [info] 23780#20664: *350 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:07:13 [info] 23780#20664: *354 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:07:13 [info] 23780#20664: *351 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:07:23 [info] 23780#20664: *357 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:07:23 [info] 23780#20664: *356 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:07:23 [info] 23780#20664: *360 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:07:33 [info] 23780#20664: *362 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:07:33 [info] 23780#20664: *361 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:07:33 [info] 23780#20664: *365 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:07:43 [info] 23780#20664: *367 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:07:43 [info] 23780#20664: *366 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:07:43 [info] 23780#20664: *370 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:08:33 [info] 23780#20664: *374 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:08:33 [info] 23780#20664: *371 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:08:43 [info] 23780#20664: *377 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:08:43 [info] 23780#20664: *376 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:08:43 [info] 23780#20664: *380 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:09:13 [info] 23780#20664: *381 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:09:13 [info] 23780#20664: *383 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:09:23 [info] 23780#20664: *386 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:09:23 [info] 23780#20664: *384 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:10:03 [info] 23780#20664: *392 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:10:03 [info] 23780#20664: *390 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:10:13 [info] 23780#20664: *396 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:10:13 [info] 23780#20664: *395 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:10:13 [info] 23780#20664: *399 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:10:23 [info] 23780#20664: *403 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:10:23 [info] 23780#20664: *406 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:11:59 [info] 23780#20664: *411 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:53:41 [info] 23780#20664: *414 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:53:41 [info] 23780#20664: *412 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:53:46 [info] 23780#20664: *417 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:53:46 [info] 23780#20664: *421 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:53:46 [info] 23780#20664: *418 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:53:51 [info] 23780#20664: *422 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:54:01 [info] 23780#20664: *424 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:54:52 [info] 23780#20664: *426 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:54:52 [info] 23780#20664: *428 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:55:32 [info] 23780#20664: *429 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:55:32 [info] 23780#20664: *431 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:56:22 [info] 23780#20664: *434 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/13 21:56:22 [info] 23780#20664: *432 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:56:32 [info] 23780#20664: *438 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:56:32 [info] 23780#20664: *436 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:57:42 [info] 23780#20664: *442 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:57:42 [info] 23780#20664: *441 client 127.0.0.1 closed keepalive connection
+2025/04/13 21:57:42 [info] 23780#20664: *445 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 00:14:39 [info] 23780#20664: *450 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 00:14:39 [info] 23780#20664: *446 client 127.0.0.1 closed keepalive connection
+2025/04/14 00:14:39 [info] 23780#20664: *447 client 127.0.0.1 closed keepalive connection
+2025/04/14 00:14:49 [info] 23780#20664: *455 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 00:14:49 [info] 23780#20664: *453 client 127.0.0.1 closed keepalive connection
+2025/04/14 00:16:00 [info] 23780#20664: *461 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 00:38:51 [info] 23780#20664: *464 client 127.0.0.1 closed keepalive connection
+2025/04/14 00:38:51 [info] 23780#20664: *463 client 127.0.0.1 closed keepalive connection
+2025/04/14 00:38:51 [info] 23780#20664: *467 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 00:39:11 [info] 23780#20664: *470 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 00:39:11 [info] 23780#20664: *468 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:34:20 [info] 23780#20664: *515 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:34:20 [info] 23780#20664: *517 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:35:43 [info] 23780#20664: *547 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 01:35:55 [info] 23780#20664: *543 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:35:55 [info] 23780#20664: *544 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:36:05 [info] 23780#20664: *570 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 01:36:05 [info] 23780#20664: *568 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:37:21 [info] 23780#20664: *576 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 01:37:55 [info] 23780#20664: *590 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 01:37:55 [info] 23780#20664: *574 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:38:05 [info] 23780#20664: *594 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:38:05 [info] 23780#20664: *592 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:38:35 [info] 23780#20664: *601 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 01:38:35 [info] 23780#20664: *599 client 127.0.0.1 closed keepalive connection
+2025/04/14 01:41:51 [info] 23780#20664: *607 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 01:55:42 [info] 23780#20664: *683 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 01:55:42 [info] 23780#20664: *684 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 02:00:06 [info] 23780#20664: *689 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 02:03:32 [info] 23780#20664: *700 client timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:53:15 [info] 23780#20664: *720 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:53:15 [info] 23780#20664: *724 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:53:15 [info] 23780#20664: *721 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:54:35 [info] 23780#20664: *726 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:54:35 [info] 23780#20664: *725 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:54:35 [info] 23780#20664: *731 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:20 [info] 23780#20664: *738 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:20 [info] 23780#20664: *740 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:20 [info] 23780#20664: *739 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:20 [info] 23780#20664: *733 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:55:20 [info] 23780#20664: *732 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:55:35 [info] 23780#20664: *745 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:55:35 [info] 23780#20664: *751 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:35 [info] 23780#20664: *752 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:35 [info] 23780#20664: *753 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:35 [info] 23780#20664: *746 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:55:55 [info] 23780#20664: *755 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:55:55 [info] 23780#20664: *760 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:55:55 [info] 23780#20664: *759 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:56:05 [info] 23780#20664: *763 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:56:05 [info] 23780#20664: *761 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:56:45 [info] 23780#20664: *773 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:56:45 [info] 23780#20664: *767 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:56:45 [info] 23780#20664: *768 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:56:45 [info] 23780#20664: *775 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:56:45 [info] 23780#20664: *774 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:56:55 [info] 23780#20664: *781 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:56:55 [info] 23780#20664: *785 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:56:55 [info] 23780#20664: *782 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:57:35 [info] 23780#20664: *790 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:57:35 [info] 23780#20664: *786 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:57:35 [info] 23780#20664: *787 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:57:55 [info] 23780#20664: *793 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:57:55 [info] 23780#20664: *795 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:58:15 [info] 23780#20664: *797 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:58:15 [info] 23780#20664: *796 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:58:15 [info] 23780#20664: *800 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:59:16 [info] 23780#20664: *805 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 12:59:16 [info] 23780#20664: *801 client 127.0.0.1 closed keepalive connection
+2025/04/14 12:59:16 [info] 23780#20664: *802 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:01:16 [info] 23780#20664: *812 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:01:16 [info] 23780#20664: *811 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:01:16 [info] 23780#20664: *819 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:01:16 [info] 23780#20664: *821 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:01:16 [info] 23780#20664: *820 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:01:16 [info] 23780#20664: *822 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:16 [info] 23780#20664: *831 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:16 [info] 23780#20664: *832 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:16 [info] 23780#20664: *833 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:16 [info] 23780#20664: *823 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:04:16 [info] 23780#20664: *824 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:04:16 [info] 23780#20664: *834 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:31 [info] 23780#20664: *847 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:04:31 [info] 23780#20664: *848 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:04:31 [info] 23780#20664: *853 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:31 [info] 23780#20664: *855 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:31 [info] 23780#20664: *854 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:41 [info] 23780#20664: *862 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:41 [info] 23780#20664: *856 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:04:41 [info] 23780#20664: *864 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:41 [info] 23780#20664: *863 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:04:41 [info] 23780#20664: *857 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:05:21 [info] 23780#20664: *870 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:05:21 [info] 23780#20664: *869 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:05:21 [info] 23780#20664: *875 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:05:21 [info] 23780#20664: *876 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:05:21 [info] 23780#20664: *877 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:05:31 [info] 23780#20664: *879 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:05:31 [info] 23780#20664: *878 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:05:31 [info] 23780#20664: *884 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:31:23 [info] 23780#20664: *887 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:31:23 [info] 23780#20664: *885 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:32:13 [info] 23780#20664: *889 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:32:13 [info] 23780#20664: *891 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:32:23 [info] 23780#20664: *893 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:32:23 [info] 23780#20664: *892 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:32:23 [info] 23780#20664: *896 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:32:33 [info] 23780#20664: *900 client closed connection while waiting for request, client: 127.0.0.1, server: 0.0.0.0:8848
+2025/04/14 13:32:33 [info] 23780#20664: *898 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:56:15 [info] 23780#20664: *904 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:56:15 [info] 23780#20664: *902 client 127.0.0.1 closed keepalive connection
+2025/04/14 13:59:29 [error] 23780#20664: *926 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/query?username=root HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/query?username=root", host: "localhost:8848", referrer: "http://localhost:8080/"
+2025/04/14 13:59:29 [info] 23780#20664: *924 client prematurely closed connection, so upstream connection is closed too while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /api/user-service/passenger/query?username=root HTTP/1.1", upstream: "http://127.0.0.1:8081/api/user-service/passenger/query?username=root", host: "localhost:8848", referrer: "http://localhost:8080/"

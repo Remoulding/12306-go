@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"github.com/Remoulding/12306-go/ticket-service/configs"
-	"github.com/Remoulding/12306-go/ticket-service/rpc"
 	"log"
 	"os"
 	"os/signal"
@@ -16,7 +15,7 @@ func main() {
 	configs.InitCache()
 	configs.InitRedSync()
 	// 初始化client
-	rpc.InitClient()
+	configs.InitUserServiceClient()
 	// 创建全局 context，用于优雅退出
 	ctx, cancel := context.WithCancel(context.Background())
 
@@ -25,6 +24,9 @@ func main() {
 
 	// 启动 gRPC Gateway
 	InitWebServer(ctx)
+
+	// 启动 Canal 服务
+	//InitCanal(ctx)
 
 	// 监听系统信号，优雅退出
 	sigChan := make(chan os.Signal, 1)
@@ -35,7 +37,7 @@ func main() {
 	// 触发 context 取消
 	cancel()
 
-	// 额外等待 2s 让 goroutine 执行清理
-	time.Sleep(2 * time.Second)
+	// 额外等待 3s 让 goroutine 执行清理
+	time.Sleep(3 * time.Second)
 	log.Println("✅ Server shutdown complete")
 }

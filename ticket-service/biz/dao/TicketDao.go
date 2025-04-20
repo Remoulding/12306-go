@@ -12,6 +12,7 @@ func QueryTicket(ctx context.Context, condition map[string]interface{}) ([]*mode
 	for exp, val := range condition {
 		query = query.Where(exp, val)
 	}
+	query = query.Where("del_flag = ?", 0).Order("create_time desc")
 	if err := query.Scan(&tickets).Error; err != nil {
 		configs.Log.WithContext(ctx).Errorf("query ticket failed, err: %v", err)
 		return nil, err

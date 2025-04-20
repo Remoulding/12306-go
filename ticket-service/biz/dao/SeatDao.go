@@ -5,6 +5,9 @@ import (
 	"errors"
 	"github.com/Remoulding/12306-go/ticket-service/biz/model"
 	"github.com/Remoulding/12306-go/ticket-service/configs"
+	"github.com/go-sql-driver/mysql"
+	"gorm.io/gorm/clause"
+	"log"
 )
 
 func QuerySeats(ctx context.Context, condition map[string]interface{}) ([]*model.SeatDO, error) {
@@ -13,7 +16,7 @@ func QuerySeats(ctx context.Context, condition map[string]interface{}) ([]*model
 	for exp, val := range condition {
 		query = query.Where(exp, val)
 	}
-	err := query.Scan(seats).Error
+	err := query.Scan(&seats).Error
 	if err != nil {
 		configs.Log.WithContext(ctx).Errorf("query seat failed, err: %v", err)
 		return nil, err
@@ -21,6 +24,31 @@ func QuerySeats(ctx context.Context, condition map[string]interface{}) ([]*model
 	return seats, nil
 }
 
+func UpsertSeats(ctx context.Context, seat []*model.SeatDO, ignoreDup bool, updateCols []string, eqCondition map[string]interface{}) error {
+	// 使用clause
+	var clauses []clause.Expression
+	onConflict := clause.OnConflict{
+		Columns: []clause.Column{{Name: "train_id"}, {Name: "carriage_number"}, {Name: "seat_number"},
+			{Name: "start_station"}, {Name: "end_station"}, {Name: "departure_date"}},
+	}
+	onConflict.DoUpdates = clause.AssignmentColumns(updateCols)
+
+	if ignoreDup {
+		onConflict.DoNothing = true
+	} else {
+		onConflict.DoUpdates = clause.AssignmentColumns(updateCols)
+	}
+	clauses = append(clauses, onConflict)
+	if len(eqCondition) > 0 {
+		where := clause.Where{}
+		for k, v := range eqCondition {
+			where.Exprs = append(where.Exprs, clause.Eq{Column: clause.Column{Name: k}, Value: v})
+		}
+		clauses = append(clauses, where)
+	}
+
+	return configs.DB.Model(&model.SeatDO{}).WithContext(ctx).Clauses(clauses...).Create(&seat).Error
+}
 func UpdateSeats(ctx context.Context, condition, update map[string]interface{}) error {
 	tx := configs.DB.Model(&model.SeatDO{})
 	for exp, val := range condition {
@@ -54,7 +82,7 @@ func ListSeatRemainingTicket(ctx context.Context, seatDO *model.SeatDO, carriage
 		Where("start_station = ?", seatDO.StartStation).
 		Where("end_station = ?", seatDO.EndStation).
 		Where("seat_status = 0").
-		Where("departure_date = ", seatDO.DepartureDate).
+		Where("departure_date = ?", seatDO.DepartureDate).
 		Where("carriage_number IN ?", carriageList).
 		Group("carriage_number").
 		Find(&results).Error
@@ -80,4 +108,42 @@ func ListSeatRemainingTicket(ctx context.Context, seatDO *model.SeatDO, carriage
 		}
 	}
 	return finalCounts, nil
+}
+
+type SeatCountByType struct {
+	SeatType int   `json:"seat_type"`
+	Count    int64 `json:"count"`
+}
+
+func QuerySeatCountGroupedByType(ctx context.Context, trainID int64, startStation, endStation, departureDate string) ([]SeatCountByType, error) {
+	var result []SeatCountByType
+
+	err := configs.DB.
+		Model(&model.SeatDO{}).
+		Select("seat_type, COUNT(*) as count").
+		Where("train_id = ? AND start_station = ? AND end_station = ? AND departure_date = ? AND seat_status = 0",
+			trainID, startStation, endStation, departureDate).
+		Group("seat_type").
+		Scan(&result).Error
+
+	return result, err
+}
+
+// BatchInsertSeat 批量插入座位
+func BatchInsertSeat(ctx context.Context, seats []*model.SeatDO) error {
+	err := configs.DB.WithContext(ctx).Create(&seats).Error
+	if err != nil {
+		var mysqlErr *mysql.MySQLError
+		if errors.As(err, &mysqlErr) && mysqlErr.Number == 1062 {
+			log.Println("唯一索引冲突，跳过插入")
+		} else {
+			return err
+		}
+	}
+	return nil
+}
+
+// InsertSeat 批量插入座位
+func InsertSeat(ctx context.Context, seats *model.SeatDO) error {
+	return configs.DB.WithContext(ctx).Save(&seats).Error
 }

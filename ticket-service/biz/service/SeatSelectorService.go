@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Remoulding/12306-go/idl-gen/ticket_service"
+	"github.com/Remoulding/12306-go/ticket-service/tools"
 	"github.com/samber/lo"
 	"strconv"
 )
@@ -40,13 +41,36 @@ func NewSeatSelectorService(ctx context.Context, seatType int) *SeatSelectorServ
 	}
 	if seatType == 2 {
 		s.seatYInt = map[rune]int{
-			'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4,
+			'A': 0, 'B': 1, 'C': 2, 'D': 3, 'F': 4,
 		}
 		s.rowSize = 18
 		s.colSize = 5
 	}
 	return s
 }
+
+var (
+	trainBusinessClassSeatNumberMap = map[int]string{
+		1: "A",
+		2: "C",
+		3: "F",
+	}
+
+	trainFirstClassSeatNumberMap = map[int]string{
+		1: "A",
+		2: "C",
+		3: "D",
+		4: "F",
+	}
+
+	trainSecondClassSeatNumberMap = map[int]string{
+		1: "A",
+		2: "B",
+		3: "C",
+		4: "D",
+		5: "F",
+	}
+)
 
 // Pair 结构体
 type Pair struct {
@@ -58,7 +82,8 @@ func (s *SeatSelectorService) SelectSeats(passengerList []*ticket_service.Purcha
 	trainId := req.GetTrainId()
 	departure := req.GetDeparture()
 	arrival := req.GetArrival()
-	carriageNumber, err := s.seatService.ListUsableCarriageNumber(s.ctx, trainId, s.seatType, departure, arrival, req.GetDepartureDate())
+	trainID, _ := strconv.ParseInt(trainId, 10, 64)
+	carriageNumber, err := s.seatService.ListUsableCarriageNumber(s.ctx, trainID, s.seatType, departure, arrival, req.GetDepartureDate())
 	if err != nil {
 		return nil, err
 	}
@@ -66,6 +91,7 @@ func (s *SeatSelectorService) SelectSeats(passengerList []*ticket_service.Purcha
 	if err != nil {
 		return nil, err
 	}
+	log.WithContext(s.ctx).Infof("余票信息: %v", remainingTicket)
 	if lo.Sum(remainingTicket) < len(passengerList) {
 		return nil, errors.New("余票不足")
 	}
@@ -215,9 +241,11 @@ func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketR
 				}
 			}
 		}
+		log.WithContext(s.ctx).Infof("车厢号: %s, 余票信息: %+v", carriageNumb, tools.MustJson(vacantSeats))
 		// 用户选择的座位
 		sureSeatList := s.calcChooseSeatLevelPairList(actualSeats, req.GetChooseSeats())
 		selectSeats := make([]string, 0, len(req.GetPassengers()))
+		log.WithContext(s.ctx).Infof("用户选座信息: %+v", tools.MustJson(sureSeatList))
 		if len(sureSeatList) > 0 && len(vacantSeats) >= len(req.GetPassengers()) {
 			vacantSeatList := make([]*Pair, 0)
 			if len(sureSeatList) != len(req.GetPassengers()) {
@@ -235,8 +263,8 @@ func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketR
 			}
 			needAdd := len(req.GetPassengers()) - len(sureSeatList)
 			sureSeatList = append(sureSeatList, vacantSeatList[:needAdd]...)
-			s.addSeats(selectSeats, sureSeatList)
-
+			selectSeats = append(selectSeats, s.addSeats(selectSeats, sureSeatList)...)
+			log.WithContext(s.ctx).Infof("最终选座: %+v", tools.MustJson(selectSeats))
 			for i1, selectSeat := range selectSeats {
 				passengerInfo := req.GetPassengers()[i1]
 				resp = append(resp, &TrainPurchaseTicketDTO{
@@ -313,7 +341,7 @@ func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketR
 	return resp, nil
 }
 
-func (s *SeatSelectorService) addSeats(targetSeats []string, seatPairs []*Pair) {
+func (s *SeatSelectorService) addSeats(targetSeats []string, seatPairs []*Pair) []string {
 	for _, sureSeat := range seatPairs {
 		seatStr := strconv.Itoa(sureSeat.X+1) + Convert(s.seatType, sureSeat.Y+1)
 		if sureSeat.X < 9 {
@@ -321,6 +349,7 @@ func (s *SeatSelectorService) addSeats(targetSeats []string, seatPairs []*Pair) 
 		}
 		targetSeats = append(targetSeats, seatStr)
 	}
+	return targetSeats
 }
 
 // calcChooseSeatLevelPairList 计算可用的座位列表
@@ -378,29 +407,6 @@ func (s *SeatSelectorService) calcChooseSeatLevelPairList(actualSeats [][]int, c
 
 	return nil
 }
-
-var (
-	trainBusinessClassSeatNumberMap = map[int]string{
-		1: "A",
-		2: "C",
-		3: "F",
-	}
-
-	trainFirstClassSeatNumberMap = map[int]string{
-		1: "A",
-		2: "C",
-		3: "D",
-		4: "F",
-	}
-
-	trainSecondClassSeatNumberMap = map[int]string{
-		1: "A",
-		2: "B",
-		3: "C",
-		4: "D",
-		5: "F",
-	}
-)
 
 // Convert 根据座位类型转换座位号
 func Convert(seatType, num int) string {

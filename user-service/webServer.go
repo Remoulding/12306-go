@@ -49,7 +49,7 @@ func InitWebServer(ctx context.Context) *http.Server {
 	}
 
 	gwServer := &http.Server{
-		Addr:    ":8081",
+		Addr:    "127.0.0.1:8081",
 		Handler: gwMux,
 	}
 

@@ -62,7 +62,7 @@ func (s *TrainStationService) ListTrainStationRoute(ctx context.Context, trainId
 }
 
 // ListTakeoutTrainStationRoute 获取开始站点和目的站点、中间站点以及关联站点信息
-func (s *TrainStationService) ListTakeoutTrainStationRoute(ctx context.Context, trainId, departure, arrival string) ([]*Route, error) {
+func (s *TrainStationService) ListTakeoutTrainStationRoute(ctx context.Context, trainId int64, departure, arrival string) ([]*Route, error) {
 	condition := map[string]interface{}{
 		"train_id = ?": trainId,
 	}

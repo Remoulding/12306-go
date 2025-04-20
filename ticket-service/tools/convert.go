@@ -1,6 +1,7 @@
 package tools
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
 )
@@ -58,4 +59,9 @@ func ComputeFullTimes(departureDate, departureTime, arrivalTime string, crossDay
 	// 根据 CrossDay 调整到达时间
 	arrivalDateTime = arrivalDateTime.Add(time.Duration(crossDay) * 24 * time.Hour)
 	return departureDateTime.Format(layoutDetail), arrivalDateTime.Format(layoutDetail)
+}
+
+func MustJson(v interface{}) string {
+	data, _ := json.Marshal(v)
+	return string(data)
 }

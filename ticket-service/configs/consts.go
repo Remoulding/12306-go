@@ -55,6 +55,12 @@ const (
 	// LockTrainStationPrice 列车站点座位价格查询分布式锁 Key
 	LockTrainStationPrice = "index12306TicketService:lock:trainStationPrice:%s_%s_%s"
 
+	// TrainRemainTicket 列车站点座位价格查询，Key Prefix + 列车ID_起始城市_终点城市_出发日期
+	TrainRemainTicket = "index12306TicketService:trainStationRemainTicket:%s_%s_%s_%s"
+
+	// LockTrainRemainTicket 列车站点座位价格查询分布式锁 Key
+	LockTrainRemainTicket = "index12306TicketService:lock:trainStationRemainTicket:%s_%s_%s_%s"
+
 	// RegionStation 地区以及车站查询，Key Prefix + (车站名称或查询方式)
 	RegionStation = "index12306TicketService:regionStation:"
 
