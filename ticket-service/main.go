@@ -26,9 +26,6 @@ func main() {
 	// 启动 gRPC Gateway
 	InitWebServer(ctx)
 
-	// 启动 Canal 服务
-	//InitCanal(ctx)
-
 	// 监听系统信号，优雅退出
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
