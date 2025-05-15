@@ -2,8 +2,16 @@ package service
 
 import (
 	"context"
+	"errors"
 	"github.com/Remoulding/12306-go/ticket-service/biz/dao"
 	"github.com/Remoulding/12306-go/ticket-service/biz/model"
+	"github.com/Remoulding/12306-go/ticket-service/configs"
+	"gorm.io/gorm"
+
+	//"github.com/Remoulding/12306-go/ticket-service/configs"
+	//"gorm.io/gorm"
+
+	//"github.com/Remoulding/12306-go/ticket-service/configs"
 	"github.com/Remoulding/12306-go/ticket-service/tools"
 	"strconv"
 )
@@ -19,7 +27,7 @@ func NewSeatService() *SeatService {
 }
 
 // ListAvailableSeat 获取列车车厢中可用的座位集合
-func (s *SeatService) ListAvailableSeat(ctx context.Context, trainId string, carriageNumber string, seatType int, departure string, arrival string) ([]string, error) {
+func (s *SeatService) ListAvailableSeat(ctx context.Context, trainId string, carriageNumber string, seatType int, departure string, arrival string, departureDate string) ([]string, error) {
 	conditions := map[string]interface{}{
 		"train_id = ?":        trainId,
 		"carriage_number = ?": carriageNumber,
@@ -27,6 +35,7 @@ func (s *SeatService) ListAvailableSeat(ctx context.Context, trainId string, car
 		"start_station = ?":   departure,
 		"end_station = ?":     arrival,
 		"seat_status = ?":     model.SeatAvailable,
+		"departure_date = ?":  departureDate,
 	}
 	seats, err := dao.QuerySeats(ctx, conditions)
 	if err != nil {
@@ -104,7 +113,27 @@ func (s *SeatService) updateSeatStatus(ctx context.Context, trainId int64, depar
 		"seat_status": 1 - seatStatus,
 	}
 	log.WithContext(ctx).Infof("update seat status: %v", tools.MustJson(seats))
-	return dao.UpsertSeats(ctx, seats, false, []string{"seat_status"}, eqCondition)
+
+	//rows, err := dao.UpsertSeats(ctx, seats, false, []string{"seat_status"}, eqCondition)
+	//if err != nil {
+	//	return err
+	//}
+	//if int(rows) < len(routes) {
+	//	log.WithContext(ctx).Errorf("update seat status failed, rows: %d", rows)
+	//	return errors.New("update seat status failed")
+	//}
+	//return nil
+	return configs.DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+		rows, err := dao.UpsertSeats(ctx, seats, false, []string{"seat_status"}, eqCondition)
+		if err != nil {
+			return err
+		}
+		if int(rows) < len(routes) {
+			log.WithContext(ctx).Errorf("update seat status failed, rows: %d", rows)
+			return errors.New("update seat status failed")
+		}
+		return nil
+	})
 }
 
 // LockSeat 锁定选中以及沿途车票状态

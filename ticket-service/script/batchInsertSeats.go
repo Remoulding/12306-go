@@ -32,7 +32,7 @@ func init() {
 		CarriageNum: []string{"08", "09", "10", "11", "12", "13", "14", "15"},
 	}
 
-	departureDate = []string{"2025-04-14"}
+	departureDate = []string{"2025-05-13"}
 }
 
 type SeatInfo struct {

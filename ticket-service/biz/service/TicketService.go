@@ -10,7 +10,7 @@ import (
 	"github.com/Remoulding/12306-go/ticket-service/configs"
 	"github.com/Remoulding/12306-go/ticket-service/tools"
 	"github.com/bytedance/sonic"
-	"github.com/go-redsync/redsync/v4"
+	//"github.com/go-redsync/redsync/v4"
 	"github.com/samber/lo"
 	"slices"
 	"strconv"
@@ -223,19 +223,18 @@ func (s *TicketService) buildPageListTicketQueryData(trainList []*ticket_service
 
 func (s *TicketService) PurchaseTickets(ctx context.Context, req *ticket_service.PurchaseTicketRequest) (*ticket_service.PurchaseTicketResponse, error) {
 	resp := &ticket_service.PurchaseTicketResponse{}
-	lockKey := fmt.Sprintf(configs.LockPurchaseTickets, req.GetTrainId())
-	mutex := configs.Rs.NewMutex(lockKey, redsync.WithExpiry(5*time.Second))
-	if err := mutex.Lock(); err != nil {
-		log.WithContext(ctx).Errorf("SafeGet add mutex failed, err: %v", err)
-		resp.Message = "预占座位失败"
-		return resp, nil
-	}
-	defer func(mutex *redsync.Mutex) {
-		if _, err := mutex.Unlock(); err != nil {
-			log.WithContext(ctx).Errorf("SafeGet failed, err: %v", err)
-		}
-	}(mutex)
-	//data := &ticket_service.TicketPurchaseData{}
+	//lockKey := fmt.Sprintf(configs.LockPurchaseTickets, req.GetTrainId())
+	//mutex := configs.Rs.NewMutex(lockKey, redsync.WithExpiry(5*time.Second))
+	//if err := mutex.Lock(); err != nil {
+	//	log.WithContext(ctx).Errorf("SafeGet add mutex failed, err: %v", err)
+	//	resp.Message = "预占座位失败"
+	//	return resp, nil
+	//}
+	//defer func(mutex *redsync.Mutex) {
+	//	if _, err := mutex.Unlock(); err != nil {
+	//		log.WithContext(ctx).Errorf("SafeGet failed, err: %v", err)
+	//	}
+	//}(mutex)
 	trainData, err := SafeLoad(ctx, configs.TrainInfo+req.GetTrainId(), configs.LockTrain+req.GetTrainId(), func(ctx context.Context) (interface{}, error) {
 		trainID, _ := strconv.ParseInt(req.GetTrainId(), 10, 64)
 		return dao.QueryTrainById(ctx, trainID)
@@ -282,7 +281,6 @@ func (s *TicketService) PurchaseTickets(ctx context.Context, req *ticket_service
 		resp.Message = "预占座位失败"
 		return resp, nil
 	}
-	//tx.Commit()
 	data := make([]*ticket_service.TicketOrderDetail, 0, len(seats))
 	for _, seat := range seats {
 		data = append(data, &ticket_service.TicketOrderDetail{
@@ -317,9 +315,13 @@ func (s *TicketService) selectSeat(ctx context.Context, req *ticket_service.Purc
 			log.WithContext(ctx).Errorf("NewSeatSelectorService.select seat failed, err: %v", err)
 			return nil, err
 		}
+		configs.Log.WithContext(ctx).Infof("选中座位: %+v", tools.MustJson(seats))
 		resp = append(resp, seats...)
 	}
 	log.WithContext(ctx).Infof("NewSeatSelectorService.select seats: %+v", tools.MustJson(resp))
+	if err := s.seatService.LockSeat(ctx, req.GetTrainId(), req.GetDeparture(), req.GetArrival(), resp); err != nil {
+		return nil, err
+	}
 	lockKey := fmt.Sprintf(configs.LockTrainStationPrice, req.GetTrainId(), req.GetDeparture(), req.GetArrival())
 	loadData, err := SafeLoad(ctx, fmt.Sprintf(configs.TrainStationPrice, req.GetTrainId(), req.GetDeparture(), req.GetArrival()), lockKey, func(ctx context.Context) (interface{}, error) {
 		trainStationPrices, err := dao.QueryTrainStationPrice(ctx, map[string]interface{}{
@@ -367,9 +369,7 @@ func (s *TicketService) selectSeat(ctx context.Context, req *ticket_service.Purc
 			item.DepartureDate = req.GetDepartureDate()
 		}
 	}
-	if err = s.seatService.LockSeat(ctx, req.GetTrainId(), req.GetDeparture(), req.GetArrival(), resp); err != nil {
-		return nil, err
-	}
+
 	return resp, nil
 }
 

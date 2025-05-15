@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	configs.InitLog()
 	configs.InitDBInstance()
 	configs.InitCache()
 	configs.InitRedSync()

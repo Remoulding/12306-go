@@ -18,7 +18,9 @@ const (
 )
 
 func main() {
+	configs.InitDBInstance()
 	configs.InitCache()
+	configs.InitRedSync()
 	// 创建全局 context，用于优雅退出
 	ctx, cancel := context.WithCancel(context.Background())
 
@@ -66,6 +68,11 @@ func InitCanal(ctx context.Context) {
 			log.Fatalf("Canal客户端运行失败: %v", err)
 		}
 	}()
+	//go func() {
+	//	if err = c.Run(); err != nil {
+	//		log.Fatalf("Canal客户端运行失败: %v", err)
+	//	}
+	//}()
 
 	// 监听 context 退出信号
 	go func() {

@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/Remoulding/12306-go/idl-gen/ticket_service"
 	"github.com/Remoulding/12306-go/ticket-service/tools"
-	"github.com/samber/lo"
 	"strconv"
 )
 
@@ -87,30 +86,28 @@ func (s *SeatSelectorService) SelectSeats(passengerList []*ticket_service.Purcha
 	if err != nil {
 		return nil, err
 	}
-	remainingTicket, err := s.seatService.ListSeatRemainingTicket(s.ctx, trainId, departure, arrival, req.GetDepartureDate(), carriageNumber)
-	if err != nil {
-		return nil, err
-	}
-	log.WithContext(s.ctx).Infof("余票信息: %v", remainingTicket)
-	if lo.Sum(remainingTicket) < len(passengerList) {
-		return nil, errors.New("余票不足")
-	}
+	//remainingTicket, err := s.seatService.ListSeatRemainingTicket(s.ctx, trainId, departure, arrival, req.GetDepartureDate(), carriageNumber)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//log.WithContext(s.ctx).Infof("余票信息: %v", remainingTicket)
+	//if lo.Sum(remainingTicket) < len(passengerList) {
+	//	return nil, errors.New("余票不足")
+	//}
 	if len(req.GetChooseSeats()) > 0 {
-		return s.findMatchSeats(req, carriageNumber, remainingTicket)
+		return s.findMatchSeats(req, carriageNumber)
 	}
-	return s.selectSeats(req, carriageNumber, remainingTicket)
+	return s.selectSeats(req, carriageNumber)
 }
 
-func (s *SeatSelectorService) selectSeats(req *ticket_service.PurchaseTicketRequest, carriageNumber []string,
-	remainingTickets []int) ([]*TrainPurchaseTicketDTO, error) {
+func (s *SeatSelectorService) selectSeats(req *ticket_service.PurchaseTicketRequest, carriageNumber []string) ([]*TrainPurchaseTicketDTO, error) {
 	resp := make([]*TrainPurchaseTicketDTO, 0, len(req.GetPassengers()))
 	passengerSize := len(req.GetPassengers())
 	demotionStockNumMap := make(map[string]int)
 	actualSeatsMap := make(map[string][][]int)
 	carriagesNumberSeatsMap := make(map[string][][]int)
-	for i := range remainingTickets {
-		carriageNumb := carriageNumber[i]
-		listAvailableSeat, err := s.seatService.ListAvailableSeat(s.ctx, req.GetTrainId(), carriageNumb, s.seatType, req.GetDeparture(), req.GetArrival())
+	for i, carriageNumb := range carriageNumber {
+		listAvailableSeat, err := s.seatService.ListAvailableSeat(s.ctx, req.GetTrainId(), carriageNumb, s.seatType, req.GetDeparture(), req.GetArrival(), req.GetDepartureDate())
 		if err != nil {
 			return nil, err
 		}
@@ -153,7 +150,7 @@ func (s *SeatSelectorService) selectSeats(req *ticket_service.PurchaseTicketRequ
 		}
 		actualSeatsMap[carriageNumb] = actualSeats
 		demotionStockNumMap[carriageNumb] = demotionStockNum
-		if i < len(remainingTickets)-1 {
+		if i < len(carriageNumber)-1 {
 			continue
 		}
 		// 同车厢
@@ -199,20 +196,19 @@ func (s *SeatSelectorService) selectSeats(req *ticket_service.PurchaseTicketRequ
 				CarriageNumber: carrNum,
 				SeatNumber:     selectSeat,
 				SeatType:       int(passengerInfo.GetSeatType()),
+				DepartureDate:  req.GetDepartureDate(),
 			})
 		}
 	}
 	return resp, nil
 }
 
-func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketRequest, carriageNumber []string,
-	remainingTickets []int) ([]*TrainPurchaseTicketDTO, error) {
+func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketRequest, carriageNumber []string) ([]*TrainPurchaseTicketDTO, error) {
 	resp := make([]*TrainPurchaseTicketDTO, 0, len(req.GetPassengers()))
 	carriageSeatMap := make(map[string][]*Pair)
 	passengerNum := len(req.GetPassengers())
-	for i := range remainingTickets {
-		carriageNumb := carriageNumber[i]
-		listAvailableSeat, err := s.seatService.ListAvailableSeat(s.ctx, req.GetTrainId(), carriageNumb, s.seatType, req.GetDeparture(), req.GetArrival())
+	for i, carriageNumb := range carriageNumber {
+		listAvailableSeat, err := s.seatService.ListAvailableSeat(s.ctx, req.GetTrainId(), carriageNumb, s.seatType, req.GetDeparture(), req.GetArrival(), req.GetDepartureDate())
 		if err != nil {
 			return nil, err
 		}
@@ -272,6 +268,7 @@ func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketR
 					CarriageNumber: carriageNumb,
 					SeatNumber:     selectSeat,
 					SeatType:       int(passengerInfo.GetSeatType()),
+					DepartureDate:  req.GetDepartureDate(),
 				})
 			}
 			return resp, nil
@@ -279,7 +276,7 @@ func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketR
 		// 降级分配
 		if len(vacantSeats) > 0 {
 			carriageSeatMap[carriageNumb] = vacantSeats
-			if i != len(remainingTickets)-1 {
+			if i != len(carriageNumber)-1 {
 				continue
 			}
 			var findCarriageSureSeats []*Pair
@@ -302,6 +299,7 @@ func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketR
 						CarriageNumber: findCarriageNum,
 						SeatNumber:     selectSeat,
 						SeatType:       int(passengerInfo.GetSeatType()),
+						DepartureDate:  req.GetDepartureDate(),
 					})
 				}
 				return resp, nil
@@ -329,6 +327,7 @@ func (s *SeatSelectorService) findMatchSeats(req *ticket_service.PurchaseTicketR
 								CarriageNumber: findCarriageNum,
 								SeatNumber:     selectSeat,
 								SeatType:       int(passengerInfo.GetSeatType()),
+								DepartureDate:  req.GetDepartureDate(),
 							})
 						}
 						return resp, nil
@@ -422,7 +421,7 @@ func Convert(seatType, num int) string {
 	}
 }
 
-// 辅助函数：获取最小值
+// min 辅助函数：获取最小值
 func min(a, b int) int {
 	if a < b {
 		return a

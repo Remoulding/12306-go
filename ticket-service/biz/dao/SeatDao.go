@@ -24,7 +24,7 @@ func QuerySeats(ctx context.Context, condition map[string]interface{}) ([]*model
 	return seats, nil
 }
 
-func UpsertSeats(ctx context.Context, seat []*model.SeatDO, ignoreDup bool, updateCols []string, eqCondition map[string]interface{}) error {
+func UpsertSeats(ctx context.Context, seat []*model.SeatDO, ignoreDup bool, updateCols []string, eqCondition map[string]interface{}) (int64, error) {
 	// 使用clause
 	var clauses []clause.Expression
 	onConflict := clause.OnConflict{
@@ -46,9 +46,11 @@ func UpsertSeats(ctx context.Context, seat []*model.SeatDO, ignoreDup bool, upda
 		}
 		clauses = append(clauses, where)
 	}
-
-	return configs.DB.Model(&model.SeatDO{}).WithContext(ctx).Clauses(clauses...).Create(&seat).Error
+	// 执行 upsert 并获取结果
+	tx := configs.DB.Model(&model.SeatDO{}).WithContext(ctx).Clauses(clauses...).Create(&seat)
+	return tx.RowsAffected, tx.Error
 }
+
 func UpdateSeats(ctx context.Context, condition, update map[string]interface{}) error {
 	tx := configs.DB.Model(&model.SeatDO{})
 	for exp, val := range condition {
