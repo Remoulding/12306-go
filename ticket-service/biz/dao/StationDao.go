@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/Remoulding/12306-go/ticket-service/biz/model"
 	"github.com/Remoulding/12306-go/ticket-service/configs"
+	"gorm.io/gorm/clause"
 )
 
 func QueryStationByName(ctx context.Context, name string) (*model.StationDO, error) {
@@ -29,4 +30,21 @@ func QueryStations(ctx context.Context, condition map[string]interface{}) ([]*mo
 		return nil, err
 	}
 	return stations, nil
+}
+
+func UpsertStations(ctx context.Context, stations []*model.StationDO, ignoreDup bool, updateCols []string) (int64, error) {
+	// 使用clause
+	var clauses []clause.Expression
+	onConflict := clause.OnConflict{
+		Columns: []clause.Column{{Name: "name"}, {Name: "spell"}},
+	}
+	if ignoreDup {
+		onConflict.DoNothing = true
+	} else {
+		onConflict.DoUpdates = clause.AssignmentColumns(updateCols)
+	}
+	clauses = append(clauses, onConflict)
+	// 执行 upsert 并获取结果
+	tx := configs.DB.Model(&model.StationDO{}).WithContext(ctx).Clauses(clauses...).Create(&stations)
+	return tx.RowsAffected, tx.Error
 }
