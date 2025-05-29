@@ -4,11 +4,6 @@ go 1.23.3
 
 toolchain go1.23.7
 
-// replace (
-// 	github.com/Remoulding/12306-go/idl-gen => ../idl-gen
-// 	github.com/Remoulding/12306-go/ticket-service => ../ticket-service
-// )
-
 require (
 	github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4
 	github.com/go-mysql-org/go-mysql v1.12.0
@@ -19,7 +14,7 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/BurntSushi/toml v1.3.2 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
-	github.com/Remoulding/12306-go/idl-gen v0.0.0-20250330080804-08f1961804a0 // indirect
+	github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529111349-1ff3113176b1 // indirect
 	github.com/bytedance/sonic v1.12.8 // indirect
 	github.com/bytedance/sonic/loader v0.2.2 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect

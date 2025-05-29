@@ -2,8 +2,6 @@ module github.com/Remoulding/12306-go/user-service
 
 go 1.23.3
 
-//replace github.com/Remoulding/12306-go/idl-gen => ../idl-gen
-
 require (
 	github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529071855-e2cb23b3bab4
 	github.com/bytedance/sonic v1.12.8
