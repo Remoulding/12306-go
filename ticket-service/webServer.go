@@ -10,6 +10,7 @@ import (
 	"google.golang.org/grpc/metadata"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 )
@@ -32,9 +33,16 @@ func customHeaderMatcher(ctx context.Context, req *http.Request) metadata.MD {
 func InitWebServer(ctx context.Context) *http.Server {
 	// 等待 gRPC 服务启动
 	time.Sleep(1 * time.Second)
-
+	rpcPort := os.Getenv("RPC_PORT")
+	httpPort := os.Getenv("HTTP_PORT")
+	if rpcPort == "" {
+		rpcPort = "50060"
+	}
+	if httpPort == "" {
+		httpPort = "8090"
+	}
 	// 连接 gRPC 服务器
-	conn, err := grpc.DialContext(ctx, "localhost:50052", grpc.WithInsecure())
+	conn, err := grpc.DialContext(ctx, "localhost:"+rpcPort, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Failed to connect to gRPC server: %v", err)
 	}
@@ -48,11 +56,11 @@ func InitWebServer(ctx context.Context) *http.Server {
 	}
 
 	gwServer := &http.Server{
-		Addr:    "127.0.0.1:8082",
+		Addr:    "127.0.0.1:" + httpPort,
 		Handler: gwMux, // 使用带 CORS 处理的 Handler
 	}
 
-	log.Println("🚀 gRPC-Gateway server is running at port 8082")
+	log.Println("🚀 gRPC-Gateway server is running at port ", httpPort)
 
 	go func() {
 		if err = gwServer.ListenAndServe(); err != nil && !errors.Is(http.ErrServerClosed, err) {

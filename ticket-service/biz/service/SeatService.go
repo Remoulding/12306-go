@@ -113,16 +113,6 @@ func (s *SeatService) updateSeatStatus(ctx context.Context, trainId int64, depar
 		"seat_status": 1 - seatStatus,
 	}
 	log.WithContext(ctx).Infof("update seat status: %v", tools.MustJson(seats))
-
-	//rows, err := dao.UpsertSeats(ctx, seats, false, []string{"seat_status"}, eqCondition)
-	//if err != nil {
-	//	return err
-	//}
-	//if int(rows) < len(routes) {
-	//	log.WithContext(ctx).Errorf("update seat status failed, rows: %d", rows)
-	//	return errors.New("update seat status failed")
-	//}
-	//return nil
 	return configs.DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		rows, err := dao.UpsertSeats(ctx, seats, false, []string{"seat_status"}, eqCondition)
 		if err != nil {

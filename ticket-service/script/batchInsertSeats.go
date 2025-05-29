@@ -1,4 +1,4 @@
-package main
+package script
 
 import (
 	"context"
@@ -9,6 +9,7 @@ import (
 	"github.com/Remoulding/12306-go/ticket-service/configs"
 	"gorm.io/gorm"
 	"strconv"
+	"time"
 )
 
 func init() {
@@ -31,8 +32,6 @@ func init() {
 		colRune:     []rune{'A', 'B', 'C', 'D', 'F'},
 		CarriageNum: []string{"08", "09", "10", "11", "12", "13", "14", "15"},
 	}
-
-	departureDate = []string{"2025-05-13"}
 }
 
 type SeatInfo struct {
@@ -41,33 +40,25 @@ type SeatInfo struct {
 	colRune     []rune
 }
 
-var departureDate []string
+var departureDates []string
 
 var seatMapper map[int]*SeatInfo
 
-func main() {
+func InitData() {
+	departureDates = make([]string, 14)
+	now := time.Now()
+	for i := range departureDates {
+		departureDates[i] = now.AddDate(0, 0, i).Format("2006-01-02")
+	}
 	// 读取所有的train
 	ctx := context.Background()
-	tx := configs.DB.WithContext(ctx)
-	defer func() {
-		if err := recover(); err != nil {
-			tx.Rollback()
-			panic(err)
-		}
-	}()
-	tx.Begin()
-	trains, err := dao.QueryTrain(ctx, nil)
-	if err != nil {
-		tx.Rollback()
-	}
+	trains, _ := dao.QueryTrain(ctx, nil)
+
 	for _, train := range trains {
 		// 批量插入座位
-		err = batchInsertSeats(ctx, train.ID)
-		if err != nil {
-			tx.Rollback()
-		}
+		_ = batchInsertSeats(ctx, train.ID)
+
 	}
-	tx.Commit()
 }
 
 func batchInsertSeats(ctx context.Context, trainID int64) error {
@@ -95,7 +86,7 @@ func batchInsertSeats(ctx context.Context, trainID int64) error {
 		if _, ok := priceMapper[key]; !ok {
 			continue
 		}
-		for _, date := range departureDate {
+		for _, date := range departureDates {
 			for seatType, price := range priceMapper[key] {
 				err = insertSeat(ctx, trainID, seatType, r.Departure, r.Arrival, date, price)
 				if errors.Is(err, gorm.ErrDuplicatedKey) {
@@ -136,7 +127,8 @@ func insertSeat(ctx context.Context, trainID int64, seatType int, startStation, 
 				seatDOS = append(seatDOS, seatDO)
 			}
 		}
-		err := dao.BatchInsertSeat(ctx, seatDOS)
+		//err := dao.BatchInsertSeat(ctx, seatDOS)
+		_, err := dao.UpsertSeats(ctx, seatDOS, true, nil, nil)
 		if err != nil {
 			return err
 		}

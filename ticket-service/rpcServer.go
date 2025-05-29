@@ -7,18 +7,23 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"net"
+	"os"
 	"time"
 )
 
 func InitRpcServer(ctx context.Context) (*grpc.Server, net.Listener) {
-	listen, err := net.Listen("tcp", ":50052")
+	port := os.Getenv("RPC_PORT")
+	if port == "" {
+		port = "50060"
+	}
+	listen, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
 	//grpc.UnaryInterceptor(loggingUnaryInterceptor)
 	ticket_service.RegisterTicketServiceServer(s, NewTicketServiceHandler())
-	log.Println("🚀 gRPC server is running at port 50052")
+	log.Println("🚀 gRPC server is running at port ", port)
 
 	go func() {
 		if err := s.Serve(listen); err != nil {

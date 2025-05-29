@@ -9,7 +9,7 @@ var UserServiceClient user_service.UserServiceClient
 
 // InitUserServiceClient init rpc client
 func InitUserServiceClient() {
-	conn, err := grpc.NewClient("localhost:50051", grpc.WithInsecure())
+	conn, err := grpc.NewClient("localhost:8849", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}

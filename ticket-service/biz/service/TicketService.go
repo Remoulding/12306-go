@@ -223,18 +223,6 @@ func (s *TicketService) buildPageListTicketQueryData(trainList []*ticket_service
 
 func (s *TicketService) PurchaseTickets(ctx context.Context, req *ticket_service.PurchaseTicketRequest) (*ticket_service.PurchaseTicketResponse, error) {
 	resp := &ticket_service.PurchaseTicketResponse{}
-	//lockKey := fmt.Sprintf(configs.LockPurchaseTickets, req.GetTrainId())
-	//mutex := configs.Rs.NewMutex(lockKey, redsync.WithExpiry(5*time.Second))
-	//if err := mutex.Lock(); err != nil {
-	//	log.WithContext(ctx).Errorf("SafeGet add mutex failed, err: %v", err)
-	//	resp.Message = "预占座位失败"
-	//	return resp, nil
-	//}
-	//defer func(mutex *redsync.Mutex) {
-	//	if _, err := mutex.Unlock(); err != nil {
-	//		log.WithContext(ctx).Errorf("SafeGet failed, err: %v", err)
-	//	}
-	//}(mutex)
 	trainData, err := SafeLoad(ctx, configs.TrainInfo+req.GetTrainId(), configs.LockTrain+req.GetTrainId(), func(ctx context.Context) (interface{}, error) {
 		trainID, _ := strconv.ParseInt(req.GetTrainId(), 10, 64)
 		return dao.QueryTrainById(ctx, trainID)
@@ -251,11 +239,21 @@ func (s *TicketService) PurchaseTickets(ctx context.Context, req *ticket_service
 		resp.Message = "预占座位失败"
 		return resp, nil
 	}
-	seats, err := s.selectSeat(ctx, req)
-	if err != nil {
-		log.WithContext(ctx).Errorf("select seat failed, err: %v", err)
-		resp.Message = "预占座位失败"
-		return resp, nil
+	var seats []*TrainPurchaseTicketDTO
+	var retryNum int
+	retryNum = 1
+	for i := 0; i < retryNum; i++ {
+		seats, err = s.selectSeat(ctx, req)
+		if err != nil {
+			if i < retryNum-1 {
+				continue
+			}
+			log.WithContext(ctx).Errorf("select seat failed, err: %v", err)
+			resp.Message = "预占座位失败"
+			return resp, nil
+		} else {
+			break
+		}
 	}
 	// 生成 Ticket
 	ticketList := make([]*model.TicketDO, 0, len(seats))
