@@ -7,8 +7,8 @@ services:
       MYSQL_ROOT_PASSWORD: "hokitz"
       MYSQL_DATABASE: "train_db"
     volumes:
-      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./sql/:/sql/
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf            # 自定义配置文件
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql  # 初始化 SQL 脚本
       - mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
@@ -39,8 +39,10 @@ services:
   # User Service (3个实例)
   user-service1:
     build:
-      context: .
-      dockerfile: ./user-service/Dockerfile
+      context: ./user-service
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: user-service-1
     environment:
       - SERVICE_NAME=user-service
@@ -48,8 +50,8 @@ services:
       - GRPC_PORT=50051
       - MYSQL_HOST=mysql
       - MYSQL_USER=root
-      - MYSQL_PASSWORD=123456
-      - MYSQL_DB=railway_db
+      - MYSQL_PASSWORD=hokitz
+      - MYSQL_DB=train_db
       - REDIS_HOST=redis
     ports:
       - "8081:8081"
@@ -64,8 +66,10 @@ services:
 
   user-service2:
     build:
-      context: .
-      dockerfile: ./user-service/Dockerfile
+      context: ./user-service
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: user-service-2
     environment:
       - SERVICE_NAME=user-service
@@ -84,8 +88,10 @@ services:
 
   user-service3:
     build:
-      context: .
-      dockerfile: ./user-service/Dockerfile
+      context: ./user-service
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: user-service-3
     environment:
       - SERVICE_NAME=user-service
@@ -105,8 +111,10 @@ services:
   # Ticket Service (3个实例)
   ticket-service1:
     build:
-      context: .
-      dockerfile: ./ticket-service/Dockerfile
+      context: ./ticket-service
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: ticket-service-1
     environment:
       - SERVICE_NAME=ticket-service
@@ -114,6 +122,7 @@ services:
       - GRPC_PORT=50061
       - MYSQL_HOST=mysql
       - REDIS_HOST=redis
+      - NGINX_HOST=nginx
     ports:
       - "8091:8091"
       - "50061:50061"
@@ -125,8 +134,10 @@ services:
 
   ticket-service2:
     build:
-      context: .
-      dockerfile: ./ticket-service/Dockerfile
+      context: ./ticket-service
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: ticket-service-2
     environment:
       - SERVICE_NAME=ticket-service
@@ -134,6 +145,7 @@ services:
       - GRPC_PORT=50062
       - MYSQL_HOST=mysql
       - REDIS_HOST=redis
+      - NGINX_HOST=nginx
     ports:
       - "8092:8092"
       - "50062:50062"
@@ -145,8 +157,10 @@ services:
 
   ticket-service3:
     build:
-      context: .
-      dockerfile: ./ticket-service/Dockerfile
+      context: ./ticket-service
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: ticket-service-3
     environment:
       - SERVICE_NAME=ticket-service
@@ -154,6 +168,7 @@ services:
       - GRPC_PORT=50063
       - MYSQL_HOST=mysql
       - REDIS_HOST=redis
+      - NGINX_HOST=nginx
     ports:
       - "8093:8093"
       - "50063:50063"
@@ -166,8 +181,10 @@ services:
   # Binlog Consumer
   binlog-consumer:
     build:
-      context: .
-      dockerfile: ./binlog-consumer/Dockerfile
+      context: ./binlog-consumer
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: binlog-consumer
     environment:
       - MYSQL_HOST=mysql
@@ -181,8 +198,10 @@ services:
   # Cron Job
   cron-job:
     build:
-      context: .
-      dockerfile: ./cronJob/Dockerfile
+      context: ./cronJob
+      dockerfile: Dockerfile
+      args:
+        GOPROXY: https://goproxy.cn,direct
     container_name: cron-job
     environment:
       - MYSQL_HOST=mysql
@@ -194,8 +213,8 @@ services:
   # 前端服务
   frontend:
     build:
-      context: .
-      dockerfile: ./front-end/Dockerfile
+      context: ./front-end
+      dockerfile: Dockerfile
     container_name: frontend
     depends_on:
       - user-service1

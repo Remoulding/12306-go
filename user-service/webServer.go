@@ -34,7 +34,7 @@ func customHeaderMatcher(ctx context.Context, req *http.Request) metadata.MD {
 func InitWebServer(ctx context.Context) *http.Server {
 	// 等待 gRPC 服务启动
 	time.Sleep(1 * time.Second)
-	rpcPort := os.Getenv("RPC_PORT")
+	rpcPort := os.Getenv("GRPC_PORT")
 	httpPort := os.Getenv("HTTP_PORT")
 	if rpcPort == "" {
 		rpcPort = "50050"

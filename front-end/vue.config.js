@@ -3,13 +3,6 @@ module.exports = {
     client: {
       overlay: false
     },
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:7878',
-    //     changeOrigin: true,
-    //     ws: true,
-    //   }
-    // }
   },
   css: {
     loaderOptions: {

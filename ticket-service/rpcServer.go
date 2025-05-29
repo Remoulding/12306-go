@@ -12,7 +12,7 @@ import (
 )
 
 func InitRpcServer(ctx context.Context) (*grpc.Server, net.Listener) {
-	port := os.Getenv("RPC_PORT")
+	port := os.Getenv("GRPC_PORT")
 	if port == "" {
 		port = "50060"
 	}

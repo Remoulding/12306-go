@@ -14,8 +14,6 @@
  Date: 29/05/2025 16:11:49
 */
 
-CREATE DATABASE train_db;
-
 USE train_db;
 
 SET NAMES utf8mb4;

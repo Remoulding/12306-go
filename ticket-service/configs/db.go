@@ -1,10 +1,12 @@
 package configs
 
 import (
+	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"log"
+	"os"
 	"time"
 )
 
@@ -25,9 +27,12 @@ func InitDBInstance() {
 			Colorful:                  true,        // 是否开启彩色日志（终端可见）
 		},
 	)
-
+	host := os.Getenv("MYSQL_HOST")
+	if host == "" {
+		host = "localhost"
+	}
 	var err error
-	DB, err = gorm.Open(mysql.Open("root:hokitz@tcp(localhost:3306)/train_db?parseTime=true"), &gorm.Config{
+	DB, err = gorm.Open(mysql.Open(fmt.Sprintf("root:hokitz@tcp(%s:3306)/train_db?parseTime=true", host)), &gorm.Config{
 		Logger: newLogger,
 	})
 	if err != nil {
