@@ -4,13 +4,13 @@ go 1.23.3
 
 toolchain go1.23.7
 
-replace (
-	github.com/Remoulding/12306-go/idl-gen => ../idl-gen
-	github.com/Remoulding/12306-go/ticket-service => ../ticket-service
-)
+// replace (
+// 	github.com/Remoulding/12306-go/idl-gen => ../idl-gen
+// 	github.com/Remoulding/12306-go/ticket-service => ../ticket-service
+// )
 
 require (
-	github.com/Remoulding/12306-go/ticket-service v0.0.0-00010101000000-000000000000
+	github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4
 	github.com/go-mysql-org/go-mysql v1.12.0
 	github.com/go-redis/redis/v8 v8.11.5
 )

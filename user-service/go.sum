@@ -1,3 +1,5 @@
+github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529071855-e2cb23b3bab4 h1:6AdyM/DAHWlZG+ZJ4X2cJAy08cOwDmFI2Skrt7QmOAY=
+github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529071855-e2cb23b3bab4/go.mod h1:S2URpWEdZEI3fb467fE2MhIxlMZOhGQdzPAgW9IfF7s=
 github.com/bytedance/sonic v1.12.8 h1:4xYRVRlXIgvSZ4e8iVTlMF5szgpXd4AfvuWgA8I8lgs=
 github.com/bytedance/sonic v1.12.8/go.mod h1:uVvFidNmlt9+wa31S1urfwwthTWteBgG0hWuoKAXTx8=
 github.com/bytedance/sonic/loader v0.1.1/go.mod h1:ncP89zfokxS5LZrJxl5z0UJcsk4M4yY2JpfqGeCtNLU=

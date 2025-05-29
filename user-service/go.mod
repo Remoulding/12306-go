@@ -2,10 +2,10 @@ module github.com/Remoulding/12306-go/user-service
 
 go 1.23.3
 
-replace github.com/Remoulding/12306-go/idl-gen => ../idl-gen
+//replace github.com/Remoulding/12306-go/idl-gen => ../idl-gen
 
 require (
-	github.com/Remoulding/12306-go/idl-gen v0.0.0-00010101000000-000000000000
+	github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529071855-e2cb23b3bab4
 	github.com/bytedance/sonic v1.12.8
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-jwt/jwt/v4 v4.5.1

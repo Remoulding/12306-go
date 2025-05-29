@@ -14,7 +14,7 @@ import (
 const (
 	mysqlAddr     = "127.0.0.1:3306"
 	mysqlUser     = "canal"
-	mysqlPassword = "canal_password"
+	mysqlPassword = "canal"
 )
 
 func main() {

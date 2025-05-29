@@ -1,0 +1,233 @@
+services:
+  # MySQL服务
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "hokitz"
+      MYSQL_DATABASE: "train_db"
+    volumes:
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql/:/sql/
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    networks:
+      - app-network
+
+  # Redis服务
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    networks:
+      - app-network
+
+  # User Service (3个实例)
+  user-service1:
+    build:
+      context: .
+      dockerfile: ./user-service/Dockerfile
+    container_name: user-service-1
+    environment:
+      - SERVICE_NAME=user-service
+      - HTTP_PORT=8081
+      - GRPC_PORT=50051
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123456
+      - MYSQL_DB=railway_db
+      - REDIS_HOST=redis
+    ports:
+      - "8081:8081"
+      - "50051:50051"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  user-service2:
+    build:
+      context: .
+      dockerfile: ./user-service/Dockerfile
+    container_name: user-service-2
+    environment:
+      - SERVICE_NAME=user-service
+      - HTTP_PORT=8082
+      - GRPC_PORT=50052
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+    ports:
+      - "8082:8082"
+      - "50052:50052"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app-network
+
+  user-service3:
+    build:
+      context: .
+      dockerfile: ./user-service/Dockerfile
+    container_name: user-service-3
+    environment:
+      - SERVICE_NAME=user-service
+      - HTTP_PORT=8083
+      - GRPC_PORT=50053
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+    ports:
+      - "8083:8083"
+      - "50053:50053"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app-network
+
+  # Ticket Service (3个实例)
+  ticket-service1:
+    build:
+      context: .
+      dockerfile: ./ticket-service/Dockerfile
+    container_name: ticket-service-1
+    environment:
+      - SERVICE_NAME=ticket-service
+      - HTTP_PORT=8091
+      - GRPC_PORT=50061
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+    ports:
+      - "8091:8091"
+      - "50061:50061"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app-network
+
+  ticket-service2:
+    build:
+      context: .
+      dockerfile: ./ticket-service/Dockerfile
+    container_name: ticket-service-2
+    environment:
+      - SERVICE_NAME=ticket-service
+      - HTTP_PORT=8092
+      - GRPC_PORT=50062
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+    ports:
+      - "8092:8092"
+      - "50062:50062"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app-network
+
+  ticket-service3:
+    build:
+      context: .
+      dockerfile: ./ticket-service/Dockerfile
+    container_name: ticket-service-3
+    environment:
+      - SERVICE_NAME=ticket-service
+      - HTTP_PORT=8093
+      - GRPC_PORT=50063
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+    ports:
+      - "8093:8093"
+      - "50063:50063"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app-network
+
+  # Binlog Consumer
+  binlog-consumer:
+    build:
+      context: .
+      dockerfile: ./binlog-consumer/Dockerfile
+    container_name: binlog-consumer
+    environment:
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app-network
+
+  # Cron Job
+  cron-job:
+    build:
+      context: .
+      dockerfile: ./cronJob/Dockerfile
+    container_name: cron-job
+    environment:
+      - MYSQL_HOST=mysql
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  # 前端服务
+  frontend:
+    build:
+      context: .
+      dockerfile: ./front-end/Dockerfile
+    container_name: frontend
+    depends_on:
+      - user-service1
+      - ticket-service1
+    networks:
+      - app-network
+
+  # Nginx服务
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8848:8848"  # HTTP端口
+      - "8849:8849"  # gRPC端口
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - user-service1
+      - user-service2
+      - user-service3
+      - ticket-service1
+      - ticket-service2
+      - ticket-service3
+    networks:
+      - app-network
+
+# 网络和数据卷
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  redis-data:

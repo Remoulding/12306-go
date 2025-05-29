@@ -1,5 +1,3 @@
-# backend/ticket-service/Dockerfile 和 backend/user-service/Dockerfile 类似
-
 FROM golang:1.23-alpine AS builder
 
 WORKDIR /app
