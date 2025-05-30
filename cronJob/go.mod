@@ -5,7 +5,7 @@ go 1.23.3
 toolchain go1.23.7
 
 require (
-	github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4
+	github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529162619-b388d3edd863
 	github.com/robfig/cron/v3 v3.0.1
 	gorm.io/gorm v1.30.0
 )
@@ -35,6 +35,7 @@ require (
 	github.com/pingcap/tidb/pkg/parser v0.0.0-20241118164214-4f047be191be // indirect
 	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
+	github.com/stretchr/testify v1.10.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect

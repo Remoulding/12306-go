@@ -9,6 +9,8 @@ github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529111349-1ff3113176b1 h1:MvV
 github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529111349-1ff3113176b1/go.mod h1:S2URpWEdZEI3fb467fE2MhIxlMZOhGQdzPAgW9IfF7s=
 github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4 h1:URBOrUVMATeAtPOF/NTwms1F+AO4j9UX3+QAa0JaEQ0=
 github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4/go.mod h1:ba3cyd5+2SkQgh182eend3GtD094eLYy+j6zXBhUcR8=
+github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529162619-b388d3edd863 h1:P0Kj4VirlV+hJrbjKySUDUMxSYvmEb2hy2n2yFc2/EY=
+github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529162619-b388d3edd863/go.mod h1:doZlKMrrpCfCUWLnu7gqPJosG1Uc+I6TIAp5EL0a3Rs=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/bytedance/sonic v1.12.8 h1:4xYRVRlXIgvSZ4e8iVTlMF5szgpXd4AfvuWgA8I8lgs=
 github.com/bytedance/sonic v1.12.8/go.mod h1:uVvFidNmlt9+wa31S1urfwwthTWteBgG0hWuoKAXTx8=

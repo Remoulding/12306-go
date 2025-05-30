@@ -56,7 +56,7 @@ func InitWebServer(ctx context.Context) *http.Server {
 	}
 
 	gwServer := &http.Server{
-		Addr:    "127.0.0.1:" + httpPort,
+		Addr:    "0.0.0.0:" + httpPort,
 		Handler: gwMux, // 使用带 CORS 处理的 Handler
 	}
 

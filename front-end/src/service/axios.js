@@ -5,9 +5,11 @@ import Cookie from 'js-cookie'
 if (Cookie.get('token')) {
 }
 
+const baseURL = process.env.VUE_APP_API_BASE || 'http://localhost:8848'
+
 const initAxios = Axios.create({
   timeout: 1800000, //数据响应过期时间
-  baseURL: 'http://localhost:8848'
+  baseURL: baseURL
   // headers: ['Authorization', Cookie.get('token') ?? null]
 })
 

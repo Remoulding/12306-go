@@ -5,7 +5,7 @@ go 1.23.3
 toolchain go1.23.7
 
 require (
-	github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4
+	github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529162619-b388d3edd863
 	github.com/go-mysql-org/go-mysql v1.12.0
 	github.com/go-redis/redis/v8 v8.11.5
 )

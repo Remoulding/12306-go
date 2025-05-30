@@ -7,8 +7,8 @@ github.com/Masterminds/semver v1.5.0 h1:H65muMkzWKEuNDnfl9d70GUjFniHKHRbFPGBuZ3Q
 github.com/Masterminds/semver v1.5.0/go.mod h1:MB6lktGJrhw8PrUyiEoblNEGEQ+RzHPF078ddwwvV3Y=
 github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529111349-1ff3113176b1 h1:MvV9AGi/VMh89IsvGZ1XC0A6u1vjihALM7W007KZS6k=
 github.com/Remoulding/12306-go/idl-gen v0.0.0-20250529111349-1ff3113176b1/go.mod h1:S2URpWEdZEI3fb467fE2MhIxlMZOhGQdzPAgW9IfF7s=
-github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4 h1:URBOrUVMATeAtPOF/NTwms1F+AO4j9UX3+QAa0JaEQ0=
-github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529071855-e2cb23b3bab4/go.mod h1:ba3cyd5+2SkQgh182eend3GtD094eLYy+j6zXBhUcR8=
+github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529162619-b388d3edd863 h1:P0Kj4VirlV+hJrbjKySUDUMxSYvmEb2hy2n2yFc2/EY=
+github.com/Remoulding/12306-go/ticket-service v0.0.0-20250529162619-b388d3edd863/go.mod h1:doZlKMrrpCfCUWLnu7gqPJosG1Uc+I6TIAp5EL0a3Rs=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/cespare/xxhash/v2 v2.3.0 h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=
 github.com/cespare/xxhash/v2 v2.3.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
@@ -94,8 +94,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
-github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
+github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA=
+github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/stvp/tempredis v0.0.0-20181119212430-b82af8480203 h1:QVqDTf3h2WHt08YuiTGPZLls0Wq99X9bWd0Q5ZSBesM=
 github.com/stvp/tempredis v0.0.0-20181119212430-b82af8480203/go.mod h1:oqN97ltKNihBbwlX8dLpwxCl3+HnXKV/R0e+sRLd9C8=
 go.opentelemetry.io/otel v1.32.0 h1:WnBN+Xjcteh0zdk01SVqV55d/m62NJLJdIyb4y/WO5U=

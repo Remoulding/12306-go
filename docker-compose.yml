@@ -216,9 +216,10 @@ services:
       context: ./front-end
       dockerfile: Dockerfile
     container_name: frontend
-    depends_on:
-      - user-service1
-      - ticket-service1
+    ports:
+      - "12306:12306"  
+    environment:
+      - PORT=12306             # 容器内部使用的端口，vue.config.js 会读取这个变量
     networks:
       - app-network
 

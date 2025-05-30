@@ -57,11 +57,11 @@ func InitWebServer(ctx context.Context) *http.Server {
 	}
 
 	gwServer := &http.Server{
-		Addr:    "127.0.0.1:" + httpPort,
+		Addr:    "0.0.0.0:" + httpPort,
 		Handler: gwMux,
 	}
 
-	log.Println("🚀 gRPC-Gateway server is running at port 8081")
+	log.Println("🚀 gRPC-Gateway server is running at port", httpPort)
 
 	go func() {
 		if err = gwServer.ListenAndServe(); err != nil && !errors.Is(http.ErrServerClosed, err) {

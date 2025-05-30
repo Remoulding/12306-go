@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const (
+var (
 	mysqlAddr     = "127.0.0.1:3306"
 	mysqlUser     = "canal"
 	mysqlPassword = "canal"
@@ -44,6 +44,9 @@ func main() {
 // InitCanal 初始化Canal客户端
 func InitCanal(ctx context.Context) {
 	cfg := canal.NewDefaultConfig()
+	if host := os.Getenv("MYSQL_HOST"); host != "" {
+		mysqlAddr = host + ":3306"
+	}
 	cfg.Addr = mysqlAddr
 	cfg.User = mysqlUser
 	cfg.Password = mysqlPassword
